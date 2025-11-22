@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* استایل‌های عمومی */
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +26,6 @@
             padding: 0 20px;
         }
         
-        /* استایل هدر */
         header {
             background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
             color: #fff;
@@ -50,7 +48,6 @@
             font-weight: 400;
         }
         
-        /* استایل بخش محصولات */
         .products-section {
             padding: 50px 0;
         }
@@ -117,7 +114,6 @@
             background: #fff;
         }
         
-        /* استایل مودال */
         .modal {
             display: none;
             position: fixed;
@@ -184,7 +180,6 @@
             }
         }
         
-        /* استایل گالری اسلایدی */
         .product-gallery {
             flex: 1.2;
             position: relative;
@@ -337,14 +332,6 @@
             margin-left: 10px;
         }
         
-        .product-price {
-            font-size: 1.5rem;
-            color: #8b4513;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        
-        /* استایل فوتر */
         footer {
             background: linear-gradient(135deg, #5d4037 0%, #795548 100%);
             color: #fff;
@@ -357,7 +344,6 @@
             font-weight: 400;
         }
         
-        /* انیمیشن‌ها */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -374,7 +360,6 @@
             }
         }
         
-        /* رسپانسیو */
         @media (max-width: 768px) {
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -416,32 +401,71 @@
         <div class="container">
             <h2>محصولات نمدی ما</h2>
             <div class="products-grid">
-                <!-- محصول 1 -->
+                <!-- محصولات با اسامی جدید -->
                 <div class="product-card" onclick="openModal('modal1')">
-                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C.jpg" alt="کفی کفش نمدی" class="product-image">
-                    <div class="product-name">کفی کفش نمدی</div>
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C.jpg" alt="کفی نمدی" class="product-image">
+                    <div class="product-name">کفی نمدی</div>
                 </div>
                 
-                <!-- محصول 2 -->
                 <div class="product-card" onclick="openModal('modal2')">
                     <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B3.jpg" alt="کفی نمدی مرینوس" class="product-image">
                     <div class="product-name">کفی نمدی مرینوس</div>
                 </div>
                 
-                <!-- محصول 3 -->
                 <div class="product-card" onclick="openModal('modal3')">
-                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="دمپایی نمدی" class="product-image">
-                    <div class="product-name">دمپایی نمدی</div>
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="کمربند نمدی" class="product-image">
+                    <div class="product-name">کمربند نمدی</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal4')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="روکش صندلی نمدی بزرگ" class="product-image">
+                    <div class="product-name">روکش صندلی نمدی بزرگ</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal5')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="زیرانداز نمدی" class="product-image">
+                    <div class="product-name">زیرانداز نمدی</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal6')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B31.jpg" alt="نشیمنگاه طبی نمدی" class="product-image">
+                    <div class="product-name">نشیمنگاه طبی نمدی</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal7')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="پادری طرح پا نمدی" class="product-image">
+                    <div class="product-name">پادری طرح پا نمدی</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal8')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="کفش های نمدی" class="product-image">
+                    <div class="product-name">کفش های نمدی</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal9')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C.jpg" alt="سجاده نمدی سفید" class="product-image">
+                    <div class="product-name">سجاده نمدی سفید</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal10')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B3.jpg" alt="سجاده نمدی قهوه‌ای" class="product-image">
+                    <div class="product-name">سجاده نمدی قهوه‌ای</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal11')">
+                    <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="موکت های نمدی" class="product-image">
+                    <div class="product-name">موکت های نمدی</div>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- مودال‌ها -->
+    <!-- مودال 1 -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">کفی کفش نمدی</h2>
+                <h2 class="modal-title">کفی نمدی</h2>
                 <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
             </div>
             <div class="modal-body">
@@ -472,21 +496,20 @@
                     </div>
                 </div>
                 <div class="modal-details">
-                    <p class="modal-description">
-                        ویژگی‌ها: ساخته‌شده از پشم طبیعی، نرم و لطیف، قابل شستشو با دوام و تراکم بالا، سبک، قابل انعطاف و سازگار با پوست، خنک در تابستان و گرم در زمستان، طبع گرم و خشک
-                    </p>
+                    <p class="modal-description">کفی نمدی با کیفیت بالا از پشم طبیعی ساخته شده است. این کفی با خاصیت آنتی‌باکتریال و جذب رطوبت بالا، راحتی و سلامت پاهای شما را تضمین می‌کند.</p>
                     <ul class="product-features">
-                        <li>رفع بوی نامطبوع و عرق پا</li>
-                        <li>جلوگیری از تاول و تحریک پوست</li>
-                        <li>تخلیه الکتریسیته ساکن بدن و ایجاد آرامش اعصاب</li>
-                        <li>افزایش جریان خون</li>
-                        <li>بهبود میخچه، ترک و خار پاشنه</li>
+                        <li>ساخته شده از پشم طبیعی مرغوب</li>
+                        <li>خاصیت آنتی‌باکتریال طبیعی</li>
+                        <li>جذب رطوبت و تهویه عالی</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای تمام فصول سال</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- مودال 2 -->
     <div id="modal2" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -521,9 +544,7 @@
                     </div>
                 </div>
                 <div class="modal-details">
-                    <p class="modal-description">
-                        کفی نمدی مرینوس با کیفیت بالا از پشم مرینوس ساخته شده است. این کفی با خاصیت آنتی‌باکتریال و جذب رطوبت بالا، راحتی و سلامت پاهای شما را تضمین می‌کند.
-                    </p>
+                    <p class="modal-description">کفی نمدی مرینوس با کیفیت بالا از پشم مرینوس ساخته شده است. این کفی با خاصیت آنتی‌باکتریال و جذب رطوبت بالا، راحتی و سلامت پاهای شما را تضمین می‌کند.</p>
                     <ul class="product-features">
                         <li>ساخته شده از پشم مرینوس باکیفیت</li>
                         <li>خاصیت آنتی‌باکتریال طبیعی</li>
@@ -536,10 +557,11 @@
         </div>
     </div>
 
+    <!-- مودال 3 -->
     <div id="modal3" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">دمپایی نمدی</h2>
+                <h2 class="modal-title">کمربند نمدی</h2>
                 <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
             </div>
             <div class="modal-body">
@@ -547,10 +569,10 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="دمپایی نمدی - تصویر ۱">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="کمربند نمدی - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="دمپایی نمدی - تصویر ۲">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="کمربند نمدی - تصویر ۲">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal3', -1)">&#10094;</button>
@@ -562,23 +584,405 @@
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal3', 0)">
-                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="دمپایی نمدی - تصویر کوچک ۱">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="کمربند نمدی - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal3', 1)">
-                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="دمپایی نمدی - تصویر کوچک ۲">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="کمربند نمدی - تصویر کوچک ۲">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
-                    <p class="modal-description">
-                        دمپایی نمدی با طراحی ارگونومیک و استفاده از نمد طبیعی، راحتی و گرمای بی‌نظیری برای پاهای شما به ارمغان می‌آورد. این دمپایی مناسب استفاده در منزل و محیط‌های داخلی است.
-                    </p>
+                    <p class="modal-description">کمربند نمدی با طراحی مدرن و استفاده از نمد طبیعی، ترکیبی از زیبایی و کارایی است. این کمربند مناسب برای استفاده روزمره و مراسم خاص می‌باشد.</p>
                     <ul class="product-features">
                         <li>ساخته شده از نمد طبیعی</li>
-                        <li>طراحی ارگونومیک برای راحتی پا</li>
+                        <li>طراحی مدرن و شیک</li>
+                        <li>قابل تنظیم برای سایزهای مختلف</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای آقایان و بانوان</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">روکش صندلی نمدی بزرگ</h2>
+                <button class="close-btn" onclick="closeModal('modal4')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="روکش صندلی نمدی - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="روکش صندلی نمدی - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal4', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal4', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal4', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal4', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal4', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="روکش صندلی نمدی - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal4', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="روکش صندلی نمدی - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">روکش صندلی نمدی بزرگ با طراحی ارگونومیک و استفاده از نمد طبیعی، راحتی و گرمای بی‌نظیری برای صندلی‌های شما به ارمغان می‌آورد.</p>
+                    <ul class="product-features">
+                        <li>سایز بزرگ برای صندلی‌های مختلف</li>
+                        <li>ساخته شده از نمد طبیعی</li>
                         <li>گرم و نرم در زمستان</li>
                         <li>قابل شستشو با دست</li>
+                        <li>مناسب برای منزل و دفتر کار</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- مودال 5 -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">زیرانداز نمدی</h2>
+                <button class="close-btn" onclick="closeModal('modal5')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="زیرانداز نمدی - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C.jpg" alt="زیرانداز نمدی - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal5', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal5', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal5', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal5', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal5', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="زیرانداز نمدی - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal5', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C.jpg" alt="زیرانداز نمدی - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">زیرانداز نمدی با کیفیت بالا و ضخامت مناسب، مناسب برای استفاده در منزل، پیک نیک و مسافرت می‌باشد. این زیرانداز عایق رطوبت و سرما است.</p>
+                    <ul class="product-features">
+                        <li>ساخته شده از نمد طبیعی ضخیم</li>
+                        <li>عایق رطوبت و سرما</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای استفاده در طبیعت</li>
+                        <li>سایزهای مختلف موجود</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 6 -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نشیمنگاه طبی نمدی</h2>
+                <button class="close-btn" onclick="closeModal('modal6')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B31.jpg" alt="نشیمنگاه طبی نمدی - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B3.jpg" alt="نشیمنگاه طبی نمدی - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal6', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal6', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal6', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal6', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal6', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B31.jpg" alt="نشیمنگاه طبی نمدی - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal6', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B3.jpg" alt="نشیمنگاه طبی نمدی - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">نشیمنگاه طبی نمدی با طراحی ارگونومیک و استفاده از نمد طبیعی، برای افرادی که مدت طولانی می‌نشینند بسیار مناسب است. این محصول از کمردرد و خستگی جلوگیری می‌کند.</p>
+                    <ul class="product-features">
+                        <li>طراحی ارگونومیک برای سلامت ستون فقرات</li>
+                        <li>ساخته شده از نمد طبیعی</li>
+                        <li>جلوگیری از کمردرد و خستگی</li>
+                        <li>قابل استفاده روی صندلی و زمین</li>
+                        <li>قابل شستشو با دست</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 7 -->
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">پادری طرح پا نمدی</h2>
+                <button class="close-btn" onclick="closeModal('modal7')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="پادری طرح پا نمدی - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="پادری طرح پا نمدی - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal7', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal7', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal7', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal7', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal7', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="پادری طرح پا نمدی - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal7', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="پادری طرح پا نمدی - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">پادری طرح پا نمدی با طراحی زیبا و کاربردی، مناسب برای ورودی منزل و محیط‌های داخلی است. این پادری با جذب رطوبت و گرد و خاک، تمیزی منزل شما را تضمین می‌کند.</p>
+                    <ul class="product-features">
+                        <li>طرح زیبا و مدرن پا</li>
+                        <li>جذب رطوبت و گرد و خاک</li>
+                        <li>ساخته شده از نمد طبیعی</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای ورودی منزل</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 8 -->
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">کفش های نمدی</h2>
+                <button class="close-btn" onclick="closeModal('modal8')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="کفش های نمدی - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="کفش های نمدی - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal8', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal8', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal8', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal8', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal8', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="کفش های نمدی - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal8', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="کفش های نمدی - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">کفش های نمدی با طراحی مدرن و استفاده از نمد طبیعی، انتخابی عالی برای استفاده در منزل و محیط‌های داخلی هستند. این کفش‌ها سبک، راحت و قابل شستشو می‌باشند.</p>
+                    <ul class="product-features">
+                        <li>ساخته شده از نمد طبیعی</li>
+                        <li>سبک و راحت</li>
+                        <li>قابل شستشو با دست</li>
                         <li>مناسب برای استفاده در منزل</li>
+                        <li>سایزهای مختلف موجود</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 9 -->
+    <div id="modal9" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">سجاده نمدی سفید</h2>
+                <button class="close-btn" onclick="closeModal('modal9')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C.jpg" alt="سجاده نمدی سفید - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="سجاده نمدی سفید - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal9', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal9', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal9', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal9', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal9', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C.jpg" alt="سجاده نمدی سفید - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal9', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%DA%A9%D9%81%D8%B4%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="سجاده نمدی سفید - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">سجاده نمدی سفید با کیفیت بالا و طراحی ساده و زیبا، مناسب برای نماز خواندن می‌باشد. این سجاده نرم و راحت بوده و قابل شستشو است.</p>
+                    <ul class="product-features">
+                        <li>رنگ سفید خالص و زیبا</li>
+                        <li>ساخته شده از نمد طبیعی</li>
+                        <li>نرم و راحت برای نماز خواندن</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>سایز استاندارد نماز</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 10 -->
+    <div id="modal10" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">سجاده نمدی قهوه‌ای</h2>
+                <button class="close-btn" onclick="closeModal('modal10')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B3.jpg" alt="سجاده نمدی قهوه‌ای - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B31.jpg" alt="سجاده نمدی قهوه‌ای - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal10', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal10', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal10', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal10', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal10', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B3.jpg" alt="سجاده نمدی قهوه‌ای - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal10', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%DA%A9%D9%81%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C%20%D9%85%D8%B1%DB%8C%D9%86%D9%88%D8%B31.jpg" alt="سجاده نمدی قهوه‌ای - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">سجاده نمدی قهوه‌ای با رنگ طبیعی و زیبا، مناسب برای نماز خواندن می‌باشد. این سجاده با رنگ قهوه‌ای کم‌رنگ، تمیزی و زیبایی خاصی دارد.</p>
+                    <ul class="product-features">
+                        <li>رنگ قهوه‌ای طبیعی و زیبا</li>
+                        <li>ساخته شده از نمد طبیعی</li>
+                        <li>نرم و راحت برای نماز خواندن</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>سایز استاندارد نماز</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 11 -->
+    <div id="modal11" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">موکت های نمدی</h2>
+                <button class="close-btn" onclick="closeModal('modal11')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="موکت های نمدی - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="موکت های نمدی - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal11', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal11', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal11', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal11', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal11', 0)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C1.jpg" alt="موکت های نمدی - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal11', 1)">
+                            <img src="https://raw.githubusercontent.com/ehsanhousefeltproducts-stack/Felt-products/main/%D8%AF%D9%85%D9%BE%D8%A7%DB%8C%DB%8C%20%D9%86%D9%85%D8%AF%DB%8C2.jpg" alt="موکت های نمدی - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">موکت های نمدی با کیفیت بالا و ضخامت مناسب، برای پوشش کف منزل و محیط‌های داخلی بسیار مناسب هستند. این موکت‌ها عایق صدا و سرما بوده و محیطی گرم و دنج ایجاد می‌کنند.</p>
+                    <ul class="product-features">
+                        <li>ساخته شده از نمد طبیعی ضخیم</li>
+                        <li>عایق صدا و سرما</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای پوشش کف منزل</li>
+                        <li>سایزهای مختلف موجود</li>
                     </ul>
                 </div>
             </div>
@@ -593,28 +997,23 @@
     </footer>
 
     <script>
-        // شی برای ذخیره وضعیت اسلایدهای هر مودال
         const slideIndexes = {};
         
-        // تابع برای باز کردن مودال
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
             document.body.style.overflow = 'hidden';
             
-            // مقداردهی اولیه اسلاید
             if (!slideIndexes[modalId]) {
                 slideIndexes[modalId] = 0;
             }
             showSlides(modalId, slideIndexes[modalId]);
         }
         
-        // تابع برای بستن مودال
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
             document.body.style.overflow = 'auto';
         }
         
-        // تابع برای تغییر اسلاید
         function changeSlide(modalId, n) {
             if (!slideIndexes[modalId]) {
                 slideIndexes[modalId] = 0;
@@ -623,13 +1022,11 @@
             showSlides(modalId, slideIndexes[modalId]);
         }
         
-        // تابع برای رفتن به اسلاید خاص
         function currentSlide(modalId, n) {
             slideIndexes[modalId] = n;
             showSlides(modalId, slideIndexes[modalId]);
         }
         
-        // تابع اصلی برای نمایش اسلایدها
         function showSlides(modalId, n) {
             const modal = document.getElementById(modalId);
             const slides = modal.querySelectorAll('.slide');
@@ -644,12 +1041,10 @@
                 slideIndexes[modalId] = n;
             }
             
-            // مخفی کردن همه اسلایدها
             slides.forEach(slide => {
                 slide.style.display = 'none';
             });
             
-            // حذف کلاس active از همه dots و thumbnails
             dots.forEach(dot => {
                 dot.classList.remove('active');
             });
@@ -658,7 +1053,6 @@
                 thumbnail.classList.remove('active');
             });
             
-            // نمایش اسلاید فعلی و فعال کردن dot و thumbnail مربوطه
             slides[slideIndexes[modalId]].style.display = 'block';
             if (dots[slideIndexes[modalId]]) {
                 dots[slideIndexes[modalId]].classList.add('active');
@@ -668,7 +1062,6 @@
             }
         }
         
-        // بستن مودال با کلیک خارج از آن
         window.onclick = function(event) {
             const modals = document.getElementsByClassName('modal');
             for (let i = 0; i < modals.length; i++) {
@@ -679,7 +1072,6 @@
             }
         }
         
-        // بستن مودال با کلید Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const modals = document.getElementsByClassName('modal');
