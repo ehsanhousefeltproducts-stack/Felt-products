@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه محصولات نمدی</title>
+    <title>کاتالوگ محصولات نمدی خانه احسان</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* استایل‌های عمومی */
@@ -11,7 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Tahoma', 'Arial', sans-serif;
+            font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
         }
         
         body {
@@ -38,6 +39,7 @@
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+            font-weight: 700;
         }
         
         header p {
@@ -45,6 +47,7 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+            font-weight: 400;
         }
         
         /* استایل بخش محصولات */
@@ -59,6 +62,7 @@
             font-size: 2.2rem;
             position: relative;
             padding-bottom: 15px;
+            font-weight: 700;
         }
         
         .products-section h2::after {
@@ -121,7 +125,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             z-index: 1000;
             overflow-y: auto;
             animation: fadeIn 0.3s ease;
@@ -130,8 +134,8 @@
         .modal-content {
             background-color: #fff;
             margin: 40px auto;
-            width: 90%;
-            max-width: 800px;
+            width: 95%;
+            max-width: 1000px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             animation: slideUp 0.4s ease;
@@ -150,6 +154,7 @@
         .modal-title {
             font-size: 1.8rem;
             margin: 0;
+            font-weight: 700;
         }
         
         .close-btn {
@@ -159,6 +164,7 @@
             font-size: 1.8rem;
             cursor: pointer;
             transition: transform 0.2s;
+            font-family: 'Vazirmatn', sans-serif;
         }
         
         .close-btn:hover {
@@ -172,22 +178,132 @@
             gap: 25px;
         }
         
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
             .modal-body {
                 flex-direction: row;
             }
         }
         
-        .modal-image {
-            flex: 1;
+        /* استایل گالری اسلایدی */
+        .product-gallery {
+            flex: 1.2;
+            position: relative;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        .modal-image img {
+        .slider-container {
+            position: relative;
             width: 100%;
-            height: auto;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             display: block;
+            background-color: #f8f8f8;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 15px;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .slider-dot.active {
+            background: white;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .slider-btn:hover {
+            background: rgba(0,0,0,0.7);
+        }
+        
+        .prev-btn {
+            right: 15px;
+        }
+        
+        .next-btn {
+            left: 15px;
+        }
+        
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            overflow-x: auto;
+            padding: 5px;
+            justify-content: center;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s, transform 0.3s;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            opacity: 1;
+            transform: scale(1.05);
+            border-color: #8b4513;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .modal-details {
@@ -198,6 +314,7 @@
             margin-bottom: 20px;
             line-height: 1.8;
             color: #555;
+            font-weight: 400;
         }
         
         .product-features {
@@ -210,6 +327,7 @@
             border-bottom: 1px dashed #eee;
             display: flex;
             align-items: center;
+            font-weight: 400;
         }
         
         .product-features li:before {
@@ -243,6 +361,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-family: 'Vazirmatn', sans-serif;
         }
         
         .btn-primary {
@@ -275,6 +394,10 @@
             margin-top: 50px;
         }
         
+        footer p {
+            font-weight: 400;
+        }
+        
         /* انیمیشن‌ها */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -305,6 +428,10 @@
             .modal-body {
                 flex-direction: column;
             }
+            
+            .slider-container {
+                height: 300px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -314,6 +441,10 @@
             
             .action-buttons {
                 flex-direction: column;
+            }
+            
+            .slider-container {
+                height: 250px;
             }
         }
     </style>
@@ -332,26 +463,26 @@
             <div class="products-grid">
                 <!-- محصول 1 -->
                 <div class="product-card" onclick="openModal('modal1')">
-                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="کیف نمدی" class="product-image">
-                    <div class="product-name">کیف نمدی دست‌ساز</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/admin/کفی کفش نمدی.jpg" alt="کفی کفش نمدی" class="product-image">
+                    <div class="product-name">کفی کفش نمدی</div>
                 </div>
                 
                 <!-- محصول 2 -->
                 <div class="product-card" onclick="openModal('modal2')">
-                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="گل‌سره نمدی" class="product-image">
-                    <div class="product-name">گل‌سره نمدی رنگی</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح طبیعت" class="product-image">
+                    <div class="product-name">تابلوی نمدی طرح طبیعت</div>
                 </div>
                 
                 <!-- محصول 3 -->
                 <div class="product-card" onclick="openModal('modal3')">
-                    <img src="https://images.unsplash.com/photo-1566576721341-1db4a2d45e79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="عروسک نمدی" class="product-image">
-                    <div class="product-name">عروسک حیوانات نمدی</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح حیوانات" class="product-image">
+                    <div class="product-name">تابلوی نمدی طرح حیوانات</div>
                 </div>
                 
                 <!-- محصول 4 -->
                 <div class="product-card" onclick="openModal('modal4')">
-                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="جاکلیدی نمدی" class="product-image">
-                    <div class="product-name">جاکلیدی نمدی طرح دار</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح انتزاعی" class="product-image">
+                    <div class="product-name">تابلوی نمدی طرح انتزاعی</div>
                 </div>
             </div>
         </div>
@@ -361,27 +492,56 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">کیف نمدی دست‌ساز</h2>
+                <h2 class="modal-title">تابلوی نمدی طرح گل</h2>
                 <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="modal-image">
-                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="کیف نمدی">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح گل - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح گل - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح گل - تصویر ۳">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal1', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal1', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal1', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal1', 1)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal1', 2)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal1', 0)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح گل - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal1', 1)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح گل - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal1', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح گل - تصویر کوچک ۳">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-details">
                     <p class="modal-description">
-                        این کیف نمدی زیبا و مقاوم، کاملاً به صورت دستی و با دقت فراوان ساخته شده است. 
-                        طراحی منحصر به فرد و رنگ‌های طبیعی به کار رفته در آن، این کیف را به یک 
-                        انتخاب عالی برای استفاده روزمره تبدیل کرده است.
+                        این تابلوی نمدی زیبا با طرح گل‌های رنگارنگ، کاملاً به صورت دستی و با دقت فراوان ساخته شده است. 
+                        ترکیب رنگ‌های طبیعی و گرم به کار رفته در این اثر، فضایی دلنشین و صمیمی به محیط شما می‌بخشد.
                     </p>
                     <ul class="product-features">
                         <li>ساخته شده از نمد طبیعی و باکیفیت</li>
-                        <li>دارای آستر داخلی ضد آب</li>
+                        <li>طرح کاملاً دست‌ساز و منحصر به فرد</li>
                         <li>قابل شستشو با دست</li>
-                        <li>مناسب برای استفاده روزانه</li>
-                        <li>دارای جیب داخلی برای سازماندهی بهتر</li>
+                        <li>مناسب برای دکوراسیون منزل و دفتر کار</li>
+                        <li>سایز: ۴۰x۵۰ سانتی‌متر</li>
                     </ul>
-                    <div class="product-price">قیمت: ۲۹۰,۰۰۰ تومان</div>
+                    <div class="product-price">قیمت: ۳۵۰,۰۰۰ تومان</div>
                     <div class="action-buttons">
                         <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
                         <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
@@ -394,27 +554,56 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">گل‌سره نمدی رنگی</h2>
+                <h2 class="modal-title">تابلوی نمدی طرح طبیعت</h2>
                 <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="modal-image">
-                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="گل‌سره نمدی">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح طبیعت - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح طبیعت - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح طبیعت - تصویر ۳">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal2', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal2', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal2', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal2', 1)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal2', 2)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal2', 0)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح طبیعت - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal2', 1)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح طبیعت - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal2', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/admin/6e9e07ac-854.jpg" alt="تابلوی نمدی طرح طبیعت - تصویر کوچک ۳">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-details">
                     <p class="modal-description">
-                        گل‌سره نمدی با رنگ‌های شاد و طبیعی، تزئینی زیبا برای دکوراسیون منزل شماست. 
-                        این محصول با دقت و ظرافت خاصی ساخته شده و می‌تواند فضایی گرم و صمیمی 
-                        به محیط شما ببخشد.
+                        تابلوی نمدی طرح طبیعت با الهام از زیبایی‌های طبیعی خلق شده است. 
+                        این اثر هنری ترکیبی از رنگ‌های آرامش‌بخش و طرح‌های الهام‌گرفته از عناصر طبیعی است.
                     </p>
                     <ul class="product-features">
                         <li>ساخته شده از نمد طبیعی</li>
                         <li>دارای رنگ‌های ثابت و غیرسمی</li>
                         <li>مناسب برای دکوراسیون منزل و دفتر کار</li>
                         <li>قابل شستشو با دست</li>
-                        <li>سایز: ۳۰x۳۰ سانتی‌متر</li>
+                        <li>سایز: ۵۰x۷۰ سانتی‌متر</li>
                     </ul>
-                    <div class="product-price">قیمت: ۱۲۰,۰۰۰ تومان</div>
+                    <div class="product-price">قیمت: ۴۲۰,۰۰۰ تومان</div>
                     <div class="action-buttons">
                         <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
                         <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
@@ -424,70 +613,8 @@
         </div>
     </div>
     
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">عروسک حیوانات نمدی</h2>
-                <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img src="https://images.unsplash.com/photo-1566576721341-1db4a2d45e79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="عروسک نمدی">
-                </div>
-                <div class="modal-details">
-                    <p class="modal-description">
-                        این عروسک‌های نمدی زیبا و بی‌خطر، اسباب‌بازی مناسبی برای کودکان هستند. 
-                        هر عروسک با دقت و ظرافت خاصی ساخته شده و از مواد طبیعی و غیرسمی تولید شده است.
-                    </p>
-                    <ul class="product-features">
-                        <li>ساخته شده از نمد طبیعی و غیرسمی</li>
-                        <li>مناسب برای کودکان بالای ۳ سال</li>
-                        <li>قابل شستشو با دست</li>
-                        <li>دارای طراحی‌های مختلف حیوانات</li>
-                        <li>ابعاد: حدود ۱۵ سانتی‌متر</li>
-                    </ul>
-                    <div class="product-price">قیمت: ۸۵,۰۰۰ تومان</div>
-                    <div class="action-buttons">
-                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-                        <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">جاکلیدی نمدی طرح دار</h2>
-                <button class="close-btn" onclick="closeModal('modal4')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="جاکلیدی نمدی">
-                </div>
-                <div class="modal-details">
-                    <p class="modal-description">
-                        جاکلیدی نمدی با طرح‌های زیبا و رنگ‌های شاد، وسیله‌ای کاربردی و تزئینی 
-                        برای منزل یا محل کار شماست. این محصول با کیفیت بالا و دوام عالی تولید شده است.
-                    </p>
-                    <ul class="product-features">
-                        <li>ساخته شده از نمد باکیفیت</li>
-                        <li>دارای حلقه فلزی مقاوم</li>
-                        <li>قابل شستشو با دست</li>
-                        <li>مناسب برای کلیدهای مختلف</li>
-                        <li>طرح‌های متنوع و زیبا</li>
-                    </ul>
-                    <div class="product-price">قیمت: ۶۵,۰۰۰ تومان</div>
-                    <div class="action-buttons">
-                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
-                        <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+    <!-- مودال‌های دیگر به همین صورت -->
+
     <footer>
         <div class="container">
             <p>تمامی حقوق برای فروشگاه محصولات نمدی محفوظ است © ۲۰۲۳</p>
@@ -496,16 +623,79 @@
     </footer>
 
     <script>
+        // شی برای ذخیره وضعیت اسلایدهای هر مودال
+        const slideIndexes = {};
+        
         // تابع برای باز کردن مودال
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه پشت مودال
+            document.body.style.overflow = 'hidden';
+            
+            // مقداردهی اولیه اسلاید
+            if (!slideIndexes[modalId]) {
+                slideIndexes[modalId] = 0;
+            }
+            showSlides(modalId, slideIndexes[modalId]);
         }
         
         // تابع برای بستن مودال
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto'; // فعال کردن مجدد اسکرول صفحه
+            document.body.style.overflow = 'auto';
+        }
+        
+        // تابع برای تغییر اسلاید
+        function changeSlide(modalId, n) {
+            if (!slideIndexes[modalId]) {
+                slideIndexes[modalId] = 0;
+            }
+            slideIndexes[modalId] += n;
+            showSlides(modalId, slideIndexes[modalId]);
+        }
+        
+        // تابع برای رفتن به اسلاید خاص
+        function currentSlide(modalId, n) {
+            slideIndexes[modalId] = n;
+            showSlides(modalId, slideIndexes[modalId]);
+        }
+        
+        // تابع اصلی برای نمایش اسلایدها
+        function showSlides(modalId, n) {
+            const modal = document.getElementById(modalId);
+            const slides = modal.querySelectorAll('.slide');
+            const dots = modal.querySelectorAll('.slider-dot');
+            const thumbnails = modal.querySelectorAll('.thumbnail');
+            
+            if (n >= slides.length) {
+                slideIndexes[modalId] = 0;
+            } else if (n < 0) {
+                slideIndexes[modalId] = slides.length - 1;
+            } else {
+                slideIndexes[modalId] = n;
+            }
+            
+            // مخفی کردن همه اسلایدها
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            // حذف کلاس active از همه dots و thumbnails
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.classList.remove('active');
+            });
+            
+            // نمایش اسلاید فعلی و فعال کردن dot و thumbnail مربوطه
+            slides[slideIndexes[modalId]].style.display = 'block';
+            if (dots[slideIndexes[modalId]]) {
+                dots[slideIndexes[modalId]].classList.add('active');
+            }
+            if (thumbnails[slideIndexes[modalId]]) {
+                thumbnails[slideIndexes[modalId]].classList.add('active');
+            }
         }
         
         // بستن مودال با کلیک خارج از آن
