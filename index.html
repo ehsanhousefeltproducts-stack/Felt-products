@@ -432,47 +432,98 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .slider-container {
-                height: 250px;
-            }
-            
-            .product-name {
-                padding: 12px;
-                font-size: 1rem;
-            }
-            
-            .modal-content {
-                margin: 20px auto;
-                width: 98%;
-            }
-            
-            .modal-header {
-                padding: 15px;
-            }
-            
-            .modal-title {
-                font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .product-name {
-                font-size: 0.9rem;
-                padding: 10px;
-            }
-        }
-    </style>
+/* رسپانسیو */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .modal-body {
+        flex-direction: column;
+    }
+    
+    .slider-container {
+        height: 300px;
+    }
+    
+    .product-name {
+        padding: 12px;
+        font-size: 0.9rem;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .product-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .slider-container {
+        height: 250px;
+    }
+    
+    .product-name {
+        padding: 10px;
+        font-size: 0.8rem;
+        min-height: 50px;
+    }
+    
+    .product-image {
+        height: 150px;
+    }
+    
+    .modal-content {
+        margin: 10px auto;
+        width: 98%;
+    }
+    
+    .modal-header {
+        padding: 15px;
+    }
+    
+    .modal-title {
+        font-size: 1.3rem;
+    }
+    
+    .modal-body {
+        padding: 15px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .product-name {
+        font-size: 0.75rem;
+        padding: 8px;
+        min-height: 45px;
+    }
+    
+    .product-image {
+        height: 130px;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+}    </style>
 </head>
 <body>
     <header>
