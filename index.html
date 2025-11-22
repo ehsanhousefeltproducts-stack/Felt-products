@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه محصولات نمدی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* استایل‌های عمومی */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tahoma', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* استایل هدر */
+        header {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: #fff;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* استایل بخش محصولات */
+        .products-section {
+            padding: 50px 0;
+        }
+        
+        .products-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #8b4513;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .products-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: #8b4513;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-name {
+            padding: 18px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #5d4037;
+            background: #fff;
+        }
+        
+        /* استایل مودال */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 40px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .modal-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        @media (min-width: 768px) {
+            .modal-body {
+                flex-direction: row;
+            }
+        }
+        
+        .modal-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .modal-details {
+            flex: 1;
+        }
+        
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .product-features {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-features li:before {
+            content: '✓';
+            color: #8b4513;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            color: #8b4513;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: #8b4513;
+            color: white;
+            flex: 2;
+        }
+        
+        .btn-primary:hover {
+            background: #a0522d;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            flex: 1;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        /* استایل فوتر */
+        footer {
+            background: linear-gradient(135deg, #5d4037 0%, #795548 100%);
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 50px;
+        }
+        
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .modal-body {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>فروشگاه محصولات نمدی</h1>
+            <p>محصولات دست‌ساز و با کیفیت از جنس نمد طبیعی با طراحی‌های منحصر به فرد</p>
+        </div>
+    </header>
+    
+    <section class="products-section">
+        <div class="container">
+            <h2>محصولات نمدی ما</h2>
+            <div class="products-grid">
+                <!-- محصول 1 -->
+                <div class="product-card" onclick="openModal('modal1')">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="کیف نمدی" class="product-image">
+                    <div class="product-name">کیف نمدی دست‌ساز</div>
+                </div>
+                
+                <!-- محصول 2 -->
+                <div class="product-card" onclick="openModal('modal2')">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="گل‌سره نمدی" class="product-image">
+                    <div class="product-name">گل‌سره نمدی رنگی</div>
+                </div>
+                
+                <!-- محصول 3 -->
+                <div class="product-card" onclick="openModal('modal3')">
+                    <img src="https://images.unsplash.com/photo-1566576721341-1db4a2d45e79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="عروسک نمدی" class="product-image">
+                    <div class="product-name">عروسک حیوانات نمدی</div>
+                </div>
+                
+                <!-- محصول 4 -->
+                <div class="product-card" onclick="openModal('modal4')">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="جاکلیدی نمدی" class="product-image">
+                    <div class="product-name">جاکلیدی نمدی طرح دار</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- مودال‌ها -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">کیف نمدی دست‌ساز</h2>
+                <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="کیف نمدی">
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">
+                        این کیف نمدی زیبا و مقاوم، کاملاً به صورت دستی و با دقت فراوان ساخته شده است. 
+                        طراحی منحصر به فرد و رنگ‌های طبیعی به کار رفته در آن، این کیف را به یک 
+                        انتخاب عالی برای استفاده روزمره تبدیل کرده است.
+                    </p>
+                    <ul class="product-features">
+                        <li>ساخته شده از نمد طبیعی و باکیفیت</li>
+                        <li>دارای آستر داخلی ضد آب</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای استفاده روزانه</li>
+                        <li>دارای جیب داخلی برای سازماندهی بهتر</li>
+                    </ul>
+                    <div class="product-price">قیمت: ۲۹۰,۰۰۰ تومان</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
+                        <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">گل‌سره نمدی رنگی</h2>
+                <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="گل‌سره نمدی">
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">
+                        گل‌سره نمدی با رنگ‌های شاد و طبیعی، تزئینی زیبا برای دکوراسیون منزل شماست. 
+                        این محصول با دقت و ظرافت خاصی ساخته شده و می‌تواند فضایی گرم و صمیمی 
+                        به محیط شما ببخشد.
+                    </p>
+                    <ul class="product-features">
+                        <li>ساخته شده از نمد طبیعی</li>
+                        <li>دارای رنگ‌های ثابت و غیرسمی</li>
+                        <li>مناسب برای دکوراسیون منزل و دفتر کار</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>سایز: ۳۰x۳۰ سانتی‌متر</li>
+                    </ul>
+                    <div class="product-price">قیمت: ۱۲۰,۰۰۰ تومان</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
+                        <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">عروسک حیوانات نمدی</h2>
+                <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1566576721341-1db4a2d45e79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="عروسک نمدی">
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">
+                        این عروسک‌های نمدی زیبا و بی‌خطر، اسباب‌بازی مناسبی برای کودکان هستند. 
+                        هر عروسک با دقت و ظرافت خاصی ساخته شده و از مواد طبیعی و غیرسمی تولید شده است.
+                    </p>
+                    <ul class="product-features">
+                        <li>ساخته شده از نمد طبیعی و غیرسمی</li>
+                        <li>مناسب برای کودکان بالای ۳ سال</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>دارای طراحی‌های مختلف حیوانات</li>
+                        <li>ابعاد: حدود ۱۵ سانتی‌متر</li>
+                    </ul>
+                    <div class="product-price">قیمت: ۸۵,۰۰۰ تومان</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
+                        <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">جاکلیدی نمدی طرح دار</h2>
+                <button class="close-btn" onclick="closeModal('modal4')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="جاکلیدی نمدی">
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">
+                        جاکلیدی نمدی با طرح‌های زیبا و رنگ‌های شاد، وسیله‌ای کاربردی و تزئینی 
+                        برای منزل یا محل کار شماست. این محصول با کیفیت بالا و دوام عالی تولید شده است.
+                    </p>
+                    <ul class="product-features">
+                        <li>ساخته شده از نمد باکیفیت</li>
+                        <li>دارای حلقه فلزی مقاوم</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای کلیدهای مختلف</li>
+                        <li>طرح‌های متنوع و زیبا</li>
+                    </ul>
+                    <div class="product-price">قیمت: ۶۵,۰۰۰ تومان</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> افزودن به سبد خرید</button>
+                        <button class="btn btn-secondary"><i class="far fa-heart"></i> افزودن به علاقه‌مندی‌ها</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>تمامی حقوق برای فروشگاه محصولات نمدی محفوظ است © ۲۰۲۳</p>
+            <p>شماره تماس: ۰۲۱-۱۲۳۴۵۶۷۸ | آدرس: تهران، خیابان نمونه، پلاک ۱۲</p>
+        </div>
+    </footer>
+
+    <script>
+        // تابع برای باز کردن مودال
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه پشت مودال
+        }
+        
+        // تابع برای بستن مودال
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // فعال کردن مجدد اسکرول صفحه
+        }
+        
+        // بستن مودال با کلیک خارج از آن
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+        
+        // بستن مودال با کلید Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (modals[i].style.display === 'block') {
+                        modals[i].style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
