@@ -538,14 +538,14 @@
             <h2>محصولات نمدی </h2>
             <div class="products-grid">
                 <!-- محصولات 1 تا 11 -->
-                <div class="product-card" onclick="openModal('modal1')">
-                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی کفش نمدی.jpg" alt="کفی نمدی" class="product-image">
-                    <div class="product-name">کفی نمدی</div>
+                  <div class="product-card" onclick="openModal('modal1')">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس.jpg" alt="کفی نمدی مرینوس" class="product-image">
+                    <div class="product-name">کفی نمدی مرینوس</div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal2')">
-                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس.jpg" alt="کفی نمدی مرینوس" class="product-image">
-                    <div class="product-name">کفی نمدی مرینوس</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی کفش نمدی.jpg" alt="کفی نمدی" class="product-image">
+                    <div class="product-name">کفی نمدی</div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal3')">
@@ -619,7 +619,56 @@
     
     <!-- مودال‌های 1 تا 11 (کدهای قبلی شما) -->
     <!-- مودال 1 -->
+    
+    <!-- مودال‌های 2 تا 11 (کدهای قبلی شما) -->
+    <!-- مودال 2 -->
     <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">کفی نمدی مرینوس</h2>
+                <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس.jpg" alt="کفی نمدی مرینوس - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس1.jpg" alt="کفی نمدی مرینوس - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal1', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal1', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal2', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal2', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal1', 0)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس.jpg" alt="کفی نمدی مرینوس - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal1', 1)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس1.jpg" alt="کفی نمدی مرینوس - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description">کفی نمدی مرینوس با کیفیت بالا از پشم مرینوس ساخته شده است. این کفی با خاصیت آنتی‌باکتریال و جذب رطوبت بالا، راحتی و سلامت پاهای شما را تضمین می‌کند.</p>
+                    <ul class="product-features">
+                        <li>ساخته شده از پشم مرینوس باکیفیت</li>
+                        <li>خاصیت آنتی‌باکتریال طبیعی</li>
+                        <li>جذب رطوبت بالا</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای تمام فصول سال</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="modal2" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title">کفی نمدی</h2>
@@ -636,8 +685,8 @@
                                 <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی کفش نمدی.jpg" alt="کفی نمدی - تصویر ۲">
                             </div>
                         </div>
-                        <button class="slider-btn prev-btn" onclick="changeSlide('modal1', -1)">&#10094;</button>
-                        <button class="slider-btn next-btn" onclick="changeSlide('modal1', 1)">&#10095;</button>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal2', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal2', 1)">&#10095;</button>
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal1', 0)"></div>
                             <div class="slider-dot" onclick="currentSlide('modal1', 1)"></div>
@@ -665,56 +714,6 @@
             </div>
         </div>
     </div>
-    
-    <!-- مودال‌های 2 تا 11 (کدهای قبلی شما) -->
-    <!-- مودال 2 -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">کفی نمدی مرینوس</h2>
-                <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="product-gallery">
-                    <div class="slider-container">
-                        <div class="slides">
-                            <div class="slide">
-                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس.jpg" alt="کفی نمدی مرینوس - تصویر ۱">
-                            </div>
-                            <div class="slide">
-                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس1.jpg" alt="کفی نمدی مرینوس - تصویر ۲">
-                            </div>
-                        </div>
-                        <button class="slider-btn prev-btn" onclick="changeSlide('modal2', -1)">&#10094;</button>
-                        <button class="slider-btn next-btn" onclick="changeSlide('modal2', 1)">&#10095;</button>
-                        <div class="slider-nav">
-                            <div class="slider-dot active" onclick="currentSlide('modal2', 0)"></div>
-                            <div class="slider-dot" onclick="currentSlide('modal2', 1)"></div>
-                        </div>
-                    </div>
-                    <div class="thumbnails">
-                        <div class="thumbnail active" onclick="currentSlide('modal2', 0)">
-                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس.jpg" alt="کفی نمدی مرینوس - تصویر کوچک ۱">
-                        </div>
-                        <div class="thumbnail" onclick="currentSlide('modal2', 1)">
-                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کفی نمدی مرینوس1.jpg" alt="کفی نمدی مرینوس - تصویر کوچک ۲">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-details">
-                    <p class="modal-description">کفی نمدی مرینوس با کیفیت بالا از پشم مرینوس ساخته شده است. این کفی با خاصیت آنتی‌باکتریال و جذب رطوبت بالا، راحتی و سلامت پاهای شما را تضمین می‌کند.</p>
-                    <ul class="product-features">
-                        <li>ساخته شده از پشم مرینوس باکیفیت</li>
-                        <li>خاصیت آنتی‌باکتریال طبیعی</li>
-                        <li>جذب رطوبت بالا</li>
-                        <li>قابل شستشو با دست</li>
-                        <li>مناسب برای تمام فصول سال</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- مودال 3 -->
     <div id="modal3" class="modal">
         <div class="modal-content">
