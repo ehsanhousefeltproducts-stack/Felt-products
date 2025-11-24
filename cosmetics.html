@@ -269,8 +269,8 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
         }
         
         .product-card {
@@ -735,7 +735,7 @@
             color: #B0BEC5;
         }
         
-        /* رسپانسیو - تنظیمات برای موبایل */
+        /* رسپانسیو */
         @media (max-width: 992px) {
             .hero h2 {
                 font-size: 36px;
@@ -782,58 +782,9 @@
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 576px) {
             .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 12px;
-            }
-            
-            .product-card {
-                margin-bottom: 0;
-            }
-            
-            .product-info {
-                padding: 15px 10px;
-            }
-            
-            .product-name {
-                font-size: 13px;
-                margin-bottom: 8px;
-                line-height: 1.3;
-            }
-            
-            .product-price {
-                font-size: 14px;
-                margin-bottom: 10px;
-            }
-            
-            .product-price .old-price {
-                font-size: 11px;
-            }
-            
-            .product-description {
-                display: none;
-            }
-            
-            .product-actions {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .view-details, .add-to-cart {
-                font-size: 11px;
-                padding: 8px;
-            }
-            
-            .product-badge {
-                font-size: 10px;
-                padding: 4px 8px;
-                top: 8px;
-                right: 8px;
-            }
-            
-            .product-image {
-                height: 150px;
+                grid-template-columns: 1fr;
             }
             
             .modal-content {
@@ -967,4 +918,282 @@
             <div class="modal-body">
                 <div class="modal-image-container">
                     <div class="modal-slider">
-                        <div class="
+                        <div class="slides" id="modal-slides">
+                            <!-- اسلایدها با جاوااسکریپت اضافه خواهند شد -->
+                        </div>
+                    </div>
+                    <div class="slider-controls" id="slider-controls">
+                        <!-- دکمه‌های کنترل اسلایدر با جاوااسکریپت اضافه خواهند شد -->
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-price" id="modal-product-price">
+                        <span id="current-price">۰ تومان</span>
+                        <span class="old-price" id="old-price">۰ تومان</span>
+                    </div>
+                    <div class="modal-description" id="modal-product-description">توضیحات محصول</div>
+                    <div class="features">
+                        <h4>ویژگی‌های محصول:</h4>
+                        <ul id="modal-product-features">
+                            <!-- ویژگی‌ها با جاوااسکریپت اضافه خواهند شد -->
+                        </ul>
+                    </div>
+                    <div class="buy-section">
+                        <a href="#" class="buy-btn" id="modal-buy-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            افزودن به سبد خرید
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // داده‌های محصولات
+        const products = [
+            {
+                id: 1,
+                name: "رژلب ارگانیک قرمز",
+                category: "لوازم آرایشی لب",
+                price: "۱۵۰,۰۰۰",
+                oldPrice: "۱۸۰,۰۰۰",
+                description: "رژلب ارگانیک با رنگ طبیعی و ماندگاری بالا، حاوی ویتامین E و روغن جوجوبا برای نرمی و لطافت لب‌ها. این محصول کاملاً گیاهی و بدون مواد شیمیایی مضر تولید شده است.",
+                images: [
+                    "https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["فاقد پارابن", "فاقد سرب", "حاوی ویتامین E", "مناسب پوست‌های حساس", "رنگ طبیعی", "ماندگاری بالا"],
+                badge: "پرفروش"
+            },
+            {
+                id: 2,
+                name: "کرم پودر معدنی",
+                category: "کرم پودر",
+                price: "۲۲۰,۰۰۰",
+                oldPrice: "۲۵۰,۰۰۰",
+                description: "کرم پودر معدنی با پوشش دهی عالی و فرمول سبک که پوست را تنفس می‌دهد و باعث تحریک نمی‌شود. این محصول از مواد معدنی طبیعی تهیه شده و برای پوست‌های حساس بسیار مناسب است.",
+                images: [
+                    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1590439471364-0ea7d1a6a6dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی مواد معدنی طبیعی", "فاقد عطر مصنوعی", "مناسب پوست‌های چرب", "SPF 15", "پوشش دهی عالی", "فرمول سبک"],
+                badge: "جدید"
+            },
+            {
+                id: 3,
+                name: "سرم ویتامین C",
+                category: "مراقبت پوست",
+                price: "۳۵۰,۰۰۰",
+                oldPrice: "",
+                description: "سرم ویتامین C با فرمول سبک و جذب سریع که باعث درخشان‌تر شدن پوست و کاهش لک‌های تیره می‌شود. این سرم با استفاده از ویتامین C طبیعی تولید شده و برای پوست‌های حساس بسیار مناسب است.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی ۲۰٪ ویتامین C", "فاقد پارابن", "ضد پیری", "مناسب تمام پوست‌ها", "جذب سریع", "کاهش لک‌های تیره"],
+                badge: "تخفیف ویژه"
+            },
+            // 17 محصول دیگر با ساختار مشابه
+            {
+                id: 4,
+                name: "ریمل تقویت کننده مژه",
+                category: "آرایش چشم",
+                price: "۱۸۰,۰۰۰",
+                oldPrice: "۲۱۰,۰۰۰",
+                description: "ریمل ارگانیک با فرمول تقویت کننده که علاوه بر زیبایی، به رشد و استحکام مژه‌ها کمک می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1629196914375-2e82ee9765f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی روغن کرچک", "فاقد مواد شیمیایی مضر", "ضد آب", "مناسب برای لنز", "تقویت کننده مژه"],
+                badge: "پرفروش"
+            }
+        ];
+
+        // نمایش محصولات در صفحه
+        const productsGrid = document.getElementById('products-grid');
+        
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            
+            let badgeHTML = '';
+            if (product.badge) {
+                badgeHTML = `<div class="product-badge">${product.badge}</div>`;
+            }
+            
+            let oldPriceHTML = '';
+            if (product.oldPrice) {
+                oldPriceHTML = `<span class="old-price">${product.oldPrice} تومان</span>`;
+            }
+            
+            productCard.innerHTML = `
+                ${badgeHTML}
+                <div class="product-image">
+                    <img src="${product.images[0]}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">${product.category}</div>
+                    <h3 class="product-name">${product.name}</h3>
+                    <div class="product-price">
+                        ${product.price} تومان
+                        ${oldPriceHTML}
+                    </div>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-actions">
+                        <a href="#" class="view-details" data-id="${product.id}">جزئیات</a>
+                        <button class="add-to-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            خرید
+                        </button>
+                    </div>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+
+        // مدیریت مودال و اسلایدر
+        const modal = document.getElementById('product-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalProductName = document.getElementById('modal-product-name');
+        const modalProductPrice = document.getElementById('modal-product-price');
+        const currentPrice = document.getElementById('current-price');
+        const oldPrice = document.getElementById('old-price');
+        const modalProductDescription = document.getElementById('modal-product-description');
+        const modalProductFeatures = document.getElementById('modal-product-features');
+        const modalBuyLink = document.getElementById('modal-buy-link');
+        const modalSlides = document.getElementById('modal-slides');
+        const sliderControls = document.getElementById('slider-controls');
+
+        let currentSlide = 0;
+        let slideInterval;
+
+        // تابع برای شروع اسلایدر خودکار
+        function startSlider() {
+            slideInterval = setInterval(() => {
+                nextSlide();
+            }, 4000); // تغییر اسلاید هر 4 ثانیه
+        }
+
+        // تابع برای توقف اسلایدر خودکار
+        function stopSlider() {
+            clearInterval(slideInterval);
+        }
+
+        // تابع برای تغییر به اسلاید بعدی
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % 3; // فرض بر این که 3 اسلاید داریم
+            updateSlider();
+        }
+
+        // تابع برای به‌روزرسانی نمایش اسلایدر
+        function updateSlider() {
+            modalSlides.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+            
+            // به‌روزرسانی دکمه‌های کنترل
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // تابع برای ایجاد اسلایدر برای محصول
+        function createSlider(images) {
+            modalSlides.innerHTML = '';
+            sliderControls.innerHTML = '';
+            
+            // ایجاد اسلایدها
+            images.forEach((image, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `<img src="${image}" alt="تصویر محصول">`;
+                modalSlides.appendChild(slide);
+                
+                // ایجاد دکمه‌های کنترل
+                const dot = document.createElement('div');
+                dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+                dot.dataset.index = index;
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                    stopSlider();
+                    startSlider();
+                });
+                sliderControls.appendChild(dot);
+            });
+            
+            // تنظیم اسلاید اول
+            currentSlide = 0;
+            updateSlider();
+        }
+
+        // باز کردن مودال با کلیک روی دکمه "جزئیات"
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('view-details')) {
+                e.preventDefault();
+                const productId = parseInt(e.target.getAttribute('data-id'));
+                const product = products.find(p => p.id === productId);
+                
+                if (product) {
+                    modalProductName.textContent = product.name;
+                    currentPrice.textContent = `${product.price} تومان`;
+                    
+                    if (product.oldPrice) {
+                        oldPrice.textContent = `${product.oldPrice} تومان`;
+                        oldPrice.style.display = 'inline';
+                    } else {
+                        oldPrice.style.display = 'none';
+                    }
+                    
+                    modalProductDescription.textContent = product.description;
+                    
+                    // پاک کردن ویژگی‌های قبلی
+                    modalProductFeatures.innerHTML = '';
+                    
+                    // اضافه کردن ویژگی‌های جدید
+                    product.features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.textContent = feature;
+                        modalProductFeatures.appendChild(li);
+                    });
+                    
+                    // تنظیم لینک خرید
+                    modalBuyLink.href = `https://organic-beauty.com/buy/${product.id}`;
+                    
+                    // ایجاد اسلایدر
+                    createSlider(product.images);
+                    
+                    // شروع اسلایدر خودکار
+                    startSlider();
+                    
+                    // نمایش مودال
+                    modal.style.display = 'block';
+                }
+            }
+        });
+
+        // بستن مودال
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            stopSlider();
+        });
+
+        // بستن مودال با کلیک خارج از آن
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                stopSlider();
+            }
+        });
+    </script>
+</body>
+</html>
