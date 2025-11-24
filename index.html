@@ -44,7 +44,7 @@
             opacity: 0.9;
         }
 
-        /* استایل اسلایدر */
+        /* استایل اسلایدر اصلاح شده */
         .slider-container {
             position: relative;
             width: 100%;
@@ -56,13 +56,14 @@
             display: flex;
             width: 500%;
             height: 100%;
-            animation: slide 20s infinite;
+            animation: slide 20s infinite ease-in-out;
         }
         
         .slide {
             width: 20%;
             height: 100%;
             position: relative;
+            flex-shrink: 0;
         }
         
         .slide img {
@@ -106,17 +107,44 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* انیمیشن اسلایدر */
+        /* انیمیشن اسلایدر اصلاح شده */
         @keyframes slide {
-            0% { transform: translateX(0%); }
-            20% { transform: translateX(0%); }
-            25% { transform: translateX(-20%); }
-            45% { transform: translateX(-20%); }
-            50% { transform: translateX(-40%); }
-            70% { transform: translateX(-40%); }
-            75% { transform: translateX(-60%); }
-            95% { transform: translateX(-60%); }
-            100% { transform: translateX(-80%); }
+            0% { transform: translateX(0); }
+            16% { transform: translateX(0); }
+            20% { transform: translateX(-20%); }
+            36% { transform: translateX(-20%); }
+            40% { transform: translateX(-40%); }
+            56% { transform: translateX(-40%); }
+            60% { transform: translateX(-60%); }
+            76% { transform: translateX(-60%); }
+            80% { transform: translateX(-80%); }
+            96% { transform: translateX(-80%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* دکمه‌های کنترل اسلایدر */
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
         }
 
         /* بنر محصولات نمدی */
@@ -274,56 +302,61 @@
         <!-- اسلایدر عکس ها -->
         <div class="slider-container">
             <div class="slider">
-                <!-- اسلاید 1 -->
+                <!-- اسلاید 1 - محصولات نمدی -->
                 <div class="slide">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namadi.jpg" alt="محصولات نمدی دست ساز">
                     <div class="slide-content">
                         <h2 class="slide-title">محصولات نمدی دست ساز</h2>
-                        <a href="products.html" class="slide-link">مشاهده محصولات</a>
+                        <a href="products.html" class="slide-link">مشاهده محصولات نمدی</a>
                     </div>
                 </div>
                 
-                <!-- اسلاید 2 -->
+                <!-- اسلاید 2 - نمک ها -->
                 <div class="slide">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak.png"" alt="انواع نمک طبیعی">
                     <div class="slide-content">
                         <h2 class="slide-title">انواع نمک طبیعی</h2>
-                        <a href="salts.html" class="slide-link">خرید نمک</a>
+                        <a href="salts.html" class="slide-link">مشاهده نمک ها</a>
                     </div>
                 </div>
                 
-                <!-- اسلاید 3 -->
+                <!-- اسلاید 3 - عسل ها -->
                 <div class="slide">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak.png" alt="عسل ارگانیک">
                     <div class="slide-content">
                         <h2 class="slide-title">عسل ارگانیک</h2>
-                        <a href="honeys.html" class="slide-link">خرید عسل</a>
+                        <a href="honeys.html" class="slide-link">مشاهده عسل ها</a>
                     </div>
                 </div>
                 
-                <!-- اسلاید 4 -->
+                <!-- اسلاید 4 - لوازم آرایشی -->
                 <div class="slide">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak.png" alt="لوازم آرایشی طبیعی">
                     <div class="slide-content">
                         <h2 class="slide-title">لوازم آرایشی طبیعی</h2>
-                        <a href="cosmetics.html" class="slide-link">مشاهده محصولات</a>
-                    </div>
-                </div>
-                
-                <!-- اسلاید 5 -->
-                <div class="slide">
-                    <div class="slide-content">
-                        <h2 class="slide-title">تخفیف های ویژه</h2>
-                        <a href="products.html" class="slide-link">مشاهده تخفیف ها</a>
+                        <a href="cosmetics.html" class="slide-link">مشاهده لوازم آرایشی</a>
                     </div>
                 </div>
             </div>
+            
+            <!-- دکمه‌های کنترل اسلایدر -->
+            <div class="slider-controls">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+                <div class="slider-dot" data-slide="3"></div>
+                <div class="slider-dot" data-slide="4"></div>
+            </div>
         </div>
         
-
+       
         
         <!-- لیست دسته‌بندی‌ها -->
         <div class="categories">
             <!-- محصولات نمدی -->
             <a href="products.html" class="category-item">
                 <div class="category-image">
-        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namadi.jpg">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namadi.jpg" alt="محصولات نمدی">
                 </div>
                 <div class="category-name">محصولات نمدی</div>
             </a>
@@ -331,7 +364,7 @@
             <!-- نمک ها -->
             <a href="salts.html" class="category-item">
                 <div class="category-image">
-        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak.png" >
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak.png" alt="نمک ها">
                 </div>
                 <div class="category-name">نمک ها</div>
             </a>
@@ -339,7 +372,7 @@
             <!-- عسل ها -->
             <a href="honeys.html" class="category-item">
                 <div class="category-image">
-                    🖼️ عکس عسل ها
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namadi.jpg" alt="عسل ها">
                 </div>
                 <div class="category-name">عسل ها</div>
             </a>
@@ -347,7 +380,7 @@
             <!-- لوازم آرایشی -->
             <a href="cosmetics.html" class="category-item">
                 <div class="category-image">
-                    🖼️ عکس لوازم آرایشی
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak.png" alt="لوازم آرایشی">
                 </div>
                 <div class="category-name">لوازم آرایشی</div>
             </a>
@@ -360,10 +393,38 @@
     </div>
 
     <script>
-        // برای اضافه کردن عکس‌های واقعی، این کد را در بخش اسلایدها اضافه کنید:
-        // <img src="images/slide1.jpg" alt="محصولات نمدی">
-        
-        // اسلایدر به صورت خودکار کار می‌کند (هر 4 ثانیه یک اسلاید تغییر می‌کند)
+        // اسکریپت برای کنترل اسلایدر
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.slider');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            const totalSlides = 5;
+
+            // تابع برای تغییر اسلاید
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                const translateX = -currentSlide * 20;
+                slider.style.transform = `translateX(${translateX}%)`;
+                
+                // آپدیت دکمه‌ها
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            // کلیک روی دکمه‌ها
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+
+            // اسلایدر خودکار
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                goToSlide(currentSlide);
+            }, 4000);
+        });
     </script>
 </body>
 </html>
