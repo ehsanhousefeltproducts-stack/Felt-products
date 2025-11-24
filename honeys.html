@@ -172,7 +172,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -183,6 +183,9 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .product-card:hover {
@@ -193,6 +196,7 @@
         .product-img {
             height: 200px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .product-img img {
@@ -208,42 +212,51 @@
 
         .product-info {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-info h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--dark-color);
+            text-align: center;
         }
 
-        .product-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-color);
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
             margin-bottom: 1rem;
+            text-align: center;
+            flex-grow: 1;
         }
 
         .product-actions {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            margin-top: auto;
         }
 
         .product-actions button {
-            background-color: var(--accent-color);
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
+            width: 100%;
+            max-width: 200px;
         }
 
         .product-actions button:hover {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
-        /* Modal Styles */
+        /* Modal Styles - NEW DESIGN */
         .modal {
             display: none;
             position: fixed;
@@ -260,8 +273,8 @@
             background-color: white;
             margin: 2% auto;
             width: 90%;
-            max-width: 900px;
-            border-radius: 10px;
+            max-width: 1000px;
+            border-radius: 15px;
             overflow: hidden;
             animation: modalOpen 0.5s;
         }
@@ -279,118 +292,121 @@
             color: white;
             cursor: pointer;
             z-index: 10;
+            background: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-body {
             display: flex;
+            min-height: 500px;
+        }
+
+        .modal-gallery {
+            flex: 1;
+            position: relative;
+            background: #f8f9fa;
+            display: flex;
             flex-direction: column;
         }
 
-        .modal-images {
-            position: relative;
-            height: 400px;
+        .modal-main-image {
+            flex: 1;
             overflow: hidden;
-        }
-
-        .modal-slides {
             display: flex;
-            width: 300%;
-            height: 100%;
-            transition: transform 0.5s ease;
+            align-items: center;
+            justify-content: center;
+            background: #000;
         }
 
-        .modal-slide {
-            width: 33.333%;
+        .modal-main-image img {
+            width: 100%;
             height: 100%;
+            object-fit: contain;
+            max-height: 400px;
         }
 
-        .modal-slide img {
+        .modal-thumbnails {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #eee;
+            overflow-x: auto;
+        }
+
+        .modal-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .modal-thumbnail.active {
+            border-color: var(--primary-color);
+        }
+
+        .modal-thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .modal-nav:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-prev {
-            right: 0;
-        }
-
-        .modal-next {
-            left: 0;
-        }
-
-        .modal-dots {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-
-        .modal-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-dot.active {
-            background-color: white;
-        }
-
         .modal-details {
+            flex: 1;
             padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            background: white;
         }
 
         .modal-details h2 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--secondary-color);
-        }
-
-        .modal-price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            text-align: right;
         }
 
         .modal-description {
             margin-bottom: 2rem;
             line-height: 1.8;
+            text-align: right;
+            color: #555;
+            flex-grow: 1;
         }
 
         .modal-features {
             margin-bottom: 2rem;
         }
 
+        .modal-features h3 {
+            text-align: right;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
         .modal-features ul {
             list-style: none;
-            padding-right: 1rem;
+            padding-right: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
         }
 
         .modal-features li {
             margin-bottom: 0.5rem;
             position: relative;
+            padding-right: 1.8rem;
+            text-align: right;
         }
 
         .modal-features li::before {
@@ -398,14 +414,16 @@
             color: var(--primary-color);
             font-weight: bold;
             position: absolute;
-            right: -1rem;
+            right: 0;
+            font-size: 1.1rem;
         }
 
         .modal-actions {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
+            justify-content: center;
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
         }
 
         .buy-btn {
@@ -417,6 +435,7 @@
             font-weight: bold;
             transition: var(--transition);
             display: inline-block;
+            text-align: center;
         }
 
         .buy-btn:hover {
@@ -515,18 +534,85 @@
 
             nav ul {
                 gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .modal-body {
-                flex-direction: column;
+            .hero p {
+                font-size: 1rem;
             }
 
-            .modal-images {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .modal-body {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .modal-gallery {
                 height: 300px;
+            }
+
+            .modal-main-image img {
+                max-height: 250px;
+            }
+
+            .modal-details {
+                padding: 1.5rem;
+            }
+
+            .modal-features ul {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-column h3::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .product-img {
+                height: 180px;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .modal-thumbnails {
+                padding: 10px;
+            }
+
+            .modal-thumbnail {
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
@@ -540,21 +626,7 @@
                     <i class="fas fa-honey-pot"></i>
                     <span>عسل ارگانیک</span>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#">خانه</a></li>
-                        <li><a href="#">محصولات</a></li>
-                        <li><a href="#">درباره ما</a></li>
-                        <li><a href="#">تماس با ما</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <button><i class="fas fa-search"></i></button>
-                    <button><i class="fas fa-shopping-cart"></i></button>
-                    <button><i class="fas fa-user"></i></button>
-                </div>
-            </div>
-        </div>
+                
     </header>
 
     <!-- Hero Section -->
@@ -569,7 +641,7 @@
     <!-- Products Section -->
     <section id="products" class="container">
         <div class="section-title">
-            <h2>محصولات ما</h2>
+            <h2>انواع عسل ارگانیک</h2>
         </div>
         <div class="products-grid" id="products-grid">
             <!-- Products will be generated by JavaScript -->
@@ -592,8 +664,8 @@
                 <div class="footer-column">
                     <h3>لینک های مفید</h3>
                     <ul class="footer-links">
-                        <li><a href="#">خانه</a></li>
-                        <li><a href="#">محصولات</a></li>
+                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="#products">محصولات</a></li>
                         <li><a href="#">درباره ما</a></li>
                         <li><a href="#">تماس با ما</a></li>
                         <li><a href="#">وبلاگ</a></li>
@@ -609,29 +681,26 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>کلیه حقوق این سایت محفوظ می باشد © 2023</p>
+                <p>کلیه حقوق این سایت محفوظ می باشد © 2024</p>
             </div>
         </div>
     </footer>
 
-    <!-- Product Modal -->
+    <!-- Product Modal - NEW DESIGN -->
     <div class="modal" id="productModal">
         <span class="close-modal" id="closeModal">&times;</span>
         <div class="modal-content">
             <div class="modal-body">
-                <div class="modal-images">
-                    <div class="modal-slides" id="modalSlides">
-                        <!-- Slides will be added by JavaScript -->
+                <div class="modal-gallery">
+                    <div class="modal-main-image">
+                        <img id="modalMainImage" src="" alt="محصول">
                     </div>
-                    <button class="modal-nav modal-prev" id="prevSlide">&#10094;</button>
-                    <button class="modal-nav modal-next" id="nextSlide">&#10095;</button>
-                    <div class="modal-dots" id="modalDots">
-                        <!-- Dots will be added by JavaScript -->
+                    <div class="modal-thumbnails" id="modalThumbnails">
+                        <!-- Thumbnails will be added by JavaScript -->
                     </div>
                 </div>
                 <div class="modal-details">
                     <h2 id="modalTitle">عنوان محصول</h2>
-                    <div class="modal-price" id="modalPrice">قیمت: 120,000 تومان</div>
                     <div class="modal-description" id="modalDescription">
                         توضیحات محصول در این قسمت نمایش داده می شود.
                     </div>
@@ -642,8 +711,7 @@
                         </ul>
                     </div>
                     <div class="modal-actions">
-                        <a href="#" class="buy-btn" id="buyLink">خرید محصول</a>
-                        <span>ارسال رایگان برای خریدهای بالای 200,000 تومان</span>
+                        <a href="#" class="buy-btn" id="buyLink">اطلاعات بیشتر</a>
                     </div>
                 </div>
             </div>
@@ -656,58 +724,94 @@
             {
                 id: 1,
                 name: "عسل گون طبیعی",
-                price: "150,000 تومان",
                 image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                 images: [
                     "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                 ],
-                description: "عسل گون طبیعی یکی از مرغوب ترین انواع عسل است که از شهد گل های گون تهیه می شود. این عسل دارای طعم و عطر بی نظیری است و خواص درمانی بسیاری دارد.",
-                features: ["طبیعی 100%", "فاقد مواد افزودنی", "مناسب برای دیابت", "تقویت سیستم ایمنی"]
+                description: "عسل گون طبیعی یکی از مرغوب ترین انواع عسل است که از شهد گل های گون تهیه می شود. این عسل دارای طعم و عطر بی نظیری است و خواص درمانی بسیاری دارد. این محصول کاملاً ارگانیک و بدون هیچگونه افزودنی شیمیایی تولید شده است.",
+                shortDescription: "عسل گون طبیعی با طعم و عطر بی‌نظیر",
+                features: ["طبیعی 100%", "فاقد مواد افزودنی", "مناسب برای دیابت", "تقویت سیستم ایمنی", "آنتی اکسیدان قوی", "منبع انرژی طبیعی"]
             },
             {
                 id: 2,
                 name: "عسل کنار",
-                price: "140,000 تومان",
                 image: "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                 images: [
                     "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
                     "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                 ],
-                description: "عسل کنار با طعمی خاص و منحصر به فرد، از شهد گل های درخت کنار تهیه می شود. این عسل برای تقویت قوای جسمانی و جنسی بسیار مفید است.",
-                features: ["مناسب برای ورزشکاران", "تقویت حافظه", "انرژی زا", "ضد التهاب"]
+                description: "عسل کنار با طعمی خاص و منحصر به فرد، از شهد گل های درخت کنار تهیه می شود. این عسل برای تقویت قوای جسمانی و جنسی بسیار مفید است. دارای خواص ضد التهابی و آنتی باکتریال قوی می باشد.",
+                shortDescription: "عسل کنار با طعم خاص و منحصر به فرد",
+                features: ["مناسب برای ورزشکاران", "تقویت حافظه", "انرژی زا", "ضد التهاب", "تقویت قوای جنسی", "آنتی باکتریال"]
             },
-            // We'll add more products in the JavaScript
+            {
+                id: 3,
+                name: "عسل آفتابگردان",
+                image: "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                description: "عسل آفتابگردان با رنگ کهربایی و طعم ملایم، از شهد گل های آفتابگردان تهیه می شود. این عسل برای سلامت قلب و عروق بسیار مفید است و سرشار از آنتی اکسیدان های طبیعی می باشد.",
+                shortDescription: "عسل آفتابگردان با رنگ کهربایی و طعم ملایم",
+                features: ["سلامت قلب", "آنتی اکسیدان قوی", "منبع ویتامین E", "تقویت پوست", "کاهش کلسترول", "منبع انرژی"]
+            },
+            {
+                id: 4,
+                name: "عسل چند گل",
+                image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                description: "عسل چند گل از شهد انواع گل های مختلف تهیه می شود و دارای ترکیبی از خواص مختلف گیاهان دارویی است. این عسل برای مصرف روزانه بسیار مناسب بوده و طعم متعادلی دارد.",
+                shortDescription: "عسل چند گل با ترکیبی از خواص گیاهان دارویی",
+                features: ["ترکیب چند گیاه", "خواص متنوع", "طعم متعادل", "مصرف روزانه", "مناسب همه سنین", "ارگانیک کامل"]
+            },
+            {
+                id: 5,
+                name: "عسل گشنیز",
+                image: "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                description: "عسل گشنیز با عطر و طعم خاص خود، برای بهبود گوارش و کاهش اضطراب بسیار مفید است. این عسل همچنین به تنظیم قند خون کمک کرده و خواص ضد باکتریایی قوی دارد.",
+                shortDescription: "عسل گشنیز با عطر و طعم خاص",
+                features: ["بهبود گوارش", "کاهش اضطراب", "ضد باکتری", "تنظیم قند خون", "ضد التهاب", "آرامش بخش"]
+            },
+            {
+                id: 6,
+                name: "عسل مرکبات",
+                image: "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                description: "عسل مرکبات با طعم ترش و شیرین و عطر بی‌نظیر مرکبات، برای تقویت سیستم ایمنی بسیار مناسب است. این عسل سرشار از ویتامین C طبیعی بوده و انرژی بخش فوق العاده ای است.",
+                shortDescription: "عسل مرکبات با طعم ترش و شیرین",
+                features: ["تقویت ایمنی", "منبع ویتامین C", "طعم مرکباتی", "انرژی بخش", "ضد سرماخوردگی", "شاداب کننده"]
+            }
         ];
-
-        // Generate more products to reach 25
-        for (let i = 3; i <= 25; i++) {
-            const baseProduct = products[i % 2]; // Alternate between the two base products
-            products.push({
-                ...baseProduct,
-                id: i,
-                name: `عسل ارگانیک ${i}`,
-                price: `${120 + i * 2},000 تومان`
-            });
-        }
 
         // DOM elements
         const productsGrid = document.getElementById('products-grid');
         const productModal = document.getElementById('productModal');
         const closeModal = document.getElementById('closeModal');
-        const modalSlides = document.getElementById('modalSlides');
-        const modalDots = document.getElementById('modalDots');
-        const prevSlide = document.getElementById('prevSlide');
-        const nextSlide = document.getElementById('nextSlide');
+        const modalMainImage = document.getElementById('modalMainImage');
+        const modalThumbnails = document.getElementById('modalThumbnails');
         const modalTitle = document.getElementById('modalTitle');
-        const modalPrice = document.getElementById('modalPrice');
         const modalDescription = document.getElementById('modalDescription');
         const modalFeatures = document.getElementById('modalFeatures');
         const buyLink = document.getElementById('buyLink');
 
-        let currentSlide = 0;
         let currentProduct = null;
 
         // Generate product cards
@@ -718,14 +822,13 @@
                 productCard.className = 'product-card';
                 productCard.innerHTML = `
                     <div class="product-img">
-                        <img src="${product.image}" alt="${product.name}">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
-                        <div class="product-price">${product.price}</div>
+                        <div class="product-description">${product.shortDescription}</div>
                         <div class="product-actions">
                             <button class="view-details" data-id="${product.id}">مشاهده جزئیات</button>
-                            <button class="add-to-cart">افزودن به سبد</button>
                         </div>
                     </div>
                 `;
@@ -748,7 +851,6 @@
 
             // Set modal content
             modalTitle.textContent = currentProduct.name;
-            modalPrice.textContent = currentProduct.price;
             modalDescription.textContent = currentProduct.description;
             
             // Set features
@@ -760,27 +862,28 @@
             });
             
             // Set buy link
-            buyLink.href = `https://yoursite.com/buy/${currentProduct.id}`;
+            buyLink.href = `#contact`;
 
-            // Generate slides
-            modalSlides.innerHTML = '';
-            modalDots.innerHTML = '';
-            currentSlide = 0;
+            // Generate thumbnails
+            modalThumbnails.innerHTML = '';
+            modalMainImage.src = currentProduct.images[0];
+            modalMainImage.alt = currentProduct.name;
 
             currentProduct.images.forEach((image, index) => {
-                // Create slide
-                const slide = document.createElement('div');
-                slide.className = 'modal-slide';
-                slide.innerHTML = `<img src="${image}" alt="${currentProduct.name}">`;
-                modalSlides.appendChild(slide);
-
-                // Create dot
-                const dot = document.createElement('div');
-                dot.className = `modal-dot ${index === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
+                const thumbnail = document.createElement('div');
+                thumbnail.className = `modal-thumbnail ${index === 0 ? 'active' : ''}`;
+                thumbnail.innerHTML = `<img src="${image}" alt="${currentProduct.name}">`;
+                thumbnail.addEventListener('click', () => {
+                    // Update main image
+                    modalMainImage.src = image;
+                    
+                    // Update active thumbnail
+                    document.querySelectorAll('.modal-thumbnail').forEach(thumb => {
+                        thumb.classList.remove('active');
+                    });
+                    thumbnail.classList.add('active');
                 });
-                modalDots.appendChild(dot);
+                modalThumbnails.appendChild(thumbnail);
             });
 
             // Show modal
@@ -794,31 +897,8 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Slide functions
-        function goToSlide(index) {
-            currentSlide = index;
-            modalSlides.style.transform = `translateX(-${currentSlide * 33.333}%)`;
-            
-            // Update dots
-            document.querySelectorAll('.modal-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
-        }
-
-        function nextSlideFunc() {
-            const next = (currentSlide + 1) % currentProduct.images.length;
-            goToSlide(next);
-        }
-
-        function prevSlideFunc() {
-            const prev = (currentSlide - 1 + currentProduct.images.length) % currentProduct.images.length;
-            goToSlide(prev);
-        }
-
         // Event listeners
         closeModal.addEventListener('click', closeProductModal);
-        prevSlide.addEventListener('click', prevSlideFunc);
-        nextSlide.addEventListener('click', nextSlideFunc);
 
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
