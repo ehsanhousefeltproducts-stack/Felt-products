@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نمک‌های ارگانیک سالم</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -31,6 +33,7 @@
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
         
         header p {
@@ -38,6 +41,7 @@
             max-width: 800px;
             margin: 0 auto;
             opacity: 0.9;
+            font-weight: 400;
         }
         
         /* Products Section */
@@ -51,6 +55,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
         
         .product-card {
@@ -81,6 +86,7 @@
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: #2c7744;
+            font-weight: 700;
         }
         
         .product-info p {
@@ -91,6 +97,7 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-weight: 400;
         }
         
         .view-details {
@@ -102,6 +109,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: background-color 0.3s;
+            font-family: 'Vazirmatn', sans-serif;
         }
         
         .view-details:hover {
@@ -126,7 +134,7 @@
             background-color: white;
             margin: 0 auto;
             border-radius: 12px;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             animation: modalFadeIn 0.3s;
@@ -148,6 +156,7 @@
         .modal-header h2 {
             color: #2c7744;
             font-size: 1.8rem;
+            font-weight: 700;
         }
         
         .close-modal {
@@ -155,6 +164,7 @@
             cursor: pointer;
             color: #777;
             transition: color 0.3s;
+            font-family: 'Vazirmatn', sans-serif;
         }
         
         .close-modal:hover {
@@ -163,38 +173,169 @@
         
         .modal-body {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
         
-        .modal-image {
+        @media (min-width: 768px) {
+            .modal-body {
+                flex-direction: row;
+            }
+        }
+        
+        .product-gallery {
+            flex: 1;
+            position: relative;
+        }
+        
+        .slider-container {
+            position: relative;
             width: 100%;
             height: 300px;
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 15px;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(44, 119, 68, 0.3);
+        }
+        
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+            border-color: #2c7744;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 119, 68, 0.8);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .slider-btn:hover {
+            background: rgba(44, 119, 68, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev-btn {
+            right: 15px;
+        }
+        
+        .next-btn {
+            left: 15px;
+        }
+        
+        .modal-details {
+            flex: 1;
         }
         
         .modal-description {
             margin-bottom: 1.5rem;
             line-height: 1.8;
+            text-align: justify;
+            font-weight: 400;
         }
         
-        .buy-link {
-            display: inline-block;
-            background-color: #2c7744;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
+        /* Wholesale Section */
+        .wholesale-section {
             text-align: center;
-            width: 100%;
-            font-size: 1.1rem;
+            margin: 40px 0;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 2px solid rgba(44, 119, 68, 0.2);
         }
         
-        .buy-link:hover {
-            background-color: #235c36;
+        .wholesale-section h3 {
+            color: #2c7744;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .wholesale-section p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-right: auto;
+            margin-left: auto;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        
+        .wholesale-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #2c7744 0%, #5a9367 100%);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(44, 119, 68, 0.3);
+            border: 2px solid #235c36;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .wholesale-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(44, 119, 68, 0.5);
+            background: linear-gradient(135deg, #235c36 0%, #2c7744 100%);
+        }
+        
+        .wholesale-link i {
+            margin-left: 10px;
         }
         
         /* Footer */
@@ -204,6 +345,10 @@
             text-align: center;
             padding: 2rem 0;
             margin-top: 3rem;
+        }
+        
+        footer p {
+            font-weight: 400;
         }
         
         /* Responsive */
@@ -219,6 +364,10 @@
             .modal-content {
                 margin: 1rem;
             }
+            
+            .slider-container {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -232,6 +381,18 @@
         <div class="products-grid" id="productsGrid">
             <!-- محصولات توسط جاوااسکریپت اضافه خواهند شد -->
         </div>
+        
+        <!-- بخش عمده‌فروشی -->
+        <section class="wholesale-section">
+            <div class="container">
+                <h3>خرید عمده نمک‌های ارگانیک</h3>
+                <p>برای مشاهده قیمت ها ، تخفیفات و ثبت سفارش به لینک زیر مراجعه نمایید.</p>
+                <a href="https://khaneehsan.com/whole-sale/menu" class="wholesale-link" target="_blank">
+                    <i class="fas fa-store"></i>
+                    ورود به سایت عمده‌فروشی
+                </a>
+            </div>
+        </section>
     </section>
     
     <footer>
@@ -246,155 +407,127 @@
                 <span class="close-modal" id="closeModal">&times;</span>
             </div>
             <div class="modal-body">
-                <div class="modal-image" id="modalImage"></div>
-                <p class="modal-description" id="modalDescription">توضیحات محصول</p>
-                <a href="#" class="buy-link" id="buyLink" target="_blank">خرید از سایت</a>
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides" id="modalSlides">
+                            <!-- اسلایدها توسط جاوااسکریپت اضافه می‌شوند -->
+                        </div>
+                        <button class="slider-btn prev-btn" id="prevBtn">&#10094;</button>
+                        <button class="slider-btn next-btn" id="nextBtn">&#10095;</button>
+                        <div class="slider-nav" id="sliderNav">
+                            <!-- نقاط ناوبری توسط جاوااسکریپت اضافه می‌شوند -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <p class="modal-description" id="modalDescription">توضیحات محصول</p>
+                </div>
             </div>
         </div>
     </div>
     
     <script>
-        // داده‌های محصولات
+        // داده‌های محصولات (10 محصول)
         const products = [
             {
                 id: 1,
                 name: "نمک دریایی هیمالیا",
-                image: "https://images.unsplash.com/photo-1584735264932-2d00efad5815?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1584735264932-2d00efad5815?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک صورتی هیمالیا با ۸۴ ماده معدنی ضروری برای بدن",
                 fullDesc: "نمک صورتی هیمالیا از معادن باستانی کوه‌های هیمالیا استخراج می‌شود. این نمک حاوی ۸۴ ماده معدنی ضروری برای بدن است و به دلیل خلوص و کیفیت بالای آن، برای مصرف روزانه بسیار مناسب است. این نمک به بهبود گردش خون، تنظیم فشار خون و دفع سموم بدن کمک می‌کند."
             },
             {
                 id: 2,
                 name: "نمک دریایی سلتیک",
-                image: "https://images.unsplash.com/photo-1518832553481-5f3be9c8697c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1518832553481-5f3be9c8697c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک دریایی سلتیک با طعم ملایم و بافت نرم",
                 fullDesc: "نمک دریایی سلتیک از سواحل بریتانی و فرانسه جمع‌آوری می‌شود. این نمک به روش سنتی خشک شده و حاوی مواد معدنی طبیعی است. طعم ملایم و بافت نرم آن باعث شده برای پخت و پز و طعم‌دهی به غذاها ایده‌آل باشد."
             },
             {
                 id: 3,
                 name: "نمک سیاه هیمالیا",
-                image: "https://images.unsplash.com/photo-1586769852836-bc069f74e9e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1586769852836-bc069f74e9e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک سیاه با عطر و طعم گوگردی متمایز",
                 fullDesc: "نمک سیاه هیمالیا که به نام کالا نمک نیز شناخته می‌شود، به دلیل رنگ تیره و عطر گوگردی متمایزش معروف است. این نمک در آشپزی هندی بسیار محبوب است و برای طعم‌دهی به سالادها، میوه‌ها و غذاهای گیاهی استفاده می‌شود."
             },
             {
                 id: 4,
                 name: "نمک دریایی فلور د سل",
-                image: "https://images.unsplash.com/photo-1621944190310-e3cca1566c47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1621944190310-e3cca1566c47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک دریایی فرانسوی با کریستال‌های ظریف",
                 fullDesc: "فلور د سل یک نمک دریایی فرانسوی با کریستال‌های ظریف و رطوبت طبیعی است. این نمک به صورت دستی از سطح آب‌های شور جمع‌آوری می‌شود و به دلیل طعم لطیف و بافت تردش، توسط سرآشپزهای معروف در سراسر جهان استفاده می‌شود."
             },
             {
                 id: 5,
                 name: "نمک کوشر",
-                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک درشت دانه برای آشپزی حرفه‌ای",
                 fullDesc: "نمک کوشر دارای دانه‌های درشت و نامنظم است که به راحتی با انگشتان قابل برداشتن است. این ویژگی آن را برای آشپزی حرفه‌ای ایده‌آل می‌کند. نمک کوشر فاقد ید و مواد افزودنی است و طعم خالص و طبیعی دارد."
             },
             {
                 id: 6,
                 name: "نمک دریایی هاوایی",
-                image: "https://images.unsplash.com/photo-1615485500608-1e5bcd70bb00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1615485500608-1e5bcd70bb00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک دریایی قرمز هاوایی با خاک رس آتشفشانی",
                 fullDesc: "نمک دریایی هاوایی به رنگ قرمز متمایز است که به دلیل وجود خاک رس آتشفشانی غنی از آهن است. این نمک طعم خاکی و آهن ملایمی دارد و برای تزئین و طعم‌دهی نهایی غذاها عالی است."
             },
             {
                 id: 7,
                 name: "نمک دریایی دانه ریز",
-                image: "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک دریایی با دانه‌های ریز برای استفاده روزمره",
                 fullDesc: "نمک دریایی دانه ریز برای استفاده روزمره در آشپزی و سر میز ایده‌آل است. این نمک به راحتی در غذا حل می‌شود و طعم متعادلی به غذاها می‌دهد. منبع طبیعی مواد معدنی و عاری از مواد افزودنی شیمیایی است."
             },
             {
                 id: 8,
                 name: "نمک سولانوم",
-                image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک معدنی با کریستال‌های درخشان",
                 fullDesc: "نمک سولانوم یک نمک معدنی با کریستال‌های درخشان و شفاف است که از معادن زیرزمینی استخراج می‌شود. این نمک حاوی مقادیر بالایی از مواد معدنی کمیاب است و برای تقویت سیستم ایمنی و بهبود سلامت گوارش مفید است."
             },
             {
                 id: 9,
                 name: "نمک دریایی دانه درشت",
-                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1615485500608-1e5bcd70bb00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک دریایی با دانه‌های درشت برای آسیاب کردن",
                 fullDesc: "نمک دریایی دانه درشت برای استفاده در آسیاب نمک ایده‌آل است. دانه‌های درشت آن به آرامی خرد می‌شوند و طعم تازه و طبیعی به غذا می‌دهند. این نمک برای طعم‌دهی نهایی به استیک، سالاد و غذاهای کبابی عالی است."
             },
             {
                 id: 10,
                 name: "نمک دریایی دودی",
-                image: "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ],
                 shortDesc: "نمک دریایی با عطر دودی طبیعی",
                 fullDesc: "نمک دریایی دودی با استفاده از چوب بلوط به طور طبیعی دودی شده و عطر و طعم منحصر به فردی دارد. این نمک برای افزودن طعم دودی به گوشت، ماهی، سبزیجات و حتی پنیر بدون نیاز به فرآیند دودی کردن طولانی عالی است."
-            },
-            {
-                id: 11,
-                name: "نمک دریایی لیمویی",
-                image: "https://images.unsplash.com/photo-1615485500608-1e5bcd70bb00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی مخلوط با پوست لیموی ارگانیک",
-                fullDesc: "نمک دریایی لیمویی ترکیبی از نمک دریایی خالص و پوست لیموی ارگانیک خشک شده است. این ترکیب طعم شور و ترش ملایمی ایجاد می‌کند که برای ماهی، مرغ، سالاد و سبزیجات کبابی عالی است."
-            },
-            {
-                id: 12,
-                name: "نمک دریایی سیر و سبزی",
-                image: "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با سیر و سبزیجات معطر",
-                fullDesc: "نمک دریایی سیر و سبزی ترکیبی از نمک دریایی خالص، سیر خشک شده و مخلوطی از سبزیجات معطر است. این نمک برای طعم‌دهی به گوشت، سوپ، سس و غذاهای پاستا ایده‌آل است و نیاز به افزودن چاشنی‌های دیگر را کاهش می‌دهد."
-            },
-            {
-                id: 13,
-                name: "نمک دریایی فلفل قرمز",
-                image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با فلفل قرمز تند",
-                fullDesc: "نمک دریایی فلفل قرمز ترکیبی از نمک دریایی خالص و فلفل قرمز تند خشک شده است. این ترکیب طعم شور و تندی ایجاد می‌کند که برای غذاهای مکزیکی، آسیایی و باربیکیو عالی است."
-            },
-            {
-                id: 14,
-                name: "نمک دریایی ترافل",
-                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با عطر ترافل سیاه",
-                fullDesc: "نمک دریایی ترافل ترکیبی لوکس از نمک دریایی خالص و ترافل سیاه واقعی است. این نمک عطر و طعم زمینی و منحصر به فرد ترافل را به غذاها می‌دهد و برای پاستا، ریسوتو، تخم مرغ و پاپ کورن عالی است."
-            },
-            {
-                id: 15,
-                name: "نمک دریایی زعفران",
-                image: "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با زعفران ایرانی",
-                fullDesc: "نمک دریایی زعفران ترکیبی از نمک دریایی خالص و زعفران مرغوب ایرانی است. این نمک علاوه بر عطر و طعم بی‌نظیر زعفران، رنگ طلایی زیبایی به غذاها می‌دهد و برای برنج، خورشت و غذاهای دریایی عالی است."
-            },
-            {
-                id: 16,
-                name: "نمک دریایی پاپریکا",
-                image: "https://images.unsplash.com/photo-1615485500608-1e5bcd70bb00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با پاپریکا دودی",
-                fullDesc: "نمک دریایی پاپریکا ترکیبی از نمک دریایی خالص و پاپریکا دودی اسپانیایی است. این ترکیب طعم شور و دودی ملایمی ایجاد می‌کند که برای سیب زمینی، تخم مرغ، گوشت و سبزیجات کبابی عالی است."
-            },
-            {
-                id: 17,
-                name: "نمک دریایی رزماری",
-                image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با رزماری تازه",
-                fullDesc: "نمک دریایی رزماری ترکیبی از نمک دریایی خالص و رزماری تازه خشک شده است. این نمک عطر و طعم کاجی و خاکی رزماری را به غذاها می‌دهد و برای گوشت بره، مرغ، سیب زمینی و نان عالی است."
-            },
-            {
-                id: 18,
-                name: "نمک دریایی آویشن",
-                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با آویشن کوهی",
-                fullDesc: "نمک دریایی آویشن ترکیبی از نمک دریایی خالص و آویشن کوهی خشک شده است. این نمک طعم معطر و کمی تلخ آویشن را به غذاها می‌دهد و برای مرغ، ماهی، سوپ و سس گوجه فرنگی عالی است."
-            },
-            {
-                id: 19,
-                name: "نمک دریایی اورگانو",
-                image: "https://images.unsplash.com/photo-1598808503746-f34cfc8c4f63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با اورگانو مدیترانه‌ای",
-                fullDesc: "نمک دریایی اورگانو ترکیبی از نمک دریایی خالص و اورگانو مدیترانه‌ای خشک شده است. این نمک طعم گرم و کمی تلخ اورگانو را به غذاها می‌دهد و برای پیتزا، پاستا، سالاد و غذاهای یونانی عالی است."
-            },
-            {
-                id: 20,
-                name: "نمک دریایی مخلوط ایتالیایی",
-                image: "https://images.unsplash.com/photo-1615485500608-1e5bcd70bb00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-                shortDesc: "نمک دریایی با مخلوط سبزیجات ایتالیایی",
-                fullDesc: "نمک دریایی مخلوط ایتالیایی ترکیبی از نمک دریایی خالص و مخلوطی از سبزیجات ایتالیایی شامل ریحان، اورگانو، رزماری و آویشن است. این نمک برای تمام غذاهای ایتالیایی از پاستا و پیتزا تا ریسوتو و سالاد عالی است."
             }
         ];
 
@@ -402,10 +535,16 @@
         const productsGrid = document.getElementById('productsGrid');
         const productModal = document.getElementById('productModal');
         const modalTitle = document.getElementById('modalTitle');
-        const modalImage = document.getElementById('modalImage');
+        const modalSlides = document.getElementById('modalSlides');
         const modalDescription = document.getElementById('modalDescription');
-        const buyLink = document.getElementById('buyLink');
         const closeModal = document.getElementById('closeModal');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('prevBtn');
+        const sliderNav = document.getElementById('sliderNav');
+
+        // متغیرهای اسلاید
+        let currentSlideIndex = 0;
+        let currentProductImages = [];
 
         // ایجاد کارت‌های محصول
         function createProductCards() {
@@ -413,7 +552,7 @@
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.innerHTML = `
-                    <div class="product-image" style="background-image: url('${product.image}')"></div>
+                    <div class="product-image" style="background-image: url('${product.images[0]}')"></div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
                         <p>${product.shortDesc}</p>
@@ -438,22 +577,70 @@
             const product = products.find(p => p.id === productId);
             if (product) {
                 modalTitle.textContent = product.name;
-                modalImage.style.backgroundImage = `url('${product.image}')`;
                 modalDescription.textContent = product.fullDesc;
-                buyLink.href = `https://yoursite.com/buy/${product.id}`; // لینک خرید - شما می‌توانید این را تغییر دهید
+                
+                // تنظیم اسلایدها
+                currentProductImages = product.images;
+                currentSlideIndex = 0;
+                updateSlider();
+                
                 productModal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه پشت مودال
+                document.body.style.overflow = 'hidden';
             }
+        }
+
+        // به‌روزرسانی اسلایدر
+        function updateSlider() {
+            // پاک کردن اسلایدهای قبلی
+            modalSlides.innerHTML = '';
+            sliderNav.innerHTML = '';
+            
+            // ایجاد اسلایدهای جدید
+            currentProductImages.forEach((image, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `<img src="${image}" alt="${modalTitle.textContent} - تصویر ${index + 1}">`;
+                modalSlides.appendChild(slide);
+                
+                // ایجاد نقاط ناوبری
+                const dot = document.createElement('div');
+                dot.className = `slider-dot ${index === currentSlideIndex ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    currentSlideIndex = index;
+                    updateSlider();
+                });
+                sliderNav.appendChild(dot);
+            });
+            
+            // تنظیم موقعیت اسلایدها
+            modalSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+        }
+
+        // تغییر اسلاید
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = currentProductImages.length - 1;
+            } else if (currentSlideIndex >= currentProductImages.length) {
+                currentSlideIndex = 0;
+            }
+            
+            updateSlider();
         }
 
         // بستن مودال
         function closeProductModal() {
             productModal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // فعال کردن مجدد اسکرول صفحه
+            document.body.style.overflow = 'auto';
         }
 
         // Event Listeners
         closeModal.addEventListener('click', closeProductModal);
+        
+        // دکمه‌های اسلاید
+        document.getElementById('prevBtn').addEventListener('click', () => changeSlide(-1));
+        document.getElementById('nextBtn').addEventListener('click', () => changeSlide(1));
         
         // بستن مودال با کلیک خارج از آن
         window.addEventListener('click', function(e) {
