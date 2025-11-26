@@ -7,95 +7,178 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
         }
         
         body {
-            background-color: #f8f9fa;
+            background: 
+                linear-gradient(rgba(249, 245, 240, 0.9), rgba(249, 245, 240, 0.9)),
+                url('https://images.unsplash.com/photo-1544966503-7cc5ac882d5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover fixed;
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
-        /* Header Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
         header {
-            background: linear-gradient(135deg, #2c7744, #5a9367);
-            color: white;
-            padding: 2rem 0;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9) 0%, rgba(160, 82, 45, 0.9) 100%);
+            color: #fff;
+            padding: 25px 0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            border-bottom: 3px solid #7a3c10;
         }
         
         header h1 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
+            font-size: 1.1rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
             font-weight: 400;
         }
         
-        /* Products Section */
         .products-section {
-            padding: 3rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 50px 0;
         }
         
-        .section-title {
+        .products-section h2 {
             text-align: center;
-            margin-bottom: 2rem;
-            color: #2c7744;
-            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #8b4513;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
             font-weight: 700;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .products-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: #8b4513;
         }
         
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 30px;
         }
         
         .product-card {
-            background: white;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
             cursor: pointer;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+            backdrop-filter: blur(10px);
         }
         
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 1);
         }
         
         .product-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            background-color: #f5f5f5;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.08);
         }
         
         .product-name {
-            padding: 1.5rem;
+            padding: 20px;
             text-align: center;
-            font-size: 1.3rem;
-            color: #2c7744;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #5d4037;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,1));
+            border-top: 2px solid rgba(139, 69, 19, 0.1);
+        }
+        
+        .wholesale-section {
+            text-align: center;
+            margin: 60px 0 40px 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 245, 240, 0.95) 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 3px solid rgba(139, 69, 19, 0.2);
+        }
+        
+        .wholesale-section h3 {
+            color: #8b4513;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             font-weight: 700;
         }
         
-        /* Modal Styles */
+        .wholesale-section p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-right: auto;
+            margin-left: auto;
+            line-height: 1.8;
+        }
+        
+        .wholesale-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            padding: 16px 45px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+            border: 2px solid #7a3c10;
+        }
+        
+        .wholesale-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.6);
+            background: linear-gradient(135deg, #7a3c10 0%, #8b4513 100%);
+        }
+        
+        .wholesale-link i {
+            margin-left: 12px;
+        }
+        
         .modal {
             display: none;
             position: fixed;
@@ -103,80 +186,84 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             overflow-y: auto;
-            padding: 2rem 1rem;
+            animation: fadeIn 0.3s ease;
         }
         
         .modal-content {
-            background-color: white;
-            margin: 0 auto;
-            border-radius: 12px;
-            max-width: 900px;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: modalFadeIn 0.3s;
-        }
-        
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(249, 245, 240, 0.98) 100%);
+            margin: 40px auto;
+            width: 95%;
+            max-width: 1000px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            animation: slideUp 0.4s ease;
+            overflow: hidden;
+            border: 2px solid rgba(139, 69, 19, 0.2);
         }
         
         .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(160, 82, 45, 0.95) 100%);
+            color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 3px solid #7a3c10;
         }
         
-        .modal-header h2 {
-            color: #2c7744;
+        .modal-title {
             font-size: 1.8rem;
+            margin: 0;
             font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
         
         .close-btn {
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #777;
-            transition: color 0.3s;
             background: none;
             border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.2s;
             font-family: 'Vazirmatn', sans-serif;
         }
         
         .close-btn:hover {
-            color: #333;
+            transform: scale(1.2);
         }
         
         .modal-body {
-            padding: 1.5rem;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 30px;
         }
         
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
             .modal-body {
                 flex-direction: row;
             }
         }
         
         .product-gallery {
-            flex: 1;
+            flex: 1.2;
             position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: rgba(255,255,255,0.8);
+            border: 2px solid rgba(139, 69, 19, 0.1);
         }
         
         .slider-container {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: 400px;
             overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            border-radius: 12px;
         }
         
         .slides {
@@ -193,88 +280,98 @@
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
         }
         
         .slider-nav {
             position: absolute;
-            bottom: 15px;
+            bottom: 20px;
             right: 50%;
             transform: translateX(50%);
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
         
         .slider-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: rgba(255,255,255,0.6);
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid rgba(44, 119, 68, 0.3);
+            border: 2px solid rgba(139, 69, 19, 0.3);
         }
         
         .slider-dot.active {
             background: white;
             transform: scale(1.2);
-            border-color: #2c7744;
+            border-color: #8b4513;
         }
         
         .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(44, 119, 68, 0.8);
+            background: rgba(139, 69, 19, 0.8);
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: all 0.3s ease;
             font-family: 'Vazirmatn', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
         .slider-btn:hover {
-            background: rgba(44, 119, 68, 1);
+            background: rgba(139, 69, 19, 1);
             transform: translateY(-50%) scale(1.1);
         }
         
         .prev-btn {
-            right: 15px;
+            right: 20px;
         }
         
         .next-btn {
-            left: 15px;
+            left: 20px;
         }
         
         .thumbnails {
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 20px;
+            overflow-x: auto;
+            padding: 10px;
             justify-content: center;
-            margin-top: 10px;
+            background: rgba(249, 245, 240, 0.5);
+            border-radius: 10px;
         }
         
         .thumbnail {
-            width: 60px;
-            height: 60px;
-            border-radius: 6px;
+            width: 85px;
+            height: 65px;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
             opacity: 0.7;
-            transition: opacity 0.3s;
-            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            border: 3px solid transparent;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
-        .thumbnail.active {
+        .thumbnail:hover, .thumbnail.active {
             opacity: 1;
-            border-color: #2c7744;
+            transform: scale(1.1);
+            border-color: #8b4513;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
         }
         
         .thumbnail img {
@@ -285,183 +382,308 @@
         
         .modal-details {
             flex: 1;
+            background: rgba(255,255,255,0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 2px solid rgba(139, 69, 19, 0.1);
+        }
+        
+        .modal-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 400;
+            font-size: 1.1rem;
+            text-align: justify;
         }
         
         .product-features {
             list-style-type: none;
-            padding: 0;
+            margin-bottom: 25px;
         }
         
         .product-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            padding-right: 1.5rem;
+            padding: 10px 0;
+            border-bottom: 2px dashed rgba(139, 69, 19, 0.2);
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+        
+        .product-features li:hover {
+            background: rgba(139, 69, 19, 0.05);
+            padding-right: 10px;
+            border-radius: 8px;
         }
         
         .product-features li:before {
-            content: "•";
-            color: #2c7744;
+            content: '✓';
+            color: #8b4513;
             font-weight: bold;
-            position: absolute;
-            right: 0;
+            margin-left: 15px;
+            font-size: 1.2rem;
         }
         
-        /* Wholesale Section */
-        .wholesale-section {
-            text-align: center;
-            margin: 40px 0;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border: 2px solid rgba(44, 119, 68, 0.2);
-        }
-        
-        .wholesale-section h3 {
-            color: #2c7744;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .wholesale-section p {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            max-width: 600px;
-            margin-right: auto;
-            margin-left: auto;
-            line-height: 1.7;
-            font-weight: 400;
-        }
-        
-        .wholesale-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #2c7744 0%, #5a9367 100%);
-            color: white;
-            padding: 14px 35px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(44, 119, 68, 0.3);
-            border: 2px solid #235c36;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        
-        .wholesale-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(44, 119, 68, 0.5);
-            background: linear-gradient(135deg, #235c36 0%, #2c7744 100%);
-        }
-        
-        .wholesale-link i {
-            margin-left: 10px;
-        }
-        
-        /* Footer */
         footer {
-            background-color: #333;
-            color: white;
+            background: linear-gradient(135deg, rgba(93, 64, 55, 0.95) 0%, rgba(121, 85, 72, 0.95) 100%);
+            color: #fff;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 3px solid #5a382b;
+            backdrop-filter: blur(5px);
         }
         
         footer p {
             font-weight: 400;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
         }
         
-        /* Responsive */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* رسپانسیو */
         @media (max-width: 768px) {
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
             }
             
             header h1 {
                 font-size: 2rem;
             }
             
-            .modal-content {
-                margin: 1rem;
+            .modal-body {
+                flex-direction: column;
+            }
+            
+            .slider-container {
+                height: 300px;
+            }
+            
+            .product-name {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+            
+            .wholesale-section {
+                padding: 30px 15px;
+                margin: 40px 0 30px 0;
+            }
+            
+            .wholesale-section h3 {
+                font-size: 1.5rem;
+            }
+            
+            .wholesale-link {
+                padding: 14px 35px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .modal-body {
+                flex-direction: column;
+            }
+            
+            .slider-container {
+                height: 300px;
+            }
+            
+            .product-name {
+                padding: 12px;
+                font-size: 0.9rem;
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .product-image {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
             }
             
             .slider-container {
                 height: 250px;
             }
             
+            .product-name {
+                padding: 10px;
+                font-size: 0.8rem;
+                min-height: 50px;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .modal-content {
+                margin: 10px auto;
+                width: 98%;
+            }
+            
+            .modal-header {
+                padding: 15px;
+            }
+            
+            .modal-title {
+                font-size: 1.3rem;
+            }
+            
             .modal-body {
-                flex-direction: column;
+                padding: 15px;
+                gap: 20px;
+            }
+            
+            .wholesale-section {
+                padding: 25px 10px;
+                margin: 30px 0 20px 0;
+            }
+            
+            .wholesale-section h3 {
+                font-size: 1.3rem;
+            }
+            
+            .wholesale-section p {
+                font-size: 1rem;
+            }
+            
+            .wholesale-link {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .product-name {
+                font-size: 0.75rem;
+                padding: 8px;
+                min-height: 45px;
+            }
+            
+            .product-image {
+                height: 130px;
+            }
+            
+            .container {
+                padding: 0 10px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>نمک‌های ارگانیک سالم</h1>
-        <p>طبیعت خالص در هر دانه نمک - محصولات ارگانیک و طبیعی برای سلامتی شما</p>
+        <div class="container">
+            <h1>نمک‌های ارگانیک سالم</h1>
+            <p>طبیعت خالص در هر دانه نمک - محصولات ارگانیک و طبیعی برای سلامتی شما</p>
+        </div>
     </header>
     
     <section class="products-section">
         <div class="container">
-            <h2 class="section-title">محصولات نمک ارگانیک</h2>
+            <h2>نمک ها </h2>
             <div class="products-grid">
-                <!-- محصولات -->
-                    <div class="product-card" onclick="openModal('modal1')">
-                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/image/namak/jahrom2.5.jpg" alt="نمک جهرم ۲.۵ کیلویی" class="product-image">
-                    <div class="product-name">نمک جهرم ۲.۵ کیلویی</div>
-                </div>                
+                <!-- محصولات 1 تا 13 -->
+                <div class="product-card" onclick="openModal('modal1')">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom2.5.jpg" alt="نمک جهرم ۲.۵ کیلیویی" class="product-image">
+                    <div class="product-name">نمک جهرم ۲.۵ کیلیویی</div>
+                </div>
+                
                 <div class="product-card" onclick="openModal('modal2')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+جهرم+1.200')"></div>
-                    <div class="product-name">نمک جهرم 1.200</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg" alt="نمک جهرم ۱.۲۰۰" class="product-image">
+                    <div class="product-name">نمک جهرم ۱.۲۰۰</div>
                 </div>
 
                 <div class="product-card" onclick="openModal('modal3')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+سنگ+2.5')"></div>
-                    <div class="product-name">نمک سنگ 2.5</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/Shoe sole1.jpg" alt="نمک صورتی ۱.۲۰۰" class="product-image">
+                    <div class="product-name">نمک صورتی ۱.۲۰۰</div>
                 </div>
 
                 <div class="product-card" onclick="openModal('modal4')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+صورتی+1.200')"></div>
-                    <div class="product-name">نمک صورتی 1.200</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/524bc8c9-3fe.jpg" alt="نمک صورتی ۶۰۰ گرمی" class="product-image">
+                    <div class="product-name">نمک صورتی ۶۰۰ گرمی</div>
                 </div>
 
                 <div class="product-card" onclick="openModal('modal5')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+صورتی+600+گرمی')"></div>
-                    <div class="product-name">نمک صورتی 600 گرمی</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sang.jpg" alt="نمک سنگ ۲." class="product-image">
+                    <div class="product-name">نمک سنگ ۲.۵</div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal6')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+سفره')"></div>
-                    <div class="product-name">نمک سفره</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahroom.jpg" alt="نمک سنگ جهرم گرانول" class="product-image">
+                    <div class="product-name">نمک سنگ جهرم گرانول</div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal7')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+دریا+2.5')"></div>
-                    <div class="product-name">نمک دریا 2.5</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/253c85ee-616.jpg" alt="نمک سنک آبی گرانول" class="product-image">
+                    <div class="product-name">نمک سنک آبی گرانول</div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal8')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+چند+اقلیم')"></div>
-                    <div class="product-name">نمک چند اقلیم خانه احسان</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/6fa111e9-04d.jpg" alt="نمک چند اقلیم" class="product-image">
+                    <div class="product-name">نمک چند اقلیم</div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal9')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+آبی+گرانول')"></div>
-                    <div class="product-name">نمک آبی گرانول</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/shafa.jpg" alt="نمک دریا ۲.۵ " class="product-image">
+                    <div class="product-name">نمک دریا ۲.۵ </div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal10')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+جهرم+گرانول')"></div>
-                    <div class="product-name">نمک جهرم گرانول</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/mokett sefid.jpg" alt="فرشینه نمدی سفید" class="product-image">
+                    <div class="product-name">نمک دریا ۲.۵ </div>
                 </div>
                 
                 <div class="product-card" onclick="openModal('modal11')">
-                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+صورتی+گرانول')"></div>
-                    <div class="product-name">نمک صورتی گرانول</div>
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sofreh.jpg" alt="نمک سفره" class="product-image">
+                    <div class="product-name">نمک سفره</div>               
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal12')">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sofreh.jpg" alt="نمک سفره" class="product-image">
+                    <div class="product-name">نمک سفره</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal13')">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/sortii.jpg" alt="نمک سنگ صورتی گرانول" class="product-image">
+                    <div class="product-name">نمک سنگ صورتی گرانول</div>
                 </div>
             </div>
         </div>
@@ -491,35 +713,26 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/jahrom2.5.jpg" alt="نمک جهرم ۲.۵ کیلیویی - تصویر ۱">
-                            </div>
-                            <div class="slide">
-                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/jahrom2.5.jpg" alt="نمک جهرم ۲.۵ کیلیویی - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg" alt="نمک جهرم ۲.۵ ">
                             </div>
                         </div>
-                        <button class="slider-btn prev-btn" onclick="changeSlide('modal1', -1)">&#10094;</button>
                         <button class="slider-btn next-btn" onclick="changeSlide('modal1', 1)">&#10095;</button>
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal1', 0)"></div>
-                            <div class="slider-dot" onclick="currentSlide('modal1', 1)"></div>
                         </div>
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal1', 0)">
-                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/jahrom2.5.jpg" alt="نمک جهرم ۲.۵ کیلیویی - تصویر ۱">
-                        </div>
-                        <div class="thumbnail" onclick="currentSlide('modal1', 1)">
-                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/jahrom2.5.jpg" alt="نمک جهرم ۲.۵ کیلیویی - تصویر ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg" alt="نمک جهرم 2">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
                     </ul>
                 </div>
             </div>
@@ -530,7 +743,7 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک جهرم 1.200</h2>
+                <h2 class="modal-title">نمک جهرم ۱.۲۰۰</h2>
                 <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
             </div>
             <div class="modal-body">
@@ -538,10 +751,10 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+1.200+تصویر+۱" alt="نمک جهرم 1.200 - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg" alt="نمک جهرم ۱.۲۰۰ - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+1.200+تصویر+۲" alt="نمک جهرم 1.200 - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg" alt="نمک جهرم ۱.۲۰۰ - تصویر ۲">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal2', -1)">&#10094;</button>
@@ -553,20 +766,19 @@
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal2', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک جهرم 1.200 - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg" alt="نمک جهرم ۱.۲۰۰ - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal2', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک جهرم 1.200 - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg" alt="نمک جهرم ۱.۲۰۰ - تصویر کوچک ۲">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                         <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>          
                     </ul>
                 </div>
             </div>
@@ -574,57 +786,71 @@
     </div>
     
     <!-- مودال 3 -->
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">نمک سنگ 2.5</h2>
-                <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
+<!-- مودال 3 -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">دمپایی نمدی</h2>
+            <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="product-gallery">
+                <div class="slider-container">
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/دمپایی نمدی.jpg" alt="دمپایی نمدی - تصویر ۱">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/دمپایی نمدی1.jpg" alt="دمپایی نمدی - تصویر ۲">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/1764066885086.jpg" alt="دمپایی نمدی - تصویر ۳">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/InShot_۲۰۲۵۱۱۲۵_۱۰۲۶۰۴۸۸۰.jpg" alt="دمپایی نمدی - تصویر ۴">
+                        </div>
+                    </div>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('modal3', -1)">&#10094;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('modal3', 1)">&#10095;</button>
+                    <div class="slider-nav">
+                        <div class="slider-dot active" onclick="currentSlide('modal3', 0)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal3', 1)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal3', 2)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal3', 3)"></div>
+                    </div>
+                </div>
+                <div class="thumbnails">
+                    <div class="thumbnail active" onclick="currentSlide('modal3', 0)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/دمپایی نمدی.jpg" alt="دمپایی نمدی - تصویر کوچک ۱">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal3', 1)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/دمپایی نمدی1.jpg" alt="دمپایی نمدی - تصویر کوچک ۲">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal3', 2)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/1764066885086.jpg" alt="دمپایی نمدی - تصویر کوچک ۳">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal3', 3)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/InShot_۲۰۲۵۱۱۲۵_۱۰۲۶۰۴۸۸۰.jpg" alt="دمپایی نمدی - تصویر کوچک ۴">
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="product-gallery">
-                    <div class="slider-container">
-                        <div class="slides">
-                            <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سنگ+2.5+تصویر+۱" alt="نمک سنگ 2.5 - تصویر ۱">
-                            </div>
-                            <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سنگ+2.5+تصویر+۲" alt="نمک سنگ 2.5 - تصویر ۲">
-                            </div>
-                        </div>
-                        <button class="slider-btn prev-btn" onclick="changeSlide('modal3', -1)">&#10094;</button>
-                        <button class="slider-btn next-btn" onclick="changeSlide('modal3', 1)">&#10095;</button>
-                        <div class="slider-nav">
-                            <div class="slider-dot active" onclick="currentSlide('modal3', 0)"></div>
-                            <div class="slider-dot" onclick="currentSlide('modal3', 1)"></div>
-                        </div>
-                    </div>
-                    <div class="thumbnails">
-                        <div class="thumbnail active" onclick="currentSlide('modal3', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک سنگ 2.5 - تصویر کوچک ۱">
-                        </div>
-                        <div class="thumbnail" onclick="currentSlide('modal3', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک سنگ 2.5 - تصویر کوچک ۲">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-details">
-                    <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
-                    </ul>
-                </div>
+            <div class="modal-details">
+                <ul class="product-features">
+                    <li>ساخته شده از پشم طبیعی،نرم و طبیعی،نرم</li>
+                    <li>قابل شستشو با دوام و تراکم بالا</li>
+                    <li>جلوگیری از تاول و بهبود میخچه ،ترک و خارپشته</li>
+                    <li>رفع بوی نامطبوع و عرق پا</li>
+                </ul>
+                <!-- بخش خرید مستقیم حذف شده -->
             </div>
         </div>
     </div>
-    
+</div>
     <!-- مودال 4 -->
     <div id="modal4" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک صورتی 1.200</h2>
+                <h2 class="modal-title">روکش صندلی نمدی بزرگ</h2>
                 <button class="close-btn" onclick="closeModal('modal4')">&times;</button>
             </div>
             <div class="modal-body">
@@ -632,10 +858,16 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+1.200+تصویر+۱" alt="نمک صورتی 1.200 - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/Felt chair cover2.jpg" alt="روکش صندلی نمدی بزرگ - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+1.200+تصویر+۲" alt="نمک صورتی 1.200 - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/روکش صندلی نمدی بزرگ3.jpg" alt="روکش صندلی نمدی بزرگ - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/rokesh.jpg" alt="روکش صندلی نمدی بزرگ - تصویر ۳">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/rokesh1.jpg" alt="روکش صندلی نمدی بزرگ - تصویر ۴">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal4', -1)">&#10094;</button>
@@ -643,24 +875,32 @@
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal4', 0)"></div>
                             <div class="slider-dot" onclick="currentSlide('modal4', 1)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal4', 2)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal4', 3)"></div>
                         </div>
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal4', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک صورتی 1.200 - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/Felt chair cover2.jpg" alt="روکش صندلی نمدی بزرگ - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal4', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک صورتی 1.200 - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/روکش صندلی نمدی بزرگ3.jpg" alt="روکش صندلی نمدی بزرگ - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal4', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/rokesh1.jpg" alt="روکش صندلی نمدی بزرگ - تصویر کوچک ۳">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal4', 3)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/rokesh.jpg" alt="روکش صندلی نمدی بزرگ - تصویر کوچک ۴">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>با دوام بالا و قابل شستشو </li>
+                        <li>بدن را در تابستان خنک و در زمستان گرم نگه می‌دارد. </li>
+                        <li>در فرآیند تولید آن، بوگیری، موگیری، شستشو و ضدعفونی اصولی صورت گرفته است</li>
+                        <li>فید برای دیسک کمر و گردن</li>
+                        <li>سایز تقریبی نشیمن و پشتی هر کدام 55*55 ، 45*65</li>
                     </ul>
                 </div>
             </div>
@@ -671,7 +911,7 @@
     <div id="modal5" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک صورتی 600 گرمی</h2>
+                <h2 class="modal-title">کمربند نمدی</h2>
                 <button class="close-btn" onclick="closeModal('modal5')">&times;</button>
             </div>
             <div class="modal-body">
@@ -679,35 +919,46 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+600+گرمی+تصویر+۱" alt="نمک صورتی 600 گرمی - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/کمربند نمدی.jpg"alt="کمربند نمدی - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+600+گرمی+تصویر+۲" alt="نمک صورتی 600 گرمی - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/کمربند نمدی سایز بزرگ1.jpg" alt="کمربند نمدی - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/kamarband.png" alt="کمربند نمدی - تصویر ۲">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal5', -1)">&#10094;</button>
                         <button class="slider-btn next-btn" onclick="changeSlide('modal5', 1)">&#10095;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal5', 2)">&#10095;</button>
+
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal5', 0)"></div>
                             <div class="slider-dot" onclick="currentSlide('modal5', 1)"></div>
+                             <div class="slider-dot" onclick="currentSlide('modal5', 2)"></div>
+
                         </div>
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal5', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک صورتی 600 گرمی - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/کمربند نمدی.jpg" alt="کمربند نمدی - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal5', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک صورتی 600 گرمی - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/کمربند نمدی سایز بزرگ1.jpg" alt="کمربند نمدی - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal5', 1)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/kamarband.png" alt="کمربند نمدی - تصویر کوچک ۲">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>نرم و لطیف</li>
+                        <li>قابل شستشو با تراکم و دوام بالا</li>
+                        <li>متاسب استفاده در فصول  سرد و گرم</li>
+                        <li>چربی سوزی در ناحیه شکم</li>
+                        <li>بهبود مشکلات دیسک و کمردرد</li>
+                        <li>گرم کننده رحم مناسب بعد زایمان</li>
                     </ul>
                 </div>
             </div>
@@ -718,7 +969,7 @@
     <div id="modal6" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک سفره</h2>
+                <h2 class="modal-title">کمربند پشمی کشی</h2>
                 <button class="close-btn" onclick="closeModal('modal6')">&times;</button>
             </div>
             <div class="modal-body">
@@ -726,10 +977,10 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سفره+تصویر+۱" alt="نمک سفره - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/کمربند پشمی کشی.jpg" alt="کمربند پشمی کشی - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سفره+تصویر+۲" alt="نمک سفره - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak//کمربند پشمی کشی1.jpg" alt="کمربند پشمی کشی - تصویر ۲">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal6', -1)">&#10094;</button>
@@ -741,20 +992,21 @@
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal6', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک سفره - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/کمربند پشمی کشی.jpg"  alt="کمربند پشمی کشی - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal6', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک سفره - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak//کمربند پشمی کشی1.jpg"  alt="کمربند پشمی کشی - تصویر کوچک ۲">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>نرم و لطیف</li>
+                        <li>قابل شستشو با تراکم و دوام بالا</li>
+                        <li>متاسب استفاده در فصول  سرد و گرم</li>
+                        <li>چربی سوزی در ناحیه شکم</li>
+                        <li>بهبود مشکلات دیسک و کمردرد</li>
+                        <li>گرم کننده رحم مناسب بعد زایمان</li>
                     </ul>
                 </div>
             </div>
@@ -765,7 +1017,7 @@
     <div id="modal7" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک دریا 2.5</h2>
+                <h2 class="modal-title">پادری نمدی</h2>
                 <button class="close-btn" onclick="closeModal('modal7')">&times;</button>
             </div>
             <div class="modal-body">
@@ -773,10 +1025,16 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+دریا+2.5+تصویر+۱" alt="نمک دریا 2.5 - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/پادری طرح پا نمدی.jpg" alt="پادری نمدی - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+دریا+2.5+تصویر+۲" alt="نمک دریا 2.5 - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/پادری طرح پا نمدی2.jpg" alt="پادری نمدی - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/نمد یک نفره گرد طرح دار.jpg" alt="نمد یک نفره گرد طرح دار - تصویر ۳">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/padary.jpg" alt="نمد یک نفره گرد طرح دار - تصویر ۴">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal7', -1)">&#10094;</button>
@@ -784,24 +1042,32 @@
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal7', 0)"></div>
                             <div class="slider-dot" onclick="currentSlide('modal7', 1)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal7', 2)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal7', 3)"></div>
                         </div>
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal7', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک دریا 2.5 - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/پادری طرح پا نمدی.jpg" alt="پادری  نمدی - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal7', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک دریا 2.5 - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/پادری طرح پا نمدی2.jpg" alt="پادری  نمدی - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal7', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/نمد یک نفره گرد طرح دار.jpg"alt="پادری  نمدی - تصویر کوچک ۳">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal7', 3)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/padary.jpg" alt="پادری  نمدی - تصویر کوچک ۴">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>سبک و قابل انعطاف</li>
+                        <li>تخلیه الکتریسیته ساکن بدن و آرامش‌بخش</li>
+                        <li>افزایش جریان خون</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>جذب رطوبت و گرد و خاک</li>
                     </ul>
                 </div>
             </div>
@@ -812,7 +1078,7 @@
     <div id="modal8" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک چند اقلیم خانه احسان</h2>
+                <h2 class="modal-title">نشیمنگاه طبی نمدی</h2>
                 <button class="close-btn" onclick="closeModal('modal8')">&times;</button>
             </div>
             <div class="modal-body">
@@ -820,35 +1086,27 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+چند+اقلیم+تصویر+۱" alt="نمک چند اقلیم خانه احسان - تصویر ۱">
-                            </div>
-                            <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+چند+اقلیم+تصویر+۲" alt="نمک چند اقلیم خانه احسان - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/نشیمنگاه طبی نمدی.jpg" alt="نشیمنگاه طبی نمدی - تصویر ۱">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal8', -1)">&#10094;</button>
                         <button class="slider-btn next-btn" onclick="changeSlide('modal8', 1)">&#10095;</button>
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal8', 0)"></div>
-                            <div class="slider-dot" onclick="currentSlide('modal8', 1)"></div>
                         </div>
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal8', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک چند اقلیم خانه احسان - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/نشیمنگاه طبی نمدی.jpg" alt="نشیمنگاه طبی نمدی - تصویر کوچک ۱">
                         </div>
-                        <div class="thumbnail" onclick="currentSlide('modal8', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک چند اقلیم خانه احسان - تصویر کوچک ۲">
-                        </div>
-                    </div>
+                   </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>پر شده با پشم </li>
+                        <li>با دوام بالا و قابل شستشو </li>
+                        <li>کاهش فشار وارده بر دنبالچه، فرم دهی صحیح ستون فقرات و..</li>
+                        <li>شستشو با آب سرد</li>
                     </ul>
                 </div>
             </div>
@@ -859,7 +1117,7 @@
     <div id="modal9" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک آبی گرانول</h2>
+                <h2 class="modal-title">سجاده نمدی سفید</h2>
                 <button class="close-btn" onclick="closeModal('modal9')">&times;</button>
             </div>
             <div class="modal-body">
@@ -867,10 +1125,10 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+آبی+گرانول+تصویر+۱" alt="نمک آبی گرانول - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/سجاده نمدی سفید.jpg" " alt="سجاده نمدی سفید - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+آبی+گرانول+تصویر+۲" alt="نمک آبی گرانول - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/سجاده نمدی قهوه‌ای.jpg" alt="سجاده نمدی قهوه ای - تصویر ۲">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal9', -1)">&#10094;</button>
@@ -882,20 +1140,20 @@
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal9', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک آبی گرانول - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/سجاده نمدی سفید.jpg" alt="سجاده نمدی سفید - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal9', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک آبی گرانول - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/سجاده نمدی قهوه‌ای.jpg" alt="سجاده نمدی قهوه ای - تصویر کوچک ۲">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>سبک و قابل انعطاف</li>
+                        <li>با دوام بالا و قابل شستشو </li>
+                        <li>کاهش فشار وارده بر دنبالچه، فرم دهی صحیح ستون فقرات و...</li>
+                        <li>شستشو با دست و آب سرد</li>
+                        <li>ابعاد: عرض: 16 سانتیمتر ؛ طول: 10 سانتیمتر</li>
                     </ul>
                 </div>
             </div>
@@ -906,7 +1164,7 @@
     <div id="modal10" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک جهرم گرانول</h2>
+                <h2 class="modal-title">فرشینه نمدی سفید</h2>
                 <button class="close-btn" onclick="closeModal('modal10')">&times;</button>
             </div>
             <div class="modal-body">
@@ -914,10 +1172,13 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+گرانول+تصویر+۱" alt="نمک جهرم گرانول - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/mokett sefid.jpg" alt="فرشینه نمدی سفید - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+گرانول+تصویر+۲" alt="نمک جهرم گرانول - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/mokett.jpg" alt="فرشینه نمدی سفید - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/موکت نمدی سفید متری.jpg" alt="فرشینه نمدی سفید - تصویر ۳">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal10', -1)">&#10094;</button>
@@ -925,24 +1186,28 @@
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal10', 0)"></div>
                             <div class="slider-dot" onclick="currentSlide('modal10', 1)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal10', 2)"></div>
                         </div>
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal10', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک جهرم گرانول - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/mokett sefid.jpg" alt="فرشینه نمدی سفید - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal10', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک جهرم گرانول - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/mokett.jpg" alt="فرشینه نمدی سفید - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal10', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/موکت نمدی سفید متری.jpg" alt="فرشینه نمدی سفید - تصویر کوچک ۳">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>ساخته شده از نمد طبیعی ضخیم</li>
+                        <li>عایق صدا و سرما</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای پوشش کف منزل</li>
+                        <li>سایزهای مختلف موجود</li>
                     </ul>
                 </div>
             </div>
@@ -953,7 +1218,7 @@
     <div id="modal11" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">نمک صورتی گرانول</h2>
+                <h2 class="modal-title">فرشینه نمدی قهوه ای</h2>
                 <button class="close-btn" onclick="closeModal('modal11')">&times;</button>
             </div>
             <div class="modal-body">
@@ -961,10 +1226,10 @@
                     <div class="slider-container">
                         <div class="slides">
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+گرانول+تصویر+۱" alt="نمک صورتی گرانول - تصویر ۱">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/moket.jpg" alt="فرشینه نمدی قهوه ای - تصویر ۱">
                             </div>
                             <div class="slide">
-                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+گرانول+تصویر+۲" alt="نمک صورتی گرانول - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/موکت نمدی متری.jpg" alt="فرشینه نمدی قهوه ای - تصویر ۲">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal11', -1)">&#10094;</button>
@@ -976,20 +1241,135 @@
                     </div>
                     <div class="thumbnails">
                         <div class="thumbnail active" onclick="currentSlide('modal11', 0)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک صورتی گرانول - تصویر کوچک ۱">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/moket.jpg" alt="فرشینه نمدی قهوه ای - تصویر کوچک ۱">
                         </div>
                         <div class="thumbnail" onclick="currentSlide('modal11', 1)">
-                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک صورتی گرانول - تصویر کوچک ۲">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/موکت نمدی متری.jpg" alt="فرشینه نمدی قهوه ای - تصویر کوچک ۲">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
                     <ul class="product-features">
-                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
-                        <li>فاقد مواد افزودنی و نگهدارنده</li>
-                        <li>حاوی مواد معدنی مفید برای بدن</li>
-                        <li>مناسب برای مصرف روزانه</li>
-                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                        <li>ساخته شده از نمد طبیعی ضخیم</li>
+                        <li>عایق صدا و سرما</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>مناسب برای پوشش کف منزل</li>
+                        <li>سایزهای مختلف موجود</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 12 - پد طبی یک نفره -->
+    <div id="modal12" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">پد طبی یک نفره</h2>
+                <button class="close-btn" onclick="closeModal('modal12')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad11.jpg" alt="پد طبی یک نفره - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad1114.jpg" alt="پد طبی یک نفره - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad1.jpg" alt="پد طبی یک نفره - تصویر ۳">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal12', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal12', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal12', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal12', 1)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal12', 2)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal12', 0)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad11.jpg" alt="پد طبی یک نفره - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal12', 1)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad1114.jpg" alt="پد طبی یک نفره - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal12', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad1.jpg" alt="پد طبی یک نفره - تصویر کوچک ۳">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>تخلیه الکتریسیته ساکن بدن و آرامش‌بخش</li>
+                        <li>افزایش جریان خون</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>جذب رطوبت و گرد و خاک</li>
+                        <li>بهبود گردش خون،کاهش درد عضلانی و کمر، تنظیم دمای بدن، فرم گیری صحیح بدن</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- مودال 13 - پد طبی دو نفره -->
+    <div id="modal13" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">پد طبی دو نفره</h2>
+                <button class="close-btn" onclick="closeModal('modal13')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad222.jpg" alt="پد طبی دو نفره - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad2.jpg" alt="پد طبی دو نفره - تصویر ۲">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/20251125_131309.jpg" alt="پد طبی دو نفره - تصویر ۳">
+                            </div>
+                            <div class="slide">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad225.jpg" alt="پد طبی دو نفره - تصویر ۴">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal13', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal13', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal13', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal13', 1)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal13', 2)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal13', 3)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal13', 0)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak//pad222.jpg" alt="پد طبی دو نفره - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal13', 1)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad2.jpg" alt="پد طبی دو نفره - تصویر کوچک ۲">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal13', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/20251125_131309.jpg" alt="پد طبی دو نفره - تصویر کوچک ۳">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal13', 3)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mamak/pad225.jpg" alt="پد طبی دو نفره - تصویر کوچک ۴">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>تخلیه الکتریسیته ساکن بدن و آرامش‌بخش</li>
+                        <li>افزایش جریان خون</li>
+                        <li>قابل شستشو با دست</li>
+                        <li>جذب رطوبت و گرد و خاک</li>
+                        <li>بهبود گردش خون،کاهش درد عضلانی و کمر، تنظیم دمای بدن، فرم گیری صحیح بدن</li>
                     </ul>
                 </div>
             </div>
@@ -999,12 +1379,12 @@
     <footer>
         <div class="container">
             <p>تمامی حقوق برای کاتالوگ محصولات نمدی خانه احسان محفوظ است © ۲۰۲۵</p>
-            <p>ارتباط با کارشناس فروش : ۰۹۰۰۵۷۱۹۳۱۲ | آدرس: مشهد ، بلوار لادن بعداز لادن ۵۱ </p>
+            <p>ارتباط با کارشناس فروش :  ۰۹۰۰۵۷۱۹۳۱۲ | آدرس: مشهد ، بلوار لادن بعداز لادن ۵۱ </p>
         </div>
     </footer>
 
     <script>
-        // کد جاوااسکریپت برای مدیریت مودال‌ها
+        // کد جاوااسکریپت بدون تغییر
         const slideIndexes = {};
         
         function openModal(modalId) {
