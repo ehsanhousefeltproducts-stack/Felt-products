@@ -51,6 +51,14 @@
             margin: 0 auto;
         }
         
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c7744;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -76,44 +84,15 @@
             height: 200px;
             background-size: cover;
             background-position: center;
+            background-color: #f5f5f5;
         }
         
-        .product-info {
+        .product-name {
             padding: 1.5rem;
-        }
-        
-        .product-info h3 {
+            text-align: center;
             font-size: 1.3rem;
-            margin-bottom: 0.5rem;
             color: #2c7744;
             font-weight: 700;
-        }
-        
-        .product-info p {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-weight: 400;
-        }
-        
-        .view-details {
-            display: inline-block;
-            background-color: #2c7744;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        
-        .view-details:hover {
-            background-color: #235c36;
         }
         
         /* Modal Styles */
@@ -159,15 +138,17 @@
             font-weight: 700;
         }
         
-        .close-modal {
+        .close-btn {
             font-size: 1.8rem;
             cursor: pointer;
             color: #777;
             transition: color 0.3s;
+            background: none;
+            border: none;
             font-family: 'Vazirmatn', sans-serif;
         }
         
-        .close-modal:hover {
+        .close-btn:hover {
             color: #333;
         }
         
@@ -273,15 +254,57 @@
             left: 15px;
         }
         
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #2c7744;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         .modal-details {
             flex: 1;
         }
         
-        .modal-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            text-align: justify;
-            font-weight: 400;
+        .product-features {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .product-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .product-features li:before {
+            content: "•";
+            color: #2c7744;
+            font-weight: bold;
+            position: absolute;
+            right: 0;
         }
         
         /* Wholesale Section */
@@ -349,6 +372,7 @@
         
         footer p {
             font-weight: 400;
+            margin-bottom: 0.5rem;
         }
         
         /* Responsive */
@@ -368,6 +392,10 @@
             .slider-container {
                 height: 250px;
             }
+            
+            .modal-body {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -378,281 +406,691 @@
     </header>
     
     <section class="products-section">
-        <div class="products-grid" id="productsGrid">
-            <!-- محصولات توسط جاوااسکریپت اضافه خواهند شد -->
-        </div>
-        
-        <!-- بخش عمده‌فروشی -->
-        <section class="wholesale-section">
-            <div class="container">
-                <h3>خرید عمده نمک‌های ارگانیک</h3>
-                <p>برای مشاهده قیمت ها ، تخفیفات و ثبت سفارش به لینک زیر مراجعه نمایید.</p>
-                <a href="https://khaneehsan.com/whole-sale/menu" class="wholesale-link" target="_blank">
-                    <i class="fas fa-store"></i>
-                    ورود به سایت عمده‌فروشی
-                </a>
+        <div class="container">
+            <h2 class="section-title">محصولات نمک ارگانیک</h2>
+            <div class="products-grid">
+                <!-- محصولات -->
+                <div class="product-card" onclick="openModal('modal1')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+جهرم+2.5')"></div>
+                    <div class="product-name">نمک جهرم 2.5</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal2')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+جهرم+1.200')"></div>
+                    <div class="product-name">نمک جهرم 1.200</div>
+                </div>
+
+                <div class="product-card" onclick="openModal('modal3')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+سنگ+2.5')"></div>
+                    <div class="product-name">نمک سنگ 2.5</div>
+                </div>
+
+                <div class="product-card" onclick="openModal('modal4')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+صورتی+1.200')"></div>
+                    <div class="product-name">نمک صورتی 1.200</div>
+                </div>
+
+                <div class="product-card" onclick="openModal('modal5')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+صورتی+600+گرمی')"></div>
+                    <div class="product-name">نمک صورتی 600 گرمی</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal6')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+سفره')"></div>
+                    <div class="product-name">نمک سفره</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal7')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+دریا+2.5')"></div>
+                    <div class="product-name">نمک دریا 2.5</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal8')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+چند+اقلیم')"></div>
+                    <div class="product-name">نمک چند اقلیم خانه احسان</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal9')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+آبی+گرانول')"></div>
+                    <div class="product-name">نمک آبی گرانول</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal10')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+جهرم+گرانول')"></div>
+                    <div class="product-name">نمک جهرم گرانول</div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('modal11')">
+                    <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/4CAF50/FFFFFF?text=نمک+صورتی+گرانول')"></div>
+                    <div class="product-name">نمک صورتی گرانول</div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- بخش عمده‌فروشی در انتهای سایت -->
+    <section class="wholesale-section">
+        <div class="container">
+            <h3>خرید عمده محصولات نمدی</h3>
+            <p>برای مشاهده قیمت ها ، تخفیفات و ثبت سفارش به لینک زیر مراجعه نمایید.</p>
+            <a href="https://khaneehsan.com/whole-sale/menu" class="wholesale-link" target="_blank">
+                <i class="fas fa-store"></i>
+                ورود به سایت عمده‌فروشی
+            </a>
+        </div>
     </section>
     
-    <footer>
-        <p>© 2023 تمامی حقوق محفوظ است - نمک‌های ارگانیک سالم</p>
-    </footer>
-    
-    <!-- مودال محصول -->
-    <div class="modal" id="productModal">
+    <!-- مودال 1 -->
+    <div id="modal1" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">نام محصول</h2>
-                <span class="close-modal" id="closeModal">&times;</span>
+                <h2 class="modal-title">نمک جهرم 2.5</h2>
+                <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="product-gallery">
                     <div class="slider-container">
-                        <div class="slides" id="modalSlides">
-                            <!-- اسلایدها توسط جاوااسکریپت اضافه می‌شوند -->
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+2.5+تصویر+۱" alt="نمک جهرم 2.5 - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+2.5+تصویر+۲" alt="نمک جهرم 2.5 - تصویر ۲">
+                            </div>
                         </div>
-                        <button class="slider-btn prev-btn" id="prevBtn">&#10094;</button>
-                        <button class="slider-btn next-btn" id="nextBtn">&#10095;</button>
-                        <div class="slider-nav" id="sliderNav">
-                            <!-- نقاط ناوبری توسط جاوااسکریپت اضافه می‌شوند -->
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal1', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal1', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal1', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal1', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal1', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک جهرم 2.5 - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal1', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک جهرم 2.5 - تصویر کوچک ۲">
                         </div>
                     </div>
                 </div>
                 <div class="modal-details">
-                    <p class="modal-description" id="modalDescription">توضیحات محصول</p>
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
     
-    <script>
-        // داده‌های محصولات (10 محصول)
-        const products = [
-            {
-                id: 1,
-                name: "نمک جهرم 2.5 کیلوگرم",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom2.5.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/unnamed (1).jpg",
-                ],
-                shortDesc: "استخراج‌شده از معادن سنگ نمک جهرم – با ساختاری کاملاً طبیعی و غنی از مواد معدنی",
-                fullDesc: "نمک سنگ جهرم با ترکیب متعادل املاح معدنی، در طب سنتی و سبک زندگی سالم بسیار توصیه شده است. این نمک طبیعی حاوی عناصر معدنی مفید برای بدن بوده و عاری از هرگونه مواد شیمیایی و افزودنی است."
-            },
-            {
-                id: 2,
-                name: "نمک جهرم 1/200 کیلوگرم",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahrom1.jpg",
-                ],
-                shortDesc: "نمک دریایی سلتیک با طعم ملایم و بافت نرم",
-                fullDesc: "نمک دریایی سلتیک از سواحل بریتانی و فرانسه جمع‌آوری می‌شود. این نمک به روش سنتی خشک شده و حاوی مواد معدنی طبیعی است. طعم ملایم و بافت نرم آن باعث شده برای پخت و پز و طعم‌دهی به غذاها ایده‌آل باشد."
-            },
-            {
-                id: 3,
-                name: "نمک صورتی پودری 1.2 کیلو",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sorati.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sorati.jpg",
-                ],
-                shortDesc: "نمک سیاه با عطر و طعم گوگردی متمایز",
-                fullDesc: "نمک سیاه هیمالیا که به نام کالا نمک نیز شناخته می‌شود، به دلیل رنگ تیره و عطر گوگردی متمایزش معروف است. این نمک در آشپزی هندی بسیار محبوب است و برای طعم‌دهی به سالادها، میوه‌ها و غذاهای گیاهی استفاده می‌شود."
-            },
-            {
-                id: 4,
-                name: "نمک صورتی پودری 600 گرمی",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/524bc8c9-3fe.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/524bc8c9-3fe.jpg",
-                ],
-                shortDesc: "نمک دریایی فرانسوی با کریستال‌های ظریف",
-                fullDesc: "فلور د سل یک نمک دریایی فرانسوی با کریستال‌های ظریف و رطوبت طبیعی است. این نمک به صورت دستی از سطح آب‌های شور جمع‌آوری می‌شود و به دلیل طعم لطیف و بافت تردش، توسط سرآشپزهای معروف در سراسر جهان استفاده می‌شود."
-            },
-            {
-                id: 5,
-                name: "نمک صورتی گرانول بسته بندی آسیابی",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sortii.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sortii.jpg",
-                ],
-                shortDesc: "نمک درشت دانه برای آشپزی حرفه‌ای",
-                fullDesc: "نمک کوشر دارای دانه‌های درشت و نامنظم است که به راحتی با انگشتان قابل برداشتن است. این ویژگی آن را برای آشپزی حرفه‌ای ایده‌آل می‌کند. نمک کوشر فاقد ید و مواد افزودنی است و طعم خالص و طبیعی دارد."
-            },
-            {
-                id: 6,
-                name: "نمک سنگ بسته بندی",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sang.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sang.jpg",
-                ],
-                shortDesc: "نمک دریایی قرمز هاوایی با خاک رس آتشفشانی",
-                fullDesc: "نمک دریایی هاوایی به رنگ قرمز متمایز است که به دلیل وجود خاک رس آتشفشانی غنی از آهن است. این نمک طعم خاکی و آهن ملایمی دارد و برای تزئین و طعم‌دهی نهایی غذاها عالی است."
-            },
-            {
-                id: 7,
-                name: "نمک جهرم گرانول بسته بندی آسیابی",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahroom.png",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/jahroom.png
-",
-                ],
-                shortDesc: "نمک دریایی با دانه‌های ریز برای استفاده روزمره",
-                fullDesc: "نمک دریایی دانه ریز برای استفاده روزمره در آشپزی و سر میز ایده‌آل است. این نمک به راحتی در غذا حل می‌شود و طعم متعادلی به غذاها می‌دهد. منبع طبیعی مواد معدنی و عاری از مواد افزودنی شیمیایی است."
-            },
-            {
-                id: 8,
-                name: "نمک آبی گرانول بسته بندی",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/253c85ee-616.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/نمک سنگ ابی.png",
-                ],
-                shortDesc: "نمک چند اقلیم خانه احسان 600گرمی",
-                fullDesc: "نمک سولانوم یک نمک معدنی با کریستال‌های درخشان و شفاف است که از معادن زیرزمینی استخراج می‌شود. این نمک حاوی مقادیر بالایی از مواد معدنی کمیاب است و برای تقویت سیستم ایمنی و بهبود سلامت گوارش مفید است."
-            },
-            {
-                id: 9,
-                name: "نمک دریا 2.5 کیلویی شفا",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/shafa.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/unnamed (3).jpg",
-                ],
-                shortDesc: "نمک دریایی با دانه‌های درشت برای آسیاب کردن",
-                fullDesc: "نمک دریایی دانه درشت برای استفاده در آسیاب نمک ایده‌آل است. دانه‌های درشت آن به آرامی خرد می‌شوند و طعم تازه و طبیعی به غذا می‌دهند. این نمک برای طعم‌دهی نهایی به استیک، سالاد و غذاهای کبابی عالی است."
-            },
-            {
-                id: 10,
-                name: "نمک سفره خانه احسان",
-                images: [
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/sofreh.jpg",
-                    "https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/unnamed (4).jpg"
-                ],
-                shortDesc: "نمک دریایی با عطر دودی طبیعی",
-                fullDesc: "نمک دریایی دودی با استفاده از چوب بلوط به طور طبیعی دودی شده و عطر و طعم منحصر به فردی دارد. این نمک برای افزودن طعم دودی به گوشت، ماهی، سبزیجات و حتی پنیر بدون نیاز به فرآیند دودی کردن طولانی عالی است."
-            }
-        ];
-
-        // المنت‌های DOM
-        const productsGrid = document.getElementById('productsGrid');
-        const productModal = document.getElementById('productModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalSlides = document.getElementById('modalSlides');
-        const modalDescription = document.getElementById('modalDescription');
-        const closeModal = document.getElementById('closeModal');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const sliderNav = document.getElementById('sliderNav');
-
-        // متغیرهای اسلاید
-        let currentSlideIndex = 0;
-        let currentProductImages = [];
-
-        // ایجاد کارت‌های محصول
-        function createProductCards() {
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.innerHTML = `
-                    <div class="product-image" style="background-image: url('${product.images[0]}')"></div>
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <p>${product.shortDesc}</p>
-                        <a href="#" class="view-details" data-id="${product.id}">مشاهده جزئیات</a>
+    <!-- مودال 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک جهرم 1.200</h2>
+                <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+1.200+تصویر+۱" alt="نمک جهرم 1.200 - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+1.200+تصویر+۲" alt="نمک جهرم 1.200 - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal2', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal2', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal2', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal2', 1)"></div>
+                        </div>
                     </div>
-                `;
-                productsGrid.appendChild(productCard);
-            });
-            
-            // اضافه کردن event listener برای دکمه‌های مشاهده جزئیات
-            document.querySelectorAll('.view-details').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    openProductModal(productId);
-                });
-            });
-        }
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal2', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک جهرم 1.200 - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal2', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک جهرم 1.200 - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- مودال 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک سنگ 2.5</h2>
+                <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سنگ+2.5+تصویر+۱" alt="نمک سنگ 2.5 - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سنگ+2.5+تصویر+۲" alt="نمک سنگ 2.5 - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal3', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal3', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal3', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal3', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal3', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک سنگ 2.5 - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal3', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک سنگ 2.5 - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- مودال 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک صورتی 1.200</h2>
+                <button class="close-btn" onclick="closeModal('modal4')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+1.200+تصویر+۱" alt="نمک صورتی 1.200 - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+1.200+تصویر+۲" alt="نمک صورتی 1.200 - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal4', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal4', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal4', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal4', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal4', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک صورتی 1.200 - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal4', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک صورتی 1.200 - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>   
+    
+    <!-- مودال 5 -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک صورتی 600 گرمی</h2>
+                <button class="close-btn" onclick="closeModal('modal5')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+600+گرمی+تصویر+۱" alt="نمک صورتی 600 گرمی - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+600+گرمی+تصویر+۲" alt="نمک صورتی 600 گرمی - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal5', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal5', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal5', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal5', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal5', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک صورتی 600 گرمی - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal5', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک صورتی 600 گرمی - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // باز کردن مودال محصول
-        function openProductModal(productId) {
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                modalTitle.textContent = product.name;
-                modalDescription.textContent = product.fullDesc;
-                
-                // تنظیم اسلایدها
-                currentProductImages = product.images;
-                currentSlideIndex = 0;
-                updateSlider();
-                
-                productModal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+    <!-- مودال 6 -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک سفره</h2>
+                <button class="close-btn" onclick="closeModal('modal6')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سفره+تصویر+۱" alt="نمک سفره - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+سفره+تصویر+۲" alt="نمک سفره - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal6', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal6', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal6', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal6', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal6', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک سفره - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal6', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک سفره - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- مودال 7 -->
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک دریا 2.5</h2>
+                <button class="close-btn" onclick="closeModal('modal7')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+دریا+2.5+تصویر+۱" alt="نمک دریا 2.5 - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+دریا+2.5+تصویر+۲" alt="نمک دریا 2.5 - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal7', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal7', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal7', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal7', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal7', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک دریا 2.5 - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal7', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک دریا 2.5 - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- مودال 8 -->
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک چند اقلیم خانه احسان</h2>
+                <button class="close-btn" onclick="closeModal('modal8')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+چند+اقلیم+تصویر+۱" alt="نمک چند اقلیم خانه احسان - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+چند+اقلیم+تصویر+۲" alt="نمک چند اقلیم خانه احسان - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal8', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal8', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal8', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal8', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal8', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک چند اقلیم خانه احسان - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal8', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک چند اقلیم خانه احسان - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 9 -->
+    <div id="modal9" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک آبی گرانول</h2>
+                <button class="close-btn" onclick="closeModal('modal9')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+آبی+گرانول+تصویر+۱" alt="نمک آبی گرانول - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+آبی+گرانول+تصویر+۲" alt="نمک آبی گرانول - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal9', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal9', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal9', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal9', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal9', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک آبی گرانول - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal9', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک آبی گرانول - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 10 -->
+    <div id="modal10" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک جهرم گرانول</h2>
+                <button class="close-btn" onclick="closeModal('modal10')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+گرانول+تصویر+۱" alt="نمک جهرم گرانول - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+جهرم+گرانول+تصویر+۲" alt="نمک جهرم گرانول - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal10', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal10', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal10', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal10', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal10', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک جهرم گرانول - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal10', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک جهرم گرانول - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال 11 -->
+    <div id="modal11" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">نمک صورتی گرانول</h2>
+                <button class="close-btn" onclick="closeModal('modal11')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="slider-container">
+                        <div class="slides">
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+گرانول+تصویر+۱" alt="نمک صورتی گرانول - تصویر ۱">
+                            </div>
+                            <div class="slide">
+                                <img src="https://via.placeholder.com/800x500/4CAF50/FFFFFF?text=نمک+صورتی+گرانول+تصویر+۲" alt="نمک صورتی گرانول - تصویر ۲">
+                            </div>
+                        </div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('modal11', -1)">&#10094;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('modal11', 1)">&#10095;</button>
+                        <div class="slider-nav">
+                            <div class="slider-dot active" onclick="currentSlide('modal11', 0)"></div>
+                            <div class="slider-dot" onclick="currentSlide('modal11', 1)"></div>
+                        </div>
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail active" onclick="currentSlide('modal11', 0)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۱" alt="نمک صورتی گرانول - تصویر کوچک ۱">
+                        </div>
+                        <div class="thumbnail" onclick="currentSlide('modal11', 1)">
+                            <img src="https://via.placeholder.com/100x100/4CAF50/FFFFFF?text=۲" alt="نمک صورتی گرانول - تصویر کوچک ۲">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <ul class="product-features">
+                        <li>نمک طبیعی و ارگانیک از معادن جهرم</li>
+                        <li>فاقد مواد افزودنی و نگهدارنده</li>
+                        <li>حاوی مواد معدنی مفید برای بدن</li>
+                        <li>مناسب برای مصرف روزانه</li>
+                        <li>بسته‌بندی بهداشتی و مقاوم</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>تمامی حقوق برای کاتالوگ محصولات نمدی خانه احسان محفوظ است © ۲۰۲۵</p>
+            <p>ارتباط با کارشناس فروش : ۰۹۰۰۵۷۱۹۳۱۲ | آدرس: مشهد ، بلوار لادن بعداز لادن ۵۱ </p>
+        </div>
+    </footer>
+
+    <script>
+        // کد جاوااسکریپت برای مدیریت مودال‌ها
+        const slideIndexes = {};
+        
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            if (!slideIndexes[modalId]) {
+                slideIndexes[modalId] = 0;
             }
+            showSlides(modalId, slideIndexes[modalId]);
         }
-
-        // به‌روزرسانی اسلایدر
-        function updateSlider() {
-            // پاک کردن اسلایدهای قبلی
-            modalSlides.innerHTML = '';
-            sliderNav.innerHTML = '';
-            
-            // ایجاد اسلایدهای جدید
-            currentProductImages.forEach((image, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                slide.innerHTML = `<img src="${image}" alt="${modalTitle.textContent} - تصویر ${index + 1}">`;
-                modalSlides.appendChild(slide);
-                
-                // ایجاد نقاط ناوبری
-                const dot = document.createElement('div');
-                dot.className = `slider-dot ${index === currentSlideIndex ? 'active' : ''}`;
-                dot.addEventListener('click', () => {
-                    currentSlideIndex = index;
-                    updateSlider();
-                });
-                sliderNav.appendChild(dot);
-            });
-            
-            // تنظیم موقعیت اسلایدها
-            modalSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-        }
-
-        // تغییر اسلاید
-        function changeSlide(direction) {
-            currentSlideIndex += direction;
-            
-            if (currentSlideIndex < 0) {
-                currentSlideIndex = currentProductImages.length - 1;
-            } else if (currentSlideIndex >= currentProductImages.length) {
-                currentSlideIndex = 0;
-            }
-            
-            updateSlider();
-        }
-
-        // بستن مودال
-        function closeProductModal() {
-            productModal.style.display = 'none';
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-
-        // Event Listeners
-        closeModal.addEventListener('click', closeProductModal);
         
-        // دکمه‌های اسلاید
-        prevBtn.addEventListener('click', () => changeSlide(-1));
-        nextBtn.addEventListener('click', () => changeSlide(1));
-        
-        // بستن مودال با کلیک خارج از آن
-        window.addEventListener('click', function(e) {
-            if (e.target === productModal) {
-                closeProductModal();
+        function changeSlide(modalId, n) {
+            if (!slideIndexes[modalId]) {
+                slideIndexes[modalId] = 0;
             }
-        });
-
-        // راه‌اندازی اولیه
-        document.addEventListener('DOMContentLoaded', function() {
-            createProductCards();
+            slideIndexes[modalId] += n;
+            showSlides(modalId, slideIndexes[modalId]);
+        }
+        
+        function currentSlide(modalId, n) {
+            slideIndexes[modalId] = n;
+            showSlides(modalId, slideIndexes[modalId]);
+        }
+        
+        function showSlides(modalId, n) {
+            const modal = document.getElementById(modalId);
+            const slides = modal.querySelectorAll('.slide');
+            const dots = modal.querySelectorAll('.slider-dot');
+            const thumbnails = modal.querySelectorAll('.thumbnail');
+            
+            if (n >= slides.length) {
+                slideIndexes[modalId] = 0;
+            } else if (n < 0) {
+                slideIndexes[modalId] = slides.length - 1;
+            } else {
+                slideIndexes[modalId] = n;
+            }
+            
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.classList.remove('active');
+            });
+            
+            slides[slideIndexes[modalId]].style.display = 'block';
+            if (dots[slideIndexes[modalId]]) {
+                dots[slideIndexes[modalId]].classList.add('active');
+            }
+            if (thumbnails[slideIndexes[modalId]]) {
+                thumbnails[slideIndexes[modalId]].classList.add('active');
+            }
+        }
+        
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (modals[i].style.display === 'block') {
+                        modals[i].style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            }
         });
     </script>
 </body>
