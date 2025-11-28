@@ -28,6 +28,22 @@
             background-color: #fefefe;
             color: var(--text-color);
             line-height: 1.6;
+            background-image: url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/asal/asal.background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: -1;
         }
 
         .container {
@@ -39,13 +55,14 @@
 
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.8), rgba(139, 105, 20, 0.8));
             color: white;
             padding: 1rem 0;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(5px);
         }
 
         .header-content {
@@ -64,6 +81,86 @@
 
         .logo i {
             font-size: 2rem;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 5px 15px;
+            margin-right: 2rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .search-box:focus-within {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px;
+            width: 200px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .autocomplete-results {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1001;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .autocomplete-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
+        .autocomplete-item:hover {
+            background-color: var(--accent-color);
+        }
+
+        .autocomplete-item.active {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         nav ul {
@@ -105,24 +202,58 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/asal/asal.header.png');
             background-size: cover;
             background-position: center;
             color: white;
-            text-align: center;
             padding: 5rem 1rem;
             margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(45deg, rgba(212, 160, 23, 0.3), rgba(139, 105, 20, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            width: 100%;
         }
 
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, var(--primary-color), #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.2rem;
-            max-width: 700px;
             margin: 0 auto 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            max-width: 90%;
+            line-height: 1.8;
         }
 
         .btn {
@@ -170,6 +301,20 @@
             background-color: var(--primary-color);
         }
 
+        .search-results-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -178,19 +323,36 @@
         }
 
         .product-card {
-            background-color: white;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
             height: 100%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            border-radius: 15px;
+            z-index: -1;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
         }
 
         .product-img {
@@ -215,6 +377,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            background: transparent;
         }
 
         .product-info h3 {
@@ -258,13 +421,27 @@
 
         /* Bulk Purchase Section */
         .bulk-purchase {
-            background: linear-gradient(135deg, #fdf6e3, #fff9e6);
+            background: linear-gradient(135deg, rgba(253, 246, 227, 0.8), rgba(255, 249, 230, 0.8));
             border-radius: 15px;
             padding: 3rem 2rem;
             margin: 4rem 0;
             text-align: center;
             box-shadow: var(--shadow);
-            border: 2px solid var(--accent-color);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .bulk-purchase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            border-radius: 15px;
+            z-index: -1;
         }
 
         .bulk-purchase h3 {
@@ -314,13 +491,15 @@
         }
 
         .modal-content {
-            background-color: white;
+            background: rgba(255, 255, 255, 0.9);
             margin: 2% auto;
             width: 90%;
             max-width: 1000px;
             border-radius: 15px;
             overflow: hidden;
             animation: modalOpen 0.5s;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         @keyframes modalOpen {
@@ -409,7 +588,7 @@
             padding: 2rem;
             display: flex;
             flex-direction: column;
-            background: white;
+            background: transparent;
         }
 
         .modal-details h2 {
@@ -472,9 +651,22 @@
 
         /* Footer */
         footer {
-            background-color: var(--dark-color);
+            background: linear-gradient(135deg, rgba(44, 44, 44, 0.9), rgba(44, 44, 44, 0.8));
             color: white;
             padding: 3rem 0 1.5rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(44, 44, 44, 0.7);
+            z-index: -1;
         }
 
         .footer-content {
@@ -556,6 +748,21 @@
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .search-container {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search-box {
+                margin-right: 0;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .search-box input {
+                width: 100%;
             }
 
             nav ul {
@@ -661,11 +868,20 @@
                     <span>عسل ارگانیک</span>
                 </div>
                 
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="جستجوی محصولات...">
+                        <button id="searchButton"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="autocomplete-results" id="autocompleteResults"></div>
+         
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
+        <div class="hero-content">
             <h1>عسل ارگانیک طبیعی و سالم</h1>
             <p>لذت طعم واقعی عسل طبیعی را با محصولات ارگانیک ما تجربه کنید. عسل‌های ما مستقیماً از کندوهای طبیعی و بدون هیچگونه افزودنی شیمیایی جمع‌آوری می‌شوند.</p>
             <a href="#products" class="btn">مشاهده محصولات</a>
@@ -677,6 +893,11 @@
         <div class="section-title">
             <h2>انواع عسل ارگانیک</h2>
         </div>
+        
+        <div class="search-results-info" id="searchResultsInfo" style="display: none;">
+            <!-- نتایج جستجو اینجا نمایش داده می‌شود -->
+        </div>
+        
         <div class="products-grid" id="products-grid">
             <!-- Products will be generated by JavaScript -->
         </div>
@@ -685,7 +906,7 @@
         <div class="bulk-purchase">
             <h3>خرید عمده عسل‌های ارگانیک</h3>
             <p>برای مشاهده قیمت ها ، تخفیفات و ثبت سفارش به لینک زیر مراجعه نمایید.</p>
-            <a href="https://wholesale.example.com" class="bulk-btn">ورود به سایت عمده‌فروشی</a>
+            <a href="https://khaneehsan.com/whole-sale" class="bulk-btn">ورود به سایت عمده‌فروشی</a>
         </div>
     </section>
 
@@ -709,9 +930,9 @@
                         <li><a href="#products">محصولات</a></li>
                         <li><a href="#">درباره ما</a></li>
                         <li><a href="#">تماس با ما</a></li>
-                        <li><a href="#">وبلاگ</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-column">
                     <h3>تماس با ما</h3>
                     <ul class="footer-links">
@@ -751,13 +972,16 @@
                             <!-- Features will be added by JavaScript -->
                         </ul>
                     </div>
+                    <div class="modal-actions">
+                        <button class="btn">افزودن به سبد خرید</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Product data - 40 products
+        // Product data - 30 products
         const products = [
             {
                 id: 1,
@@ -783,27 +1007,48 @@
                 shortDescription: "عسل کنار با طعم خاص و منحصر به فرد",
                 features: ["مناسب برای ورزشکاران", "تقویت حافظه", "انرژی زا", "ضد التهاب"]
             },
-            // 38 more products...
+            {
+                id: 3,
+                name: "عسل آفتابگردان",
+                image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                description: "عسل آفتابگردان با رنگ کهربایی و طعم ملایم، از شهد گل های آفتابگردان تهیه می شود. این عسل برای سلامت قلب بسیار مفید است.",
+                shortDescription: "عسل آفتابگردان با رنگ کهربایی و طعم ملایم",
+                features: ["سلامت قلب", "آنتی اکسیدان قوی", "منبع ویتامین E", "تقویت پوست"]
+            },
+            {
+                id: 4,
+                name: "عسل چند گل",
+                image: "https://images.unsplash.com/photo-1587049352846-4a5f9fbd6f51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1587049352846-4a5f9fbd6f51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                description: "عسل چند گل با ترکیبی از خواص گیاهان دارویی مختلف، انتخابی ایده آل برای مصرف روزانه است.",
+                shortDescription: "عسل چند گل با ترکیبی از خواص گیاهان دارویی",
+                features: ["ترکیب چند گیاه", "خواص متنوع", "طعم متعادل", "مصرف روزانه"]
+            },
+            {
+                id: 5,
+                name: "عسل گشنیز",
+                image: "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1559053699-79417e56e5c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                description: "عسل گشنیز با عطر و طعم خاص، برای بهبود گوارش و کاهش اضطراب بسیار مفید است.",
+                shortDescription: "عسل گشنیز با عطر و طعم خاص",
+                features: ["بهبود گوارش", "کاهش اضطراب", "ضد باکتری", "تنظیم قند خون"]
+            },
+            // 25 more products...
         ];
 
-        // Generate remaining 38 products
-        for (let i = 3; i <= 40; i++) {
+        // Generate remaining 25 products
+        for (let i = 6; i <= 30; i++) {
             const honeyTypes = [
-                {
-                    name: "عسل آفتابگردان",
-                    shortDesc: "عسل آفتابگردان با رنگ کهربایی و طعم ملایم",
-                    features: ["سلامت قلب", "آنتی اکسیدان قوی", "منبع ویتامین E", "تقویت پوست"]
-                },
-                {
-                    name: "عسل چند گل",
-                    shortDesc: "عسل چند گل با ترکیبی از خواص گیاهان دارویی",
-                    features: ["ترکیب چند گیاه", "خواص متنوع", "طعم متعادل", "مصرف روزانه"]
-                },
-                {
-                    name: "عسل گشنیز",
-                    shortDesc: "عسل گشنیز با عطر و طعم خاص",
-                    features: ["بهبود گوارش", "کاهش اضطراب", "ضد باکتری", "تنظیم قند خون"]
-                },
                 {
                     name: "عسل مرکبات",
                     shortDesc: "عسل مرکبات با طعم ترش و شیرین",
@@ -828,6 +1073,21 @@
                     name: "عسل اکالیپتوس",
                     shortDesc: "عسل اکالیپتوس برای سیستم تنفسی",
                     features: ["مفید برای تنفس", "ضد سرفه", "ضد التهاب", "ضد احتقان"]
+                },
+                {
+                    name: "عسل زرشک",
+                    shortDesc: "عسل زرشک با طعم ترش ملس",
+                    features: ["کاهش فشار خون", "ضد دیابت", "پاکسازی کبد", "ضد التهاب"]
+                },
+                {
+                    name: "عسل سیاه دانه",
+                    shortDesc: "عسل سیاه دانه با خواص درمانی",
+                    features: ["تقویت ایمنی", "ضد آلرژی", "آنتی اکسیدان", "ضد سرطان"]
+                },
+                {
+                    name: "عسل یونجه",
+                    shortDesc: "عسل یونجه با طعم شیرین و ملایم",
+                    features: ["مقوی عمومی", "مناسب سالمندان", "انرژی زا", "ضد کم خونی"]
                 }
             ];
 
@@ -856,13 +1116,31 @@
         const modalTitle = document.getElementById('modalTitle');
         const modalDescription = document.getElementById('modalDescription');
         const modalFeatures = document.getElementById('modalFeatures');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const searchResultsInfo = document.getElementById('searchResultsInfo');
+        const autocompleteResults = document.getElementById('autocompleteResults');
 
         let currentProduct = null;
+        let filteredProducts = [...products];
+        let currentAutocompleteIndex = -1;
 
         // Generate product cards
-        function generateProductCards() {
+        function generateProductCards(productsToShow = products) {
             productsGrid.innerHTML = '';
-            products.forEach(product => {
+            
+            if (productsToShow.length === 0) {
+                productsGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; color: #ccc;"></i>
+                        <p>محصولی یافت نشد</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">لطفاً عبارت جستجوی خود را تغییر دهید</p>
+                    </div>
+                `;
+                return;
+            }
+
+            productsToShow.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.innerHTML = `
@@ -887,6 +1165,95 @@
                     openProductModal(productId);
                 });
             });
+        }
+
+        // Search function
+        function searchProducts(searchTerm) {
+            if (!searchTerm.trim()) {
+                filteredProducts = [...products];
+                searchResultsInfo.style.display = 'none';
+                generateProductCards();
+                return;
+            }
+
+            const searchLower = searchTerm.toLowerCase().trim();
+            filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchLower) ||
+                product.shortDescription.toLowerCase().includes(searchLower) ||
+                product.description.toLowerCase().includes(searchLower) ||
+                product.features.some(feature => feature.toLowerCase().includes(searchLower))
+            );
+
+            // Update search results info
+            if (filteredProducts.length > 0) {
+                searchResultsInfo.innerHTML = `نتایج جستجو برای "${searchTerm}" - ${filteredProducts.length} محصول یافت شد`;
+                searchResultsInfo.style.display = 'block';
+            } else {
+                searchResultsInfo.style.display = 'none';
+            }
+
+            generateProductCards(filteredProducts);
+        }
+
+        // Autocomplete function
+        function showAutocomplete(searchTerm) {
+            if (!searchTerm.trim()) {
+                autocompleteResults.style.display = 'none';
+                currentAutocompleteIndex = -1;
+                return;
+            }
+
+            const searchLower = searchTerm.toLowerCase().trim();
+            const suggestions = products.filter(product => 
+                product.name.toLowerCase().includes(searchLower) ||
+                product.shortDescription.toLowerCase().includes(searchLower)
+            ).slice(0, 5); // فقط 5 پیشنهاد اول
+
+            if (suggestions.length === 0) {
+                autocompleteResults.style.display = 'none';
+                return;
+            }
+
+            autocompleteResults.innerHTML = '';
+            suggestions.forEach((product, index) => {
+                const item = document.createElement('div');
+                item.className = 'autocomplete-item';
+                item.innerHTML = `
+                    <div style="font-weight: bold;">${product.name}</div>
+                    <div style="font-size: 0.8rem; color: #666;">${product.shortDescription}</div>
+                `;
+                item.addEventListener('click', () => {
+                    searchInput.value = product.name;
+                    searchProducts(product.name);
+                    autocompleteResults.style.display = 'none';
+                });
+                autocompleteResults.appendChild(item);
+            });
+
+            autocompleteResults.style.display = 'block';
+            currentAutocompleteIndex = -1;
+        }
+
+        // Navigate autocomplete with keyboard
+        function navigateAutocomplete(direction) {
+            const items = autocompleteResults.querySelectorAll('.autocomplete-item');
+            if (items.length === 0) return;
+
+            // Remove active class from all items
+            items.forEach(item => item.classList.remove('active'));
+
+            if (direction === 'down') {
+                currentAutocompleteIndex = (currentAutocompleteIndex + 1) % items.length;
+            } else if (direction === 'up') {
+                currentAutocompleteIndex = currentAutocompleteIndex <= 0 ? items.length - 1 : currentAutocompleteIndex - 1;
+            }
+
+            if (currentAutocompleteIndex >= 0) {
+                items[currentAutocompleteIndex].classList.add('active');
+                searchInput.value = products.find(p => 
+                    p.name === items[currentAutocompleteIndex].querySelector('div').textContent
+                )?.name || searchInput.value;
+            }
         }
 
         // Open product modal
@@ -941,6 +1308,54 @@
 
         // Event listeners
         closeModal.addEventListener('click', closeProductModal);
+
+        // Search event listeners
+        searchButton.addEventListener('click', () => {
+            searchProducts(searchInput.value);
+            autocompleteResults.style.display = 'none';
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const value = e.target.value;
+            showAutocomplete(value);
+            if (value === '') {
+                searchProducts('');
+            }
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                if (currentAutocompleteIndex >= 0) {
+                    const activeItem = autocompleteResults.querySelector('.autocomplete-item.active');
+                    if (activeItem) {
+                        const productName = activeItem.querySelector('div').textContent;
+                        searchInput.value = productName;
+                        searchProducts(productName);
+                    }
+                } else {
+                    searchProducts(searchInput.value);
+                }
+                autocompleteResults.style.display = 'none';
+                e.preventDefault();
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                navigateAutocomplete('down');
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                navigateAutocomplete('up');
+            } else if (e.key === 'Escape') {
+                autocompleteResults.style.display = 'none';
+                currentAutocompleteIndex = -1;
+            }
+        });
+
+        // Close autocomplete when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                autocompleteResults.style.display = 'none';
+                currentAutocompleteIndex = -1;
+            }
+        });
 
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
