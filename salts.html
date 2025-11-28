@@ -36,7 +36,7 @@
                     rgba(52, 152, 219, 0.4) 0%, 
                     rgba(41, 128, 185, 0.5) 50%,
                     rgba(31, 97, 141, 0.6) 100%),
-                url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/9587.jpg') center/cover;
+                url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namak/pinkk.jpg') center/cover;
             color: #fff;
             padding: 60px 0;
             text-align: center;
@@ -413,6 +413,90 @@
             margin-top: 20px;
             color: #ecf0f1;
         }
+
+        /* استایل برای دایالوگ تایید */
+        .confirm-dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirm-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .confirm-content h3 {
+            color: #2980b9;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .confirm-content p {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .confirm-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .confirm-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .confirm-yes {
+            background: #27ae60;
+            color: white;
+        }
+
+        .confirm-yes:hover {
+            background: #219a52;
+            transform: translateY(-2px);
+        }
+
+        .confirm-no {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .confirm-no:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .phone-link {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .phone-link:hover {
+            color: #3498db !important;
+            transform: translateY(-2px);
+        }
         
         /* مودال */
         .modal {
@@ -730,6 +814,10 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
+            .confirm-buttons {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 480px) {
@@ -921,19 +1009,19 @@
                 </div>
                 <div class="footer-section">
                     <h3>تماس با ما</h3>
-                    <p><i class="fas fa-phone"></i> ارتباط با مدیرفروش : ۰۹۰۰۵۷۱۹۳۱۲</p>
+                    <p class="phone-link" onclick="confirmCall('09005719312')">
+                        <i class="fas fa-phone"></i> ارتباط با مدیر فروش :۰۹۰۰۵۷۱۹۳۱۲
+                    </p>
                     <p><i class="fas fa-map-marker-alt"></i> مشهد، بلوار لادن بعداز لادن ۵۱</p>
-                    <p><i class="fas fa-envelope"></i> ............</p>
+                    <p><i class="fas fa-envelope"></i> info@khaneehsan.com</p>
                 </div>
-                <div class="footer-section">
-                    <h3>لینک‌های مفید</h3>
-                    <a href="#">تماس با ما</a>
-                </div>
+          
             </div>
             
             <div class="social-icons">
+                <a href="#"><i class="fab fa-ایتا"></i></a>
                 <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab وات ساپ"></i></a>
             </div>
             
             <div class="copyright">
@@ -941,6 +1029,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- دایالوگ تایید تماس -->
+    <div id="confirmDialog" class="confirm-dialog">
+        <div class="confirm-content">
+            <h3>تماس تلفنی</h3>
+            <p>آیا می‌خواهید با شماره <strong>۰۹۰۰۵۷۱۹۳۱۲</strong> تماس بگیرید؟</p>
+            <div class="confirm-buttons">
+                <button class="confirm-btn confirm-yes" onclick="makeCall()">بله، تماس بگیر</button>
+                <button class="confirm-btn confirm-no" onclick="closeConfirmDialog()">انصراف</button>
+            </div>
+        </div>
+    </div>
 
     <!-- مودال‌ها -->
     <!-- مودال 1 -->
@@ -1037,7 +1137,8 @@
             </div>
         </div>
     </div>
-        <!-- مودال 3 -->
+    
+    <!-- مودال 3 -->
     <div id="modal3" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1501,7 +1602,6 @@
         </div>
 
    </div>
-
     <script>
         // قابلیت جستجو
         document.getElementById('searchInput').addEventListener('input', function(e) {
@@ -1657,6 +1757,40 @@
                 slideIndexes[modalId] = 0;
                 showSlides(modalId, 0);
             });
+        });
+
+        // توابع مربوط به تایید تماس
+        function confirmCall(phoneNumber) {
+            const dialog = document.getElementById('confirmDialog');
+            dialog.style.display = 'flex';
+            dialog.setAttribute('data-phone', phoneNumber);
+        }
+
+        function closeConfirmDialog() {
+            const dialog = document.getElementById('confirmDialog');
+            dialog.style.display = 'none';
+        }
+
+        function makeCall() {
+            const dialog = document.getElementById('confirmDialog');
+            const phoneNumber = dialog.getAttribute('data-phone');
+            
+            closeConfirmDialog();
+            window.location.href = `tel:${phoneNumber}`;
+        }
+
+        // بستن دایالوگ با کلیک خارج از آن
+        document.getElementById('confirmDialog').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConfirmDialog();
+            }
+        });
+
+        // بستن دایالوگ با کلید ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeConfirmDialog();
+            }
         });
     </script>
 </body>
