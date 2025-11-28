@@ -7,795 +7,869 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* استایل‌های کلی */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', sans-serif;
+     <style>
+    /* استایل‌های کلی */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Vazirmatn', sans-serif;
+    }
+    
+    :root {
+        --primary: #8BC34A;
+        --primary-dark: #689F38;
+        --primary-light: #DCEDC8;
+        --secondary: #FF80AB;
+        --accent: #FFD54F;
+        --text: #37474F;
+        --text-light: #78909C;
+        --background: #FFF9F5;
+        --white: #FFFFFF;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        --radius: 16px;
+        --transition: all 0.3s ease;
+    }
+    
+    body {
+        background: url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/cosmetics/cosmeticsbackground.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    /* ایجاد لایه شفاف روی بک‌گراند */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.85);
+        z-index: -1;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    /* هدر */
+    header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        padding: 18px 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .logo-icon {
+        width: 45px;
+        height: 45px;
+        background: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo-icon i {
+        font-size: 22px;
+        color: var(--primary);
+    }
+    
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .logo-text h1 {
+        font-size: 24px;
+        color: var(--white);
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    
+    .logo-text span {
+        font-size: 13px;
+        color: var(--primary-light);
+        font-weight: 400;
+    }
+    
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        color: var(--white);
+        font-weight: 500;
+        font-size: 16px;
+        transition: var(--transition);
+        padding: 8px 0;
+        position: relative;
+    }
+    
+    nav ul li a:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent);
+        transition: var(--transition);
+    }
+    
+    nav ul li a:hover {
+        color: var(--accent);
+    }
+    
+    nav ul li a:hover:after {
+        width: 100%;
+    }
+    
+    .header-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .search-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 18px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .search-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    /* بخش جستجو */
+    .search-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 3000;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 100px;
+    }
+    
+    .search-container {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        width: 90%;
+        max-width: 600px;
+        border-radius: var(--radius);
+        padding: 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .search-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .search-title {
+        font-size: 22px;
+        color: var(--primary-dark);
+        font-weight: 700;
+    }
+    
+    .close-search {
+        background: var(--primary-light);
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-dark);
+        font-size: 18px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .close-search:hover {
+        background: var(--primary);
+        color: var(--white);
+    }
+    
+    .search-input-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    
+    .search-input {
+        width: 100%;
+        padding: 16px 50px 16px 20px;
+        border: 2px solid var(--primary-light);
+        border-radius: 50px;
+        font-size: 16px;
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .search-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .search-icon {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary);
+        font-size: 18px;
+    }
+    
+    .search-results {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .search-result-item {
+        padding: 15px;
+        border-bottom: 1px solid var(--primary-light);
+        cursor: pointer;
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.7);
+    }
+    
+    .search-result-item:hover {
+        background-color: var(--primary-light);
+    }
+    
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+    
+    .result-name {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--text);
+    }
+    
+    .result-category {
+        font-size: 14px;
+        color: var(--primary);
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 20px;
+        color: var(--text-light);
+    }
+    
+    /* بخش معرفی */
+    .hero {
+        background: linear-gradient(135deg, rgba(139, 195, 74, 0.9) 0%, rgba(104, 159, 56, 0.9) 100%), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        color: var(--white);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.3;
+    }
+    
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero h2 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero p {
+        font-size: 20px;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        line-height: 1.8;
+    }
+    
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background-color: var(--accent);
+        color: var(--text);
+        padding: 16px 36px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+        transition: var(--transition);
+        box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
+    }
+    
+    .btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(255, 213, 79, 0.5);
+    }
+    
+    .btn i {
+        font-size: 20px;
+    }
+    
+    /* بخش محصولات */
+    .products-section {
+        padding: 100px 0;
+        background: transparent;
+    }
+    
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .section-title {
+        font-size: 36px;
+        color: var(--primary-dark);
+        margin-bottom: 15px;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        border-radius: 2px;
+    }
+    
+    .section-subtitle {
+        font-size: 18px;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    
+    .product-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--secondary);
+        color: var(--white);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        z-index: 2;
+    }
+    
+    .product-image {
+        height: 220px;
+        background: linear-gradient(135deg, var(--primary-light) 0%, #f5f5f5 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .product-image:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.03) 100%);
+    }
+    
+    .product-image img {
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+        transition: var(--transition);
+    }
+    
+    .product-card:hover .product-image img {
+        transform: scale(1.05);
+    }
+    
+    .product-info {
+        padding: 25px;
+    }
+    
+    .product-category {
+        color: var(--primary);
+        font-size: 14px;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    
+    .product-name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text);
+        line-height: 1.4;
+    }
+    
+    .product-description {
+        font-size: 14px;
+        color: var(--text-light);
+        margin-bottom: 20px;
+        height: 60px;
+        overflow: hidden;
+    }
+    
+    /* مودال */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        overflow-y: auto;
+        backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        margin: 50px auto;
+        max-width: 1000px;
+        width: 90%;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        animation: modalAppear 0.4s ease-out;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    @keyframes modalAppear {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
         }
-        
-        :root {
-            --primary: #8BC34A;
-            --primary-dark: #689F38;
-            --primary-light: #DCEDC8;
-            --secondary: #FF80AB;
-            --accent: #FFD54F;
-            --text: #37474F;
-            --text-light: #78909C;
-            --background: #FFF9F5;
-            --white: #FFFFFF;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --radius: 16px;
-            --transition: all 0.3s ease;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        body {
-            background-color: var(--background);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* هدر */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 18px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo-icon i {
-            font-size: 22px;
-            color: var(--primary);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-text h1 {
-            font-size: 24px;
-            color: var(--white);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .logo-text span {
-            font-size: 13px;
-            color: var(--primary-light);
-            font-weight: 400;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 500;
-            font-size: 16px;
-            transition: var(--transition);
-            padding: 8px 0;
-            position: relative;
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-        
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        .header-actions {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        
-        .search-btn, .cart-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 18px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .search-btn:hover, .cart-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        /* بخش معرفی */
-        .hero {
-            background: linear-gradient(135deg, rgba(139, 195, 74, 0.9) 0%, rgba(104, 159, 56, 0.9) 100%), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 0;
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 30px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: var(--white);
+    }
+    
+    .modal-title {
+        font-size: 24px;
+        font-weight: 700;
+    }
+    
+    .close-modal {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 20px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .close-modal:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(90deg);
+    }
+    
+    .modal-body {
+        padding: 30px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .modal-image-container {
+        flex: 1;
+        min-width: 350px;
+        margin-left: 30px;
+    }
+    
+    .modal-slider {
+        position: relative;
+        height: 350px;
+        overflow: hidden;
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, var(--primary-light) 0%, #f5f5f5 100%);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .slides {
+        display: flex;
+        width: 300%;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .slide {
+        width: 33.333%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .slide img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    
+    .slider-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+    }
+    
+    .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #E0E0E0;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .slider-dot.active {
+        background-color: var(--primary);
+        transform: scale(1.2);
+    }
+    
+    .modal-details {
+        flex: 1;
+        min-width: 350px;
+    }
+    
+    .modal-description {
+        margin-bottom: 25px;
+        line-height: 1.8;
+        color: var(--text);
+    }
+    
+    .features {
+        margin-bottom: 25px;
+    }
+    
+    .features h4 {
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .features ul {
+        list-style: none;
+    }
+    
+    .features li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-right: 25px;
+    }
+    
+    .features li:before {
+        content: "✓";
+        color: var(--primary);
+        font-weight: bold;
+        position: absolute;
+        right: 0;
+    }
+    
+    /* فوتر */
+    footer {
+        background: linear-gradient(135deg, rgba(55, 71, 79, 0.9) 0%, rgba(38, 50, 56, 0.9) 100%);
+        color: var(--white);
+        padding: 70px 0 20px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+    
+    .footer-column {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 40px;
+    }
+    
+    .footer-column h3 {
+        font-size: 20px;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 12px;
+        font-weight: 600;
+    }
+    
+    .footer-column h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 2px;
+    }
+    
+    .footer-column p {
+        color: #B0BEC5;
+        margin-bottom: 20px;
+        line-height: 1.8;
+    }
+    
+    .footer-column ul {
+        list-style: none;
+    }
+    
+    .footer-column ul li {
+        margin-bottom: 12px;
+    }
+    
+    .footer-column ul li a {
+        color: #B0BEC5;
+        text-decoration: none;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .footer-column ul li a:hover {
+        color: var(--primary-light);
+        transform: translateX(-5px);
+    }
+    
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: var(--white);
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 18px;
+    }
+    
+    .social-links a:hover {
+        background-color: var(--primary);
+        transform: translateY(-5px);
+    }
+    
+    .wholesale-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: var(--white);
+        padding: 18px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+        text-align: center;
+        transition: var(--transition);
+        width: 100%;
+        box-shadow: 0 6px 20px rgba(139, 195, 74, 0.4);
+        margin-top: 15px;
+    }
+    
+    .wholesale-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(139, 195, 74, 0.5);
+    }
+    
+    .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 14px;
+        color: #B0BEC5;
+    }
+    
+    /* رسپانسیو */
+    @media (max-width: 992px) {
         .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 36px;
         }
         
         .hero p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--accent);
-            color: var(--text);
-            padding: 16px 36px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
             font-size: 18px;
-            transition: var(--transition);
-            box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(255, 213, 79, 0.5);
-        }
-        
-        .btn i {
-            font-size: 20px;
-        }
-        
-        /* بخش محصولات */
-        .products-section {
-            padding: 100px 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title {
-            font-size: 36px;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--secondary);
-            color: var(--white);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            z-index: 2;
-        }
-        
-        .product-image {
-            height: 220px;
-            background: linear-gradient(135deg, var(--primary-light) 0%, #f5f5f5 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .product-image:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.03) 100%);
-        }
-        
-        .product-image img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-            transition: var(--transition);
-        }
-        
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-        
-        .product-info {
-            padding: 25px;
-        }
-        
-        .product-category {
-            color: var(--primary);
-            font-size: 14px;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .product-name {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text);
-            line-height: 1.4;
-        }
-        
-        .product-price {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .product-price .old-price {
-            font-size: 16px;
-            color: var(--text-light);
-            text-decoration: line-through;
-            font-weight: 500;
-        }
-        
-        .product-description {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            height: 60px;
-            overflow: hidden;
-        }
-        
-        .product-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .view-details, .add-to-cart {
-            flex: 1;
-            text-align: center;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        
-        .view-details {
-            background-color: var(--primary-light);
-            color: var(--primary-dark);
-        }
-        
-        .view-details:hover {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-        
-        .add-to-cart {
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .add-to-cart:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        /* مودال */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            overflow-y: auto;
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            background-color: var(--white);
-            margin: 50px auto;
-            max-width: 1000px;
-            width: 90%;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-            animation: modalAppear 0.4s ease-out;
-        }
-        
-        @keyframes modalAppear {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 30px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-        }
-        
-        .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-        }
-        
-        .close-modal {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 20px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .close-modal:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg);
         }
         
         .modal-body {
-            padding: 30px;
-            display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
         }
         
         .modal-image-container {
-            flex: 1;
-            min-width: 350px;
-            margin-left: 30px;
+            margin-left: 0;
+            margin-bottom: 30px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        nav ul {
+            gap: 20px;
+        }
+        
+        .hero {
+            padding: 80px 0;
+        }
+        
+        .hero h2 {
+            font-size: 30px;
+        }
+        
+        .section-title {
+            font-size: 28px;
         }
         
         .modal-slider {
-            position: relative;
-            height: 350px;
-            overflow: hidden;
-            border-radius: var(--radius);
-            background: linear-gradient(135deg, var(--primary-light) 0%, #f5f5f5 100%);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 250px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .products-grid {
+            grid-template-columns: 1fr;
         }
         
-        .slides {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
+        .modal-content {
+            width: 95%;
+            margin: 20px auto;
         }
         
-        .slide {
-            width: 33.333%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .modal-header, .modal-body {
             padding: 20px;
         }
         
-        .slide img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 10px;
-        }
-        
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #E0E0E0;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .slider-dot.active {
-            background-color: var(--primary);
-            transform: scale(1.2);
-        }
-        
-        .modal-details {
-            flex: 1;
-            min-width: 350px;
-        }
-        
-        .modal-price {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .modal-price .old-price {
-            font-size: 20px;
-            color: var(--text-light);
-            text-decoration: line-through;
-            font-weight: 500;
-        }
-        
-        .modal-description {
-            margin-bottom: 25px;
-            line-height: 1.8;
-            color: var(--text);
-        }
-        
-        .features {
-            margin-bottom: 25px;
-        }
-        
-        .features h4 {
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-            font-size: 18px;
-            font-weight: 600;
-        }
-        
-        .features ul {
-            list-style: none;
-        }
-        
-        .features li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-right: 25px;
-        }
-        
-        .features li:before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-            position: absolute;
-            right: 0;
-        }
-        
-        .buy-section {
-            background: var(--primary-light);
+        .search-container {
             padding: 20px;
-            border-radius: var(--radius);
-            margin-top: 30px;
         }
-        
-        .buy-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            padding: 18px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            text-align: center;
-            transition: var(--transition);
-            width: 100%;
-            box-shadow: 0 6px 20px rgba(139, 195, 74, 0.4);
-        }
-        
-        .buy-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(139, 195, 74, 0.5);
-        }
-        
-        /* فوتر */
-        footer {
-            background: linear-gradient(135deg, var(--text) 0%, #263238 100%);
-            color: var(--white);
-            padding: 70px 0 20px;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 12px;
-            font-weight: 600;
-        }
-        
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        
-        .footer-column p {
-            color: #B0BEC5;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-column ul li a {
-            color: #B0BEC5;
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--primary-light);
-            transform: translateX(-5px);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 18px;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 14px;
-            color: #B0BEC5;
-        }
-        
-        /* رسپانسیو */
-        @media (max-width: 992px) {
-            .hero h2 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .modal-body {
-                flex-direction: column;
-            }
-            
-            .modal-image-container {
-                margin-left: 0;
-                margin-bottom: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            nav ul {
-                gap: 20px;
-            }
-            
-            .hero {
-                padding: 80px 0;
-            }
-            
-            .hero h2 {
-                font-size: 30px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .modal-slider {
-                height: 250px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-content {
-                width: 95%;
-                margin: 20px auto;
-            }
-            
-            .modal-header, .modal-body {
-                padding: 20px;
-            }
-        }
+    }
+</style>
     </style>
 </head>
 <body>
@@ -812,26 +886,32 @@
                         <span>طبیعی . سالم . درخشان</span>
                     </div>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#">خانه</a></li>
-                        <li><a href="#">محصولات</a></li>
-                        <li><a href="#">برندها</a></li>
-                        <li><a href="#">وبلاگ</a></li>
-                        <li><a href="#">تماس با ما</a></li>
-                    </ul>
-                </nav>
+               
                 <div class="header-actions">
-                    <button class="search-btn">
+                    <button class="search-btn" id="search-btn">
                         <i class="fas fa-search"></i>
-                    </button>
-                    <button class="cart-btn">
-                        <i class="fas fa-shopping-bag"></i>
                     </button>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- بخش جستجو -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-container">
+            <div class="search-header">
+                <h3 class="search-title">جستجوی محصولات</h3>
+                <button class="close-search" id="close-search">&times;</button>
+            </div>
+            <div class="search-input-container">
+                <input type="text" class="search-input" id="search-input" placeholder="نام محصول یا دسته‌بندی را وارد کنید...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <div class="search-results" id="search-results">
+                <!-- نتایج جستجو اینجا نمایش داده می‌شوند -->
+            </div>
+        </div>
+    </div>
 
     <!-- بخش معرفی -->
     <section class="hero">
@@ -841,7 +921,7 @@
                 <p>محصولات ارگانیک ما از بهترین مواد طبیعی تهیه شده‌اند. بدون مواد شیمیایی مضر، برای پوستی درخشان و سالم.</p>
                 <a href="#products" class="btn">
                     <i class="fas fa-shopping-bag"></i>
-                    خرید محصولات
+                    مشاهده محصولات
                 </a>
             </div>
         </div>
@@ -879,7 +959,7 @@
                     <ul>
                         <li><a href="#"><i class="fas fa-chevron-left"></i> خانه</a></li>
                         <li><a href="#"><i class="fas fa-chevron-left"></i> محصولات</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i> وبلاگ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> برندها</a></li>
                         <li><a href="#"><i class="fas fa-chevron-left"></i> درباره ما</a></li>
                         <li><a href="#"><i class="fas fa-chevron-left"></i> تماس با ما</a></li>
                     </ul>
@@ -894,12 +974,12 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>خبرنامه</h3>
-                    <p>برای دریافت جدیدترین محصولات و تخفیف‌ها در خبرنامه ما عضو شوید.</p>
-                    <form>
-                        <input type="email" placeholder="ایمیل خود را وارد کنید" style="width: 100%; padding: 12px; border-radius: 8px; border: none; margin-bottom: 10px;">
-                        <button type="submit" style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: var(--primary); color: white; font-weight: 600; cursor: pointer;">عضویت</button>
-                    </form>
+                    <h3>خرید عمده</h3>
+                    <p>برای خرید عمده محصولات با شرایط ویژه، با ما تماس بگیرید یا از طریق لینک زیر اقدام کنید.</p>
+                    <a href="https://example.com/wholesale" class="wholesale-btn">
+                        <i class="fas fa-store"></i>
+                        خرید عمده‌فروشی
+                    </a>
                 </div>
             </div>
             <div class="copyright">
@@ -927,10 +1007,6 @@
                     </div>
                 </div>
                 <div class="modal-details">
-                    <div class="modal-price" id="modal-product-price">
-                        <span id="current-price">۰ تومان</span>
-                        <span class="old-price" id="old-price">۰ تومان</span>
-                    </div>
                     <div class="modal-description" id="modal-product-description">توضیحات محصول</div>
                     <div class="features">
                         <h4>ویژگی‌های محصول:</h4>
@@ -938,26 +1014,18 @@
                             <!-- ویژگی‌ها با جاوااسکریپت اضافه خواهند شد -->
                         </ul>
                     </div>
-                    <div class="buy-section">
-                        <a href="#" class="buy-btn" id="modal-buy-link">
-                            <i class="fas fa-shopping-cart"></i>
-                            افزودن به سبد خرید
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // داده‌های محصولات
+        // داده‌های محصولات (30 محصول)
         const products = [
             {
                 id: 1,
                 name: "رژلب ارگانیک قرمز",
                 category: "لوازم آرایشی لب",
-                price: "۱۵۰,۰۰۰",
-                oldPrice: "۱۸۰,۰۰۰",
                 description: "رژلب ارگانیک با رنگ طبیعی و ماندگاری بالا، حاوی ویتامین E و روغن جوجوبا برای نرمی و لطافت لب‌ها. این محصول کاملاً گیاهی و بدون مواد شیمیایی مضر تولید شده است.",
                 images: [
                     "https://images.unsplash.com/photo-1586495777744-4413f21062fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
@@ -971,8 +1039,6 @@
                 id: 2,
                 name: "کرم پودر معدنی",
                 category: "کرم پودر",
-                price: "۲۲۰,۰۰۰",
-                oldPrice: "۲۵۰,۰۰۰",
                 description: "کرم پودر معدنی با پوشش دهی عالی و فرمول سبک که پوست را تنفس می‌دهد و باعث تحریک نمی‌شود. این محصول از مواد معدنی طبیعی تهیه شده و برای پوست‌های حساس بسیار مناسب است.",
                 images: [
                     "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
@@ -986,8 +1052,6 @@
                 id: 3,
                 name: "سرم ویتامین C",
                 category: "مراقبت پوست",
-                price: "۳۵۰,۰۰۰",
-                oldPrice: "",
                 description: "سرم ویتامین C با فرمول سبک و جذب سریع که باعث درخشان‌تر شدن پوست و کاهش لک‌های تیره می‌شود. این سرم با استفاده از ویتامین C طبیعی تولید شده و برای پوست‌های حساس بسیار مناسب است.",
                 images: [
                     "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
@@ -997,13 +1061,10 @@
                 features: ["حاوی ۲۰٪ ویتامین C", "فاقد پارابن", "ضد پیری", "مناسب تمام پوست‌ها", "جذب سریع", "کاهش لک‌های تیره"],
                 badge: "تخفیف ویژه"
             },
-            // 17 محصول دیگر با ساختار مشابه
             {
                 id: 4,
                 name: "ریمل تقویت کننده مژه",
                 category: "آرایش چشم",
-                price: "۱۸۰,۰۰۰",
-                oldPrice: "۲۱۰,۰۰۰",
                 description: "ریمل ارگانیک با فرمول تقویت کننده که علاوه بر زیبایی، به رشد و استحکام مژه‌ها کمک می‌کند.",
                 images: [
                     "https://images.unsplash.com/photo-1629196914375-2e82ee9765f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
@@ -1011,6 +1072,344 @@
                     "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                 ],
                 features: ["حاوی روغن کرچک", "فاقد مواد شیمیایی مضر", "ضد آب", "مناسب برای لنز", "تقویت کننده مژه"],
+                badge: "پرفروش"
+            },
+            {
+                id: 5,
+                name: "پاک کننده آرایش صورت",
+                category: "پاک کننده",
+                description: "پاک کننده آرایش صورت با فرمول ملایم و طبیعی که به راحتی آرایش را پاک کرده و پوست را مرطوب نگه می‌دارد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی آلوئه ورا", "فاقد الکل", "مناسب پوست‌های حساس", "پاک کننده عمقی", "مرطوب کننده"],
+                badge: "جدید"
+            },
+            {
+                id: 6,
+                name: "کرم دور چشم",
+                category: "مراقبت پوست",
+                description: "کرم دور چشم با فرمول سبک و جذب سریع که به کاهش تیرگی و پف دور چشم کمک می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی کافئین", "فاقد پارابن", "کاهش پف دور چشم", "مناسب پوست‌های حساس", "جذب سریع"],
+                badge: "پرفروش"
+            },
+            {
+                id: 7,
+                name: "ماسک صورت رس",
+                category: "ماسک صورت",
+                description: "ماسک صورت رس با ترکیبات طبیعی که به پاکسازی عمقی پوست و از بین بردن ناخالصی‌ها کمک می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی رس بنتونیت", "پاکسازی عمقی", "کنترل چربی پوست", "مناسب پوست‌های چرب", "ضد جوش"],
+                badge: "جدید"
+            },
+            {
+                id: 8,
+                name: "اسپری مو طبیعی",
+                category: "مراقبت مو",
+                description: "اسپری مو با فرمول طبیعی که بدون آسیب رساندن به موها، به آن‌ها حالت و درخشندگی می‌دهد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["فاقد الکل", "حاوی پروتئین ابریشم", "حالت دهنده", "درخشندگی مو", "محافظت در برابر حرارت"],
+                badge: "پرفروش"
+            },
+            {
+                id: 9,
+                name: "لوسیون بدن آلوئه ورا",
+                category: "مراقبت بدن",
+                description: "لوسیون بدن با آلوئه ورا طبیعی که پوست را مرطوب و نرم نگه می‌دارد و احساس تازگی و شادابی ایجاد می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی آلوئه ورا طبیعی", "مرطوب کننده قوی", "جذب سریع", "مناسب پوست‌های خشک", "فاقد چربی"],
+                badge: "جدید"
+            },
+            {
+                id: 10,
+                name: "صابون گیاهی صورت",
+                category: "پاک کننده",
+                description: "صابون گیاهی صورت با ترکیبات طبیعی که پوست را به آرامی پاکسازی کرده و رطوبت آن را حفظ می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی عصاره چای سبز", "پاکسازی ملایم", "حفظ رطوبت پوست", "مناسب پوست‌های حساس", "ضد التهاب"],
+                badge: "پرفروش"
+            },
+            {
+                id: 11,
+                name: "خط چشم مایع",
+                category: "آرایش چشم",
+                description: "خط چشم مایع با فرمول پایدار و ضد آب که به راحتی استفاده شده و ماندگاری بالایی دارد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["ضد آب", "ماندگاری بالا", "نوک نازک برای خط دقیق", "خشک شدن سریع", "مناسب پوست‌های حساس"],
+                badge: "جدید"
+            },
+            {
+                id: 12,
+                name: "برق لب طبیعی",
+                category: "لوازم آرایشی لب",
+                description: "برق لب با فرمول طبیعی و براق کننده که لب‌ها را مرطوب و جذاب نشان می‌دهد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی ویتامین E", "مرطوب کننده لب", "براق کننده طبیعی", "فاقد مواد شیمیایی مضر", "طعم طبیعی"],
+                badge: "پرفروش"
+            },
+            {
+                id: 13,
+                name: "تونر صورت گیاهی",
+                category: "مراقبت پوست",
+                description: "تونر صورت با عصاره‌های گیاهی که پوست را تازه کرده و منافذ را می‌بندد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی عصاره گل همیشه بهار", "مناسب پوست‌های چرب", "بستن منافذ پوست", "تعادل pH پوست", "ضد التهاب"],
+                badge: "جدید"
+            },
+            {
+                id: 14,
+                name: "ماسک مو آووکادو",
+                category: "مراقبت مو",
+                description: "ماسک مو با آووکادو طبیعی که موها را تغذیه و تقویت کرده و به آن‌ها درخشندگی می‌بخشد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی آووکادو طبیعی", "تغذیه عمقی مو", "درخشندگی مو", "رفع موخوره", "مناسب موهای خشک"],
+                badge: "پرفروش"
+            },
+            {
+                id: 15,
+                name: "ژل شستشوی صورت",
+                category: "پاک کننده",
+                description: "ژل شستشوی صورت با فرمول ملایم که پوست را به آرامی پاکسازی کرده و چربی اضافه را از بین می‌برد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی عصاره بابونه", "پاکسازی ملایم", "کنترل چربی پوست", "مناسب پوست‌های چرب", "فاقد صابون"],
+                badge: "جدید"
+            },
+            {
+                id: 16,
+                name: "کرم دست گیاهی",
+                category: "مراقبت بدن",
+                description: "کرم دست با ترکیبات گیاهی که پوست دست را نرم و لطیف کرده و از خشکی آن جلوگیری می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی شی باتر", "مرطوب کننده قوی", "جذب سریع", "مناسب پوست‌های خشک", "حفاظت در برابر عوامل خارجی"],
+                badge: "پرفروش"
+            },
+            {
+                id: 17,
+                name: "مایع لبشوی طبیعی",
+                category: "لوازم آرایشی لب",
+                description: "مایع لبشوی با رنگ طبیعی و ماندگاری بالا که لب‌ها را زیبا و جذاب نشان می‌دهد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["رنگ طبیعی", "ماندگاری بالا", "مرطوب کننده", "فاقد مواد شیمیایی مضر", "مناسب پوست‌های حساس"],
+                badge: "جدید"
+            },
+            {
+                id: 18,
+                name: "کرم ضد آفتاب طبیعی",
+                category: "مراقبت پوست",
+                description: "کرم ضد آفتاب با فیلترهای معدنی که از پوست در برابر اشعه مضر خورشید محافظت می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["SPF 50", "حاوی فیلترهای معدنی", "محافظت در برابر UVA/UVB", "مناسب پوست‌های حساس", "فاقد مواد شیمیایی مضر"],
+                badge: "پرفروش"
+            },
+            {
+                id: 19,
+                name: "شامپو طبیعی مو",
+                category: "مراقبت مو",
+                description: "شامپو طبیعی با ترکیبات گیاهی که موها را به آرامی تمیز کرده و به آن‌ها درخشندگی می‌بخشد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی عصاره آلوئه ورا", "تمیز کردن ملایم", "درخشندگی مو", "مناسب تمام انواع مو", "فاقد سولفات"],
+                badge: "جدید"
+            },
+            {
+                id: 20,
+                name: "پنکیک طبیعی",
+                category: "کرم پودر",
+                description: "پنکیک طبیعی با پوشش دهی متوسط و فرمول سبک که پوست را یکدست و درخشان نشان می‌دهد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["پوشش دهی متوسط", "فرمول سبک", "مناسب پوست‌های حساس", "حاوی مواد معدنی", "یکدست کننده پوست"],
+                badge: "پرفروش"
+            },
+            {
+                id: 21,
+                name: "ماسک صورت عسل",
+                category: "ماسک صورت",
+                description: "ماسک صورت با عسل طبیعی که پوست را تغذیه و مرطوب کرده و به آن درخشندگی می‌بخشد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی عسل طبیعی", "تغذیه پوست", "مرطوب کننده", "درخشندگی پوست", "مناسب پوست‌های خشک"],
+                badge: "جدید"
+            },
+            {
+                id: 22,
+                name: "رژلب مایع مات",
+                category: "لوازم آرایشی لب",
+                description: "رژلب مایع با finish مات و ماندگاری بالا که لب‌ها را زیبا و جذاب نشان می‌دهد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["finish مات", "ماندگاری بالا", "رنگ غنی", "مناسب پوست‌های حساس", "فاقد مواد شیمیایی مضر"],
+                badge: "پرفروش"
+            },
+            {
+                id: 23,
+                name: "کرم شب گیاهی",
+                category: "مراقبت پوست",
+                description: "کرم شب با ترکیبات گیاهی که در طول شب پوست را تغذیه و ترمیم کرده و صبح پوستی شاداب و درخشان به شما هدیه می‌دهد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["ترمیم کننده پوست", "حاوی عصاره گیاهان", "مناسب پوست‌های حساس", "جذب سریع", "فاقد چربی"],
+                badge: "جدید"
+            },
+            {
+                id: 24,
+                name: "اسکراب بدن قهوه",
+                category: "مراقبت بدن",
+                description: "اسکراب بدن با دانه‌های قهوه که پوست را لایه‌برداری کرده و سلول‌های مرده را از بین می‌برد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی دانه‌های قهوه", "لایه‌برداری ملایم", "درخشندگی پوست", "کاهش سلولیت", "عطر طبیعی قهوه"],
+                badge: "پرفروش"
+            },
+            {
+                id: 25,
+                name: "مایع ناخن تقویت کننده",
+                category: "مراقبت ناخن",
+                description: "مایع ناخن با فرمول تقویت کننده که به استحکام و رشد ناخن‌ها کمک می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["تقویت کننده ناخن", "حاوی کراتین", "رشد ناخن", "محافظت در برابر شکستگی", "مناسب ناخن‌های شکننده"],
+                badge: "جدید"
+            },
+            {
+                id: 26,
+                name: "کرم پاشنه پا",
+                category: "مراقبت بدن",
+                description: "کرم پاشنه پا با فرمول غلیظ که پوست خشک و ترک خورده پاشنه پا را نرم و لطیف می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["فرمول غلیظ", "مرطوب کننده قوی", "ترمیم کننده پوست", "مناسب پوست‌های بسیار خشک", "جذب عمقی"],
+                badge: "پرفروش"
+            },
+            {
+                id: 27,
+                name: "محلول دکلره طبیعی",
+                category: "مراقبت مو",
+                description: "محلول دکلره با فرمول ملایم که موها را روشن کرده و حداقل آسیب را به آن‌ها می‌رساند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["فرمول ملایم", "روشن کردن مو", "حداقل آسیب به مو", "حاوی مواد مغذی", "مناسب موهای حساس"],
+                badge: "جدید"
+            },
+            {
+                id: 28,
+                name: "محلول تثبیت رنگ مو",
+                category: "مراقبت مو",
+                description: "محلول تثبیت رنگ مو که به ماندگاری بیشتر رنگ مو کمک کرده و از شستشوی آن جلوگیری می‌کند.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["تثبیت رنگ مو", "ماندگاری رنگ", "جلوگیری از شستشوی رنگ", "حاوی مواد مغذی", "مناسب تمام رنگ‌های مو"],
+                badge: "پرفروش"
+            },
+            {
+                id: 29,
+                name: "روغن صورت گیاهی",
+                category: "مراقبت پوست",
+                description: "روغن صورت با ترکیبات گیاهی که پوست را تغذیه و مرطوب کرده و به آن درخشندگی طبیعی می‌بخشد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["حاوی روغن‌های گیاهی", "تغذیه پوست", "مرطوب کننده", "درخشندگی طبیعی", "مناسب پوست‌های خشک"],
+                badge: "جدید"
+            },
+            {
+                id: 30,
+                name: "محلول پاک کننده برس",
+                category: "لوازم جانبی",
+                description: "محلول پاک کننده برس آرایشی که برس‌ها را به طور کامل تمیز کرده و باکتری‌ها را از بین می‌برد.",
+                images: [
+                    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228578-8604d6f8d7c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556228453-7a2baf6e8237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                ],
+                features: ["پاک کننده عمقی", "ضد باکتری", "مناسب تمام انواع برس", "حفظ کیفیت برس", "عطر ملایم"],
                 badge: "پرفروش"
             }
         ];
@@ -1027,11 +1426,6 @@
                 badgeHTML = `<div class="product-badge">${product.badge}</div>`;
             }
             
-            let oldPriceHTML = '';
-            if (product.oldPrice) {
-                oldPriceHTML = `<span class="old-price">${product.oldPrice} تومان</span>`;
-            }
-            
             productCard.innerHTML = `
                 ${badgeHTML}
                 <div class="product-image">
@@ -1040,18 +1434,7 @@
                 <div class="product-info">
                     <div class="product-category">${product.category}</div>
                     <h3 class="product-name">${product.name}</h3>
-                    <div class="product-price">
-                        ${product.price} تومان
-                        ${oldPriceHTML}
-                    </div>
                     <p class="product-description">${product.description}</p>
-                    <div class="product-actions">
-                        <a href="#" class="view-details" data-id="${product.id}">جزئیات</a>
-                        <button class="add-to-cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            خرید
-                        </button>
-                    </div>
                 </div>
             `;
             productsGrid.appendChild(productCard);
@@ -1061,12 +1444,8 @@
         const modal = document.getElementById('product-modal');
         const closeModal = document.querySelector('.close-modal');
         const modalProductName = document.getElementById('modal-product-name');
-        const modalProductPrice = document.getElementById('modal-product-price');
-        const currentPrice = document.getElementById('current-price');
-        const oldPrice = document.getElementById('old-price');
         const modalProductDescription = document.getElementById('modal-product-description');
         const modalProductFeatures = document.getElementById('modal-product-features');
-        const modalBuyLink = document.getElementById('modal-buy-link');
         const modalSlides = document.getElementById('modal-slides');
         const sliderControls = document.getElementById('slider-controls');
 
@@ -1136,24 +1515,15 @@
             updateSlider();
         }
 
-        // باز کردن مودال با کلیک روی دکمه "جزئیات"
+        // باز کردن مودال با کلیک روی کارت محصول
         document.addEventListener('click', function(e) {
-            if (e.target && e.target.classList.contains('view-details')) {
-                e.preventDefault();
-                const productId = parseInt(e.target.getAttribute('data-id'));
-                const product = products.find(p => p.id === productId);
+            const productCard = e.target.closest('.product-card');
+            if (productCard) {
+                const productName = productCard.querySelector('.product-name').textContent;
+                const product = products.find(p => p.name === productName);
                 
                 if (product) {
                     modalProductName.textContent = product.name;
-                    currentPrice.textContent = `${product.price} تومان`;
-                    
-                    if (product.oldPrice) {
-                        oldPrice.textContent = `${product.oldPrice} تومان`;
-                        oldPrice.style.display = 'inline';
-                    } else {
-                        oldPrice.style.display = 'none';
-                    }
-                    
                     modalProductDescription.textContent = product.description;
                     
                     // پاک کردن ویژگی‌های قبلی
@@ -1165,9 +1535,6 @@
                         li.textContent = feature;
                         modalProductFeatures.appendChild(li);
                     });
-                    
-                    // تنظیم لینک خرید
-                    modalBuyLink.href = `https://organic-beauty.com/buy/${product.id}`;
                     
                     // ایجاد اسلایدر
                     createSlider(product.images);
@@ -1194,6 +1561,104 @@
                 stopSlider();
             }
         });
+
+        // مدیریت جستجو
+        const searchBtn = document.getElementById('search-btn');
+        const searchOverlay = document.getElementById('search-overlay');
+        const closeSearch = document.getElementById('close-search');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        // باز کردن جستجو
+        searchBtn.addEventListener('click', function() {
+            searchOverlay.style.display = 'flex';
+            searchInput.focus();
+        });
+
+        // بستن جستجو
+        closeSearch.addEventListener('click', function() {
+            searchOverlay.style.display = 'none';
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+        });
+
+        // بستن جستجو با کلیک خارج از آن
+        searchOverlay.addEventListener('click', function(e) {
+            if (e.target === searchOverlay) {
+                searchOverlay.style.display = 'none';
+                searchInput.value = '';
+                searchResults.innerHTML = '';
+            }
+        });
+
+        // جستجوی محصولات
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            
+            if (query.length === 0) {
+                searchResults.innerHTML = '';
+                return;
+            }
+            
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                product.category.toLowerCase().includes(query) ||
+                product.description.toLowerCase().includes(query)
+            );
+            
+            displaySearchResults(filteredProducts);
+        });
+
+        // نمایش نتایج جستجو
+        function displaySearchResults(results) {
+            searchResults.innerHTML = '';
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">محصولی یافت نشد</div>';
+                return;
+            }
+            
+            results.forEach(product => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                resultItem.innerHTML = `
+                    <div class="result-name">${product.name}</div>
+                    <div class="result-category">${product.category}</div>
+                `;
+                
+                resultItem.addEventListener('click', function() {
+                    // نمایش مودال محصول
+                    modalProductName.textContent = product.name;
+                    modalProductDescription.textContent = product.description;
+                    
+                    // پاک کردن ویژگی‌های قبلی
+                    modalProductFeatures.innerHTML = '';
+                    
+                    // اضافه کردن ویژگی‌های جدید
+                    product.features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.textContent = feature;
+                        modalProductFeatures.appendChild(li);
+                    });
+                    
+                    // ایجاد اسلایدر
+                    createSlider(product.images);
+                    
+                    // شروع اسلایدر خودکار
+                    startSlider();
+                    
+                    // نمایش مودال
+                    modal.style.display = 'block';
+                    
+                    // بستن جستجو
+                    searchOverlay.style.display = 'none';
+                    searchInput.value = '';
+                    searchResults.innerHTML = '';
+                });
+                
+                searchResults.appendChild(resultItem);
+            });
+        }
     </script>
 </body>
 </html>
