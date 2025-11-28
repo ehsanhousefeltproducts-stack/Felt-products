@@ -17,7 +17,7 @@
         body {
             background: 
                 linear-gradient(rgba(250, 245, 240, 0.95), rgba(245, 240, 235, 0.95)),
-                url('https://images.unsplash.com/photo-1544966503-7cc5ac882d5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+                url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/floral-background-with-rope.jpg') center/cover fixed;
             color: #5d4037;
             line-height: 1.6;
             min-height: 100vh;
@@ -48,7 +48,7 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1544966503-7cc5ac882d5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namad.back.jpg') center/cover;
             opacity: 0.1;
             z-index: -1;
         }
@@ -224,7 +224,7 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1544966503-7cc5ac882d5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: url('https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/namad.back.jpg') center/cover;
             opacity: 0.05;
             z-index: 0;
         }
@@ -732,6 +732,7 @@
             }
         }
     </style>
+</head>
 <body>
     <header>
         <div class="container">
@@ -863,14 +864,7 @@
                     <p><i class="fas fa-map-marker-alt"></i> مشهد، بلوار لادن بعداز لادن ۵۱</p>
                     <p><i class="fas fa-envelope"></i> info@khaneehsan.com</p>
                 </div>
-                <div class="footer-section">
-                    <h3>لینک‌های مفید</h3>
-                    <a href="#">صفحه اصلی</a>
-                    <a href="#">محصولات</a>
-                    <a href="#">درباره ما</a>
-                    <a href="#">تماس با ما</a>
-                </div>
-            </div>
+  
             
             <div class="social-icons">
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1026,7 +1020,6 @@
                     <li>جلوگیری از تاول و بهبود میخچه ،ترک و خارپشته</li>
                     <li>رفع بوی نامطبوع و عرق پا</li>
                 </ul>
-                <!-- بخش خرید مستقیم حذف شده -->
             </div>
         </div>
     </div>
@@ -1110,18 +1103,15 @@
                                 <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کمربند نمدی سایز بزرگ1.jpg" alt="کمربند نمدی - تصویر ۲">
                             </div>
                             <div class="slide">
-                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/kamarband.png" alt="کمربند نمدی - تصویر ۲">
+                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/kamarband.png" alt="کمربند نمدی - تصویر ۳">
                             </div>
                         </div>
                         <button class="slider-btn prev-btn" onclick="changeSlide('modal5', -1)">&#10094;</button>
                         <button class="slider-btn next-btn" onclick="changeSlide('modal5', 1)">&#10095;</button>
-                        <button class="slider-btn next-btn" onclick="changeSlide('modal5', 2)">&#10095;</button>
-
                         <div class="slider-nav">
                             <div class="slider-dot active" onclick="currentSlide('modal5', 0)"></div>
                             <div class="slider-dot" onclick="currentSlide('modal5', 1)"></div>
-                             <div class="slider-dot" onclick="currentSlide('modal5', 2)"></div>
-
+                            <div class="slider-dot" onclick="currentSlide('modal5', 2)"></div>
                         </div>
                     </div>
                     <div class="thumbnails">
@@ -1131,8 +1121,8 @@
                         <div class="thumbnail" onclick="currentSlide('modal5', 1)">
                             <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کمربند نمدی سایز بزرگ1.jpg" alt="کمربند نمدی - تصویر کوچک ۲">
                         </div>
-                        <div class="thumbnail" onclick="currentSlide('modal5', 1)">
-                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/kamarband.png" alt="کمربند نمدی - تصویر کوچک ۲">
+                        <div class="thumbnail" onclick="currentSlide('modal5', 2)">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/kamarband.png" alt="کمربند نمدی - تصویر کوچک ۳">
                         </div>
                     </div>
                 </div>
@@ -1571,24 +1561,31 @@
             });
         });
 
-        // مدیریت مودال‌ها
+        // مدیریت مودال‌ها و اسلایدر خودکار
         const slideIndexes = {};
+        const slideIntervals = {};
         
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
             document.body.style.overflow = 'hidden';
-            document.body.style.paddingRight = '15px'; // جلوگیری از حرکت محتوا
+            document.body.style.paddingRight = '15px';
             
             if (!slideIndexes[modalId]) {
                 slideIndexes[modalId] = 0;
             }
             showSlides(modalId, slideIndexes[modalId]);
+            
+            // شروع اسلایدر خودکار
+            startAutoSlide(modalId);
         }
         
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
             document.body.style.overflow = 'auto';
             document.body.style.paddingRight = '0';
+            
+            // توقف اسلایدر خودکار
+            stopAutoSlide(modalId);
         }
         
         function changeSlide(modalId, n) {
@@ -1597,11 +1594,17 @@
             }
             slideIndexes[modalId] += n;
             showSlides(modalId, slideIndexes[modalId]);
+            
+            // ریست تایمر خودکار
+            restartAutoSlide(modalId);
         }
         
         function currentSlide(modalId, n) {
             slideIndexes[modalId] = n;
             showSlides(modalId, slideIndexes[modalId]);
+            
+            // ریست تایمر خودکار
+            restartAutoSlide(modalId);
         }
         
         function showSlides(modalId, n) {
@@ -1643,14 +1646,35 @@
             }
         }
         
+        // اسلایدر خودکار
+        function startAutoSlide(modalId) {
+            stopAutoSlide(modalId); // توقف قبلی برای جلوگیری از دوباره کاری
+            slideIntervals[modalId] = setInterval(() => {
+                if (!slideIndexes[modalId]) slideIndexes[modalId] = 0;
+                slideIndexes[modalId]++;
+                showSlides(modalId, slideIndexes[modalId]);
+            }, 3000); // تغییر هر 3 ثانیه
+        }
+        
+        function stopAutoSlide(modalId) {
+            if (slideIntervals[modalId]) {
+                clearInterval(slideIntervals[modalId]);
+                slideIntervals[modalId] = null;
+            }
+        }
+        
+        function restartAutoSlide(modalId) {
+            stopAutoSlide(modalId);
+            startAutoSlide(modalId);
+        }
+        
         // بستن مودال با کلیک خارج از آن
         window.onclick = function(event) {
             const modals = document.getElementsByClassName('modal');
             for (let i = 0; i < modals.length; i++) {
                 if (event.target == modals[i]) {
-                    modals[i].style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    document.body.style.paddingRight = '0';
+                    const modalId = modals[i].id;
+                    closeModal(modalId);
                 }
             }
         }
@@ -1661,9 +1685,8 @@
                 const modals = document.getElementsByClassName('modal');
                 for (let i = 0; i < modals.length; i++) {
                     if (modals[i].style.display === 'block') {
-                        modals[i].style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                        document.body.style.paddingRight = '0';
+                        const modalId = modals[i].id;
+                        closeModal(modalId);
                     }
                 }
             }
