@@ -166,6 +166,24 @@
             font-size: 1.2rem;
         }
         
+        /* بخش لوگو */
+        .logo-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .brand-logo {
+            max-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(121, 85, 72, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .brand-logo:hover {
+            transform: scale(1.05);
+        }
+        
         .products-section {
             padding: 30px 0;
         }
@@ -939,6 +957,13 @@
         </div>
     </section>
     
+    <!-- بخش لوگو -->
+    <section class="logo-section">
+        <div class="container">
+            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/نمد.png" alt="لوگو خانه احسان" class="brand-logo">
+        </div>
+    </section>
+    
     <section class="products-section">
         <div class="container">
             <h2>محصولات نمدی</h2>
@@ -962,60 +987,66 @@
                 </div>
 
                 <!-- محصول 4 -->
+                <div class="product-card" data-name="کفش نمدی" onclick="openModal('modal14')">
+                    <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی.jpg" alt="کفش نمدی" class="product-image">
+                    <div class="product-name">کفش نمدی</div>
+                </div>
+
+                <!-- محصول 5 -->
                 <div class="product-card" data-name="روکش صندلی نمدی بزرگ" onclick="openModal('modal4')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/Felt chair cover2.jpg" alt="روکش صندلی نمدی بزرگ" class="product-image">
                     <div class="product-name">روکش صندلی نمدی بزرگ</div>
                 </div>
 
-                <!-- محصول 5 -->
+                <!-- محصول 6 -->
                 <div class="product-card" data-name="کمربند نمدی" onclick="openModal('modal5')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/camarband.png" alt="کمربند نمدی" class="product-image">
                     <div class="product-name">کمربند نمدی</div>
                 </div>
                 
-                <!-- محصول 6 -->
+                <!-- محصول 7 -->
                 <div class="product-card" data-name="کمربند پشمی کشی" onclick="openModal('modal6')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/کمربند پشنی.png" alt="کمربند پشمی کشی" class="product-image">
                     <div class="product-name">کمربند پشمی کشی</div>
                 </div>
                 
-                <!-- محصول 7 -->
+                <!-- محصول 8 -->
                 <div class="product-card" data-name="پادری نمدی" onclick="openModal('modal7')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/padary3.jpg" alt="پادری نمدی" class="product-image">
                     <div class="product-name">پادری نمدی</div>
                 </div>
                 
-                <!-- محصول 8 -->
+                <!-- محصول 9 -->
                 <div class="product-card" data-name="نشیمنگاه طبی نمدی" onclick="openModal('modal8')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/1764332409651.jpg" alt="نشیمنگاه طبی نمدی" class="product-image">
                     <div class="product-name">نشیمنگاه طبی نمدی</div>
                 </div>
                 
-                <!-- محصول 9 -->
+                <!-- محصول 10 -->
                 <div class="product-card" data-name="سجاده نمدی" onclick="openModal('modal9')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/janamaz.png" alt="سجاده نمدی" class="product-image">
                     <div class="product-name">سجاده نمدی</div>
                 </div>
                 
-                <!-- محصول 10 -->
+                <!-- محصول 11 -->
                 <div class="product-card" data-name="فرشینه نمدی سفید" onclick="openModal('modal10')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/mokett sefid.jpg" alt="فرشینه نمدی سفید" class="product-image">
                     <div class="product-name">فرشینه نمدی سفید</div>
                 </div>
                 
-                <!-- محصول 11 -->
+                <!-- محصول 12 -->
                 <div class="product-card" data-name="فرشینه نمد قهوه ای" onclick="openModal('modal11')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/moket.jpg" alt="فرشینه نمد قهوه ای" class="product-image">
                     <div class="product-name">فرشینه نمد قهوه ای</div>
                 </div>
                 
-                <!-- محصول 12 -->
+                <!-- محصول 13 -->
                 <div class="product-card" data-name="پد طبی یک نفره" onclick="openModal('modal12')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/pad1.jpg" alt="پد طبی یک نفره" class="product-image">
                     <div class="product-name">پد طبی یک نفره</div>
                 </div>
                 
-                <!-- محصول 13 -->
+                <!-- محصول 14 -->
                 <div class="product-card" data-name="پد طبی دو نفره" onclick="openModal('modal13')">
                     <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/1764130349987.jpg" alt="پد طبی دو نفره" class="product-image">
                     <div class="product-name">پد طبی دو نفره</div>
@@ -1249,6 +1280,67 @@
                     <li>قابل شستشو با دوام و تراکم بالا</li>
                     <li>جلوگیری از تاول و بهبود میخچه ،ترک و خارپشته</li>
                     <li>رفع بوی نامطبوع و عرق پا</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- مودال 14 - کفش نمدی -->
+<div id="modal14" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">کفش نمدی</h2>
+            <button class="close-btn" onclick="closeModal('modal14')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="product-gallery">
+                <div class="slider-container">
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی.jpg" alt="کفش نمدی - تصویر ۱">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی2.jpg" alt="کفش نمدی - تصویر ۲">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی3.jpg" alt="کفش نمدی - تصویر ۳">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی4.jpg" alt="کفش نمدی - تصویر ۴">
+                        </div>
+                    </div>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('modal14', -1)">&#10094;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('modal14', 1)">&#10095;</button>
+                    <div class="slider-nav">
+                        <div class="slider-dot active" onclick="currentSlide('modal14', 0)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal14', 1)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal14', 2)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal14', 3)"></div>
+                    </div>
+                </div>
+                <div class="thumbnails">
+                    <div class="thumbnail active" onclick="currentSlide('modal14', 0)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی.jpg" alt="کفش نمدی - تصویر کوچک ۱">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal14', 1)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی2.jpg" alt="کفش نمدی - تصویر کوچک ۲">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal14', 2)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی3.jpg" alt="کفش نمدی - تصویر کوچک ۳">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal14', 3)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/کفش نمدی4.jpg" alt="کفش نمدی - تصویر کوچک ۴">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-details">
+                <ul class="product-features">
+                    <li>ساخته شده از پشم طبیعی و نرم</li>
+                    <li>قابل شستشو با دوام و تراکم بالا</li>
+                    <li>جلوگیری از تاول و بهبود میخچه، ترک و خارپشته</li>
+                    <li>رفع بوی نامطبوع و عرق پا</li>
+                    <li>مناسب برای استفاده در فصول سرد</li>
                 </ul>
             </div>
         </div>
