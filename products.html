@@ -1658,55 +1658,61 @@
         </div>
     </div>
 
-    <!-- مودال 9 -->
-    <div id="modal9" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">سجاده نمدی سفید</h2>
-                <button class="close-btn" onclick="closeModal('modal9')">&times;</button>
+<!-- مودال 9 -->
+<div id="modal9" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">سجاده نمدی سفید</h2>
+            <button class="close-btn" onclick="closeModal('modal9')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="product-gallery">
+                <div class="slider-container">
+                    <div class="slides">
+                        <!-- عکس جدید به عنوان عکس اول -->
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/1764780951738.jpg" alt="سجاده نمدی سفید - تصویر ۱">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی سفید.jpg" alt="سجاده نمدی سفید - تصویر ۲">
+                        </div>
+                        <div class="slide">
+                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی قهوه‌ای.jpg" alt="سجاده نمدی قهوه ای - تصویر ۳">
+                        </div>
+                    </div>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('modal9', -1)">&#10094;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('modal9', 1)">&#10095;</button>
+                    <div class="slider-nav">
+                        <div class="slider-dot active" onclick="currentSlide('modal9', 0)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal9', 1)"></div>
+                        <div class="slider-dot" onclick="currentSlide('modal9', 2)"></div>
+                    </div>
+                </div>
+                <div class="thumbnails">
+                    <!-- تصویر کوچک اول (عکس جدید) -->
+                    <div class="thumbnail active" onclick="currentSlide('modal9', 0)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/1764780951738.jpg" alt="سجاده نمدی سفید - تصویر کوچک ۱">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal9', 1)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی سفید.jpg" alt="سجاده نمدی سفید - تصویر کوچک ۲">
+                    </div>
+                    <div class="thumbnail" onclick="currentSlide('modal9', 2)">
+                        <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی قهوه‌ای.jpg" alt="سجاده نمدی قهوه ای - تصویر کوچک ۳">
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="product-gallery">
-                    <div class="slider-container">
-                        <div class="slides">
-                            <div class="slide">
-                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی سفید.jpg" " alt="سجاده نمدی سفید - تصویر ۱">
-                            </div>
-                            <div class="slide">
-                                <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی قهوه‌ای.jpg" alt="سجاده نمدی قهوه ای - تصویر ۲">
-                            </div>
-                             
-                        </div>
-                        <button class="slider-btn prev-btn" onclick="changeSlide('modal9', -1)">&#10094;</button>
-                        <button class="slider-btn next-btn" onclick="changeSlide('modal9', 1)">&#10095;</button>
-                        <div class="slider-nav">
-                            <div class="slider-dot active" onclick="currentSlide('modal9', 0)"></div>
-                            <div class="slider-dot" onclick="currentSlide('modal9', 1)"></div>
-                        </div>
-                    </div>
-                    <div class="thumbnails">
-                        <div class="thumbnail active" onclick="currentSlide('modal9', 0)">
-                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی سفید.jpg" alt="سجاده نمدی سفید - تصویر کوچک ۱">
-                        </div>
-                        <div class="thumbnail" onclick="currentSlide('modal9', 1)">
-                            <img src="https://ehsanhousefeltproducts-stack.github.io/Felt-products/image/سجاده نمدی قهوه‌ای.jpg" alt="سجاده نمدی قهوه ای - تصویر کوچک ۲">
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="modal-details">
-                    <ul class="product-features">
-                        <li>سبک و قابل انعطاف</li>
-                        <li>با دوام بالا و قابل شستشو </li>
-                        <li>کاهش فشار وارده بر دنبالچه، فرم دهی صحیح ستون فقرات و...</li>
-                        <li>شستشو با دست و آب سرد</li>
-                        <li>ابعاد: عرض: 16 سانتیمتر ؛ طول: 10 سانتیمتر</li>
-                    </ul>
-                </div>
+            <div class="modal-details">
+                <ul class="product-features">
+                    <li>سبک و قابل انعطاف</li>
+                    <li>با دوام بالا و قابل شستشو </li>
+                    <li>کاهش فشار وارده بر دنبالچه، فرم دهی صحیح ستون فقرات و...</li>
+                    <li>شستشو با دست و آب سرد</li>
+                    <li>ابعاد: عرض: 16 سانتیمتر ؛ طول: 10 سانتیمتر</li>
+                </ul>
             </div>
         </div>
     </div>
-
+</div>
     <!-- مودال 10 -->
     <div id="modal10" class="modal">
         <div class="modal-content">
